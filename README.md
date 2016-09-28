@@ -2,6 +2,10 @@
 
 An open source clone of [workflowy](https://workflowy.com/).  Interested in contributing?  Take a look at the [project page](https://github.com/GuildCrafts/floworky/projects/2) and [issues page](https://github.com/GuildCrafts/floworky/issues) for outstanding issues.
 
+## Contributing to Floworky
+
+Please read the [contribution guidelines](CONTRIBUTING.md).
+
 ## Technical Stack
 
 ### Back End
