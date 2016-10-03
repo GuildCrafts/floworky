@@ -6,6 +6,13 @@ An open source clone of [workflowy](https://workflowy.com/).  Interested in cont
 
 Please read the [contribution guidelines](CONTRIBUTING.md).
 
+## Setting up Development Environment
+
+Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to manage process startup.  This requires the use of a `.env` file to specify the environment variables required by floworky (note that this is an example that includes values that will need to be set for your own environment):
+```
+DATABASE_URL=postgres://jrob@localhost:5432/floworky
+```
+
 ## Technical Stack
 
 ### Back End
