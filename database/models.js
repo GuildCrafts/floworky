@@ -11,6 +11,25 @@ const User = sequelize.define( 'user', {
   password: Sequelize.STRING
 })
 
-sequelize.sync()
+const Item = sequelize.define( 'item', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  title: Sequelize.STRING,
+  description: Sequelize.TEXT,
+  completed: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
+  parent_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0
+  },
+  user_id: Sequelize.INTEGER
+})
 
-module.exports = { User }
+module.exports = { sequelize, User, Item }
