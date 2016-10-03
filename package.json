@@ -2,9 +2,13 @@
   "name": "workflowy",
   "version": "0.0.0",
   "private": true,
+  "description": "Open Source Tracking of your Work Flow",
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "eslint --color *.js; exit 0;"
+    "lint": "eslint --color *.js; exit 0;",
+    "test": "mocha -w",
+    "test:single": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
+    // "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -22,7 +26,11 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.6.0",
-    "eslint-plugin-react": "^6.3.0"
+    "eslint-plugin-react": "^6.3.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.0",
+    "sinon": "^1.17.6"
   }
 }
