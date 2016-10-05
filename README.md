@@ -21,3 +21,12 @@ Please read the [contribution guidelines](CONTRIBUTING.md).
 
 ### Front End
 * [Pug](https://github.com/pugjs/pug)
+
+### Testing
+* Testing Framework: [Mocha](http://mochajs.org/)
+* Assertion Library: [Chai](http://chaijs.com/)
+* Test Spies, Stubs and Mocks: [Sinon](http://sinonjs.org/)
+* Test Coverage: [Istanbul](https://github.com/gotwarlost/istanbul)
+
+### Resources
+See [RESOURCES.md](RESOURCES.md)
