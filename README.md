@@ -29,4 +29,4 @@ Please read the [contribution guidelines](CONTRIBUTING.md).
 * Test Coverage: [Istanbul](https://github.com/gotwarlost/istanbul)
 
 ### Resources
-See [RESOURCES.md](https://github.com/Moniarchy/floworky/blob/master/RESOURCES.md)
+See [RESOURCES.md](RESOURCES.md)
