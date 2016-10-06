@@ -7,14 +7,12 @@ router.get( '/', ( request, response ) => {
   response.render( 'items/index', { user })
 })
 
-router.post( '/items', ( request, response, next ) => {
+router.post( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
   const { title, description } = request.body
   const user_id = request.user.id
   Item.create({ title, description, user_id})
-    .then( result => {
-      response.redirect( '/items' )
-    })
+    .then( result => response.redirect( '/items' ))
 })
 
 module.exports = router
