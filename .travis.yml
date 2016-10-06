@@ -1,0 +1,22 @@
+language: node_js
+sudo: false
+node_js:
+  - 6.6.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: 2zrh1gyMRSHm3YVdyXRiIikL0OwLdxFjy4u8XCQGo2mwsPybjx6fGsBlD0tSb3CFILcXzZ3mr75IJVqZWhXwwtYMsgwcm+ai4RQkdf1MKDB5Jd0H+GOJQY3dzbW0joFwRwwpkW4Z0jMTZsC/ZoR0JUlfq7tbuNEr9N5pRNm0rDowjCmi4IoqgSG6kD4BywcIJsj06cU1D1gPOML4656vWl2Lmhy5sTyD9MmMT1kUS/DOdwsUzJEPPfVA0PfWhHyLSaKihadoiM/xFqET6uJOCcY6NX6VbAfPGYlFQcQP08C/FWlx8sntLxT2xzPwcLJadnKVVik7Q6z3hVSd/5H+KOYQ20HiTf232nVWXJ277+8LF7yj4zWz5o6IrPortLH2lSDESw5Y+xjhmQcxBbu7tVXMWgaNc8dGTBu4wwWGfhGDQXihJUI6Sy3/SvHIv1ZKB3k9saMoaCKpgKV24+RMhpFgx49iUntzENAJffstNb2sSFcqFksIyFzxl3txiGm0Juu1AqRiYlvJnd2OPkY53aFf26E77YMjtY2M5HSsKYtjg2Oj72aKMVCeuYgTC2FurHeiOiCit29dGXsKX3zv4pPx+FnsjYH51zIDFUr1MTLkAp9y2vx2ExZ3sxuoTmoF0+93twEjqqJCVGMAO8IAdQOFOW8TTbg0f4Uet5kCfJM=
+  app:
+    master: safe-taiga-54899
+    production: still-fjord-35466
+  on:
+    repo: GuildCrafts/floworky
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+env:
+  - TRAVIS=travis CXX=g++-4.8

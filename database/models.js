@@ -1,7 +1,5 @@
 const Sequelize = require( 'sequelize' )
-const sequelize = new Sequelize(
-  `postgres://${process.env.USER}@localhost:5432/workflowy`
-)
+const sequelize = new Sequelize( process.env.DATABASE_URL )
 
 const User = sequelize.define( 'user', {
   id: {
