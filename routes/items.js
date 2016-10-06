@@ -1,27 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-router.get( '/', ( request, response, next ) => {
+router.get( '/', ( request, response ) => {
   const { user } = request
 
   response.render( 'items/index', { user })
 })
 
-router.post( '/create', ( request, response, next ) => {
-  // console.log( request.session )
-  // const user_id = request.session.passport.user.id
+router.post( '/items', ( request, response, next ) => {
   const Item = request.app.get( 'models' ).Item
   const { title, description } = request.body
-  const { id } = request.user
-  const user_id = id
+  const user_id = request.user.id
   Item.create({ title, description, user_id})
     .then( result => {
-      // console.log( 'Item Result', result )
-
-
       response.redirect( '/items' )
     })
 })
-
 
 module.exports = router
