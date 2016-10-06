@@ -9,8 +9,8 @@
   "scripts": {
     "start": "nf start",
     "lint": "eslint --color *.js; exit 0;",
-    "test": "mocha -w",
-    "test:single": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec"
+    "test:watch": "mocha -w",
+    "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
