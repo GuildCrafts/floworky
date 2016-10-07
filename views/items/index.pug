@@ -1,7 +1,15 @@
 extends ../layouts/authenticated-layout
 
+mixin display( nodes, depth )
+  each entry in nodes
+    .item
+      .title= entry.item.title
+      .description= entry.item.description
+      .children
+        +display( entry.children, depth + 1 )
+
 block content
-  Items
+  h1 Items
 
   form(method="post", action="/items")
     label Add a ToDo
@@ -12,3 +20,6 @@ block content
 
   div
     h3 Your ToDo's:
+
+    .item-page
+      +display( tree, 0 )

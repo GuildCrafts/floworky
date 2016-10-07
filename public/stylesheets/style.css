@@ -3,3 +3,7 @@
   font-size: 3em;
   font-family: 'Contrail One', cursive;
 }
+
+.item .children {
+  margin-left: 20px;
+}
