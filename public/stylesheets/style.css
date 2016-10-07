@@ -7,3 +7,17 @@
 .item .children {
   margin-left: 20px;
 }
+
+.item .title {
+  font-weight: bold;
+}
+
+.item .description {
+  color: #888;
+  padding-left: 7px;
+}
+
+.item.completed > .title {
+  text-decoration: line-through;
+  color: #777;
+}
