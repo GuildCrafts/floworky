@@ -2,8 +2,8 @@ extends ../layouts/authenticated-layout
 
 mixin display( nodes, depth )
   each entry in nodes
-    .item
-      .title= entry.item.title
+    .item(data-id=entry.item.id, class={completed: entry.item.completed})
+      .title(data-id=entry.item.id, data-completed=entry.item.completed)= entry.item.title
       .description= entry.item.description
       .children
         +display( entry.children, depth + 1 )

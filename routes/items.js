@@ -5,6 +5,7 @@ const ItemTree = require( '../src/item_tree' )
 
 router.get( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
+
   const { user } = request
 
   const user_id = user.id
@@ -20,11 +21,24 @@ router.get( '/', ( request, response ) => {
 
 router.post( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
+
   const { title, description } = request.body
   const user_id = request.user.id
 
   Item.create({ title, description, user_id})
     .then( result => response.redirect( '/items' ))
+})
+
+router.post( '/:id/completed', ( request, response ) => {
+  const Item = request.app.get( 'models' ).Item
+
+  const { id } = request.params
+  const { completed } = request.body
+  const user_id = request.user.id
+
+  Item.update({ completed }, { where: { id, user_id }})
+    .then( result => response.json({ success: true, id }))
+    .catch( error => response.json({ success: false, id, message: error.message }))
 })
 
 module.exports = router
