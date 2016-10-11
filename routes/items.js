@@ -1,31 +1,26 @@
 const express = require('express')
 const router = express.Router()
 
-const ItemTree = require( '../src/item_tree' )
+const { fetchItems, testForSearch, respondWithItems } = require( './items/item_response' )
+const { buildTree } = require( './items/tree_creation' )
 
 router.get( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
-  const { user } = request
+  const { user, query } = request
 
-  const user_id = user.id
-  const attributes = [ 'title', 'description', 'completed', 'parent_id', 'id' ]
-
-  Item.findAll({ order: [['parent_id', 'ASC']], where: { user_id }, attributes })
-    .then( items => {
-      const tree = new ItemTree( items )
-
-      response.render( 'items/index', { user, items, tree: tree.root.children })
-    })
+  Item.findAll( fetchItems( user.id ))
+    .then( buildTree )
+    .then( testForSearch( Item, query.search ))
+    .then( respondWithItems( response, user ))
 })
 
 router.post( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
   const { title, description, parent_id } = request.body
-  const user_id = request.user.id
 
-  Item.create({ title, description, parent_id, user_id })
+  Item.create({ title, description, parent_id, user_id: request.user.id })
     .then( result => response.redirect( '/items' ))
 })
 
@@ -34,9 +29,8 @@ router.post( '/:id/completed', ( request, response ) => {
 
   const { id } = request.params
   const { completed } = request.body
-  const user_id = request.user.id
 
-  Item.update({ completed }, { where: { id, user_id }})
+  Item.update({ completed }, { where: { id, user_id: request.user.id }})
     .then( result => response.json({ success: true, id }))
     .catch( error => response.json({ success: false, id, message: error.message }))
 })

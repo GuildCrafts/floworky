@@ -1,37 +1,56 @@
+const ItemNode = require( './item_node' )
+
 class ItemTree {
   constructor( items=[] ) {
-    const map = items.reduce( this.itemReducer, {} )
+    this.items = items
 
+    this.buildTree()
+  }
+
+  children() {
+    return this.root.children
+  }
+
+  buildMap() {
+    this.map = this.items.reduce( this.itemReducer, {} )
     this.root = new ItemNode({ id: 0, title: 'Home' })
-    map[ 0 ] = this.root
+    this.map[ 0 ] = this.root
+  }
 
-    items.forEach( item =>
-      map[ item.parent_id ].addChild( map[ item.id ] )
+  buildTree() {
+    this.buildMap()
+
+    this.items.forEach( item =>
+      this.map[ item.parent_id ].addChild( this.map[ item.id ] )
     )
   }
 
-  itemReducer(memo, item) {
+  itemReducer( memo, item ) {
     memo[ item.id ] = new ItemNode( item )
 
     return memo
   }
-}
 
-class ItemNode {
-  constructor( item ) {
-    const { id, parent_id, title, description, completed } = item
+  pruneToItems( ids ) {
+    let idsToKeep = []
 
-    this.id = id
-    this.parent_id = parent_id
-    this.title = title
-    this.description = description
-    this.completed = completed
+    for( const id of ids ) {
+      const path = this.findPathTo( id, [ id ] )
+      idsToKeep = idsToKeep.concat( path )
+    }
 
-    this.children = []
+    this.items = this.items.filter( item => idsToKeep.includes( item.id ) )
+    this.buildTree()
   }
 
-  addChild( child ) {
-    this.children.push( child )
+  findPathTo( id, path=[] ) {
+    if( id === 0 ) {
+      return path
+    } else {
+      const parent_id = this.map[ id ].parent_id
+
+      return [ ...this.findPathTo( parent_id, [ parent_id, ...path ] ) ]
+    }
   }
 }
 
