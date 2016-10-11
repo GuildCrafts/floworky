@@ -33,12 +33,12 @@ See [RESOURCES.md](RESOURCES.md)
 
 ## Specifications
 
--[ ] A user should have the ability to be able to select a parent item for new items, so that I can have nested ites in my list
--[ ] Developers have a style guide that provides rules and stucture for styling html in floworky and effectively contributing to the project. Following BEM methodology
--[ ] A user can toggle to be able to filter their todo items to view completed, active and all, so that I can create a focused view of my items
--[ ] A user can search for items by a keyword, using a form located in the navbar
+- [ ] A user should have the ability to be able to select a parent item for new items, so that I can have nested ites in my list
+- [ ] Developers have a style guide that provides rules and stucture for styling html in floworky and effectively contributing to the project. Following BEM methodology
+- [ ] A user can toggle to be able to filter their todo items to view completed, active and all, so that I can create a focused view of my items
+- [ ] A user can search for items by a keyword, using a form located in the navbar
 
 ## Quality Rubric
 
--[ ] Pull requests are merged into the original flowory repo
--[ ] followed all quality and contributiing guidlines specified in README.md from main floworky 
+- [ ] Pull requests are merged into the original flowory repo
+- [ ] followed all quality and contributiing guidlines specified in README.md from main floworky 
