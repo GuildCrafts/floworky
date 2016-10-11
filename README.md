@@ -2,16 +2,9 @@
 
 An open source clone of [workflowy](https://workflowy.com/).  Interested in contributing?  Take a look at the [project page](https://github.com/GuildCrafts/floworky/projects/2) and [issues page](https://github.com/GuildCrafts/floworky/issues) for outstanding issues.
 
-## Contributing to Floworky
+## This team is following contribution guidlines for contributing to thi opesource project:
 
-Please read the [contribution guidelines](CONTRIBUTING.md).
-
-## Setting up Development Environment
-
-Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to manage process startup.  This requires the use of a `.env` file to specify the environment variables required by floworky (note that this is an example that includes values that will need to be set for your own environment):
-```
-DATABASE_URL=postgres://jrob@localhost:5432/floworky
-```
+[contribution guidelines](CONTRIBUTING.md).
 
 ## Technical Stack
 
@@ -37,3 +30,15 @@ DATABASE_URL=postgres://jrob@localhost:5432/floworky
 
 ### Resources
 See [RESOURCES.md](RESOURCES.md)
+
+## Specifications
+
+-[ ] A user should have the ability to be able to select a parent item for new items, so that I can have nested ites in my list
+-[ ] Developers have a style guide that provides rules and stucture for styling html in floworky and effectively contributing to the project. Following BEM methodology
+-[ ] A user can toggle to be able to filter their todo items to view completed, active and all, so that I can create a focused view of my items
+-[ ] A user can search for items by a keyword, using a form located in the navbar
+
+## Quality Rubric
+
+-[ ] Pull requests are merged into the original flowory repo
+-[ ] followed all quality and contributiing guidlines specified in README.md from main floworky 
