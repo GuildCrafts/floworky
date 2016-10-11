@@ -25,8 +25,6 @@ router.post( '/', ( request, response ) => {
   const { title, description, parent_id } = request.body
   const user_id = request.user.id
 
-  console.log("--------------------> ", parent_id)
-
   Item.create({ title, description, parent_id, user_id})
     .then( result => response.redirect( '/items' ))
 })
