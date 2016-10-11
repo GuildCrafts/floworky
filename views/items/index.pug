@@ -11,12 +11,30 @@ mixin display( nodes, depth )
 block content
   h1 Items
 
-  form(method="post", action="/items")
-    label Add a ToDo
-    input(type="text", name="title")
-    label To Do Description
-    input(type="text", name="description")
-    input(type="submit", value="submit")
+  //- form(method="post", action="/items")
+  //-   label Add a ToDo
+  //-   input(type="text", name="title")
+  //-   label To Do Description
+  //-   input(type="text", name="description")
+  //-   label Parent
+  //-   input(type="text", name="parent")
+  //-   input(type="submit", value="submit")
+
+
+  form(method='post', action='/items')
+    .form-group
+      input.form-control(type='text', name='title', placeholder='ToDo Title')
+    .form-group
+      input.form-control(type='text', name='description', placeholder='ToDo Description')
+    .form-group
+      label Select Parent
+      select.form-control(data-style='btn', name='parent_id')
+        option(value="0") None
+        each item in items
+          option(value=`${item.id}`)= item.title
+
+    button.btn.btn-primary(type='submit') Submit
+
 
   div
     h3 Your ToDo's:

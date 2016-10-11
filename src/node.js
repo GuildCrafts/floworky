@@ -8,9 +8,11 @@ class Node {
     if( this.item.id === node.item.parent_id ) {
       this.children.push( node )
     } else {
-      this.children.find( child => {
-        return child.item.id === node.item.parent_id
-      }).insert( node )
+      if(this.children.length>0){
+        for (let child of this.children){
+            child.insert(node)
+        }
+      }
     }
   }
 }

@@ -22,10 +22,12 @@ router.get( '/', ( request, response ) => {
 router.post( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
-  const { title, description } = request.body
+  const { title, description, parent_id } = request.body
   const user_id = request.user.id
 
-  Item.create({ title, description, user_id})
+  console.log("--------------------> ", parent_id)
+
+  Item.create({ title, description, parent_id, user_id})
     .then( result => response.redirect( '/items' ))
 })
 
