@@ -1,21 +1,37 @@
-const Node = require( './node' )
-
 class ItemTree {
-  // PRECONDITION: items is in sorted order
   constructor( items=[] ) {
-    this.root = new Node({ id: 0, title: 'Home' })
+    const map = items.reduce( this.itemReducer, {} )
 
-    items.forEach( item => this.insert({
-      id: item.id,
-      parent_id: item.parent_id,
-      title: item.title,
-      description: item.description,
-      completed: item.completed
-    }))
+    this.root = new ItemNode({ id: 0, title: 'Home' })
+    map[ 0 ] = this.root
+
+    items.forEach( item =>
+      map[ item.parent_id ].addChild( map[ item.id ] )
+    )
   }
 
-  insert( entry ) {
-    this.root.insert( new Node( entry ))
+  itemReducer(memo, item) {
+    memo[ item.id ] = new ItemNode( item )
+
+    return memo
+  }
+}
+
+class ItemNode {
+  constructor( item ) {
+    const { id, parent_id, title, description, completed } = item
+
+    this.id = id
+    this.parent_id = parent_id
+    this.title = title
+    this.description = description
+    this.completed = completed
+
+    this.children = []
+  }
+
+  addChild( child ) {
+    this.children.push( child )
   }
 }
 
