@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-  - 6.6.0
+- 6.6.0
 deploy:
   provider: heroku
   api_key:
@@ -14,9 +14,12 @@ deploy:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - gcc-4.8
-      - g++-4.8
+    - gcc-4.8
+    - g++-4.8
 env:
-  - TRAVIS=travis CXX=g++-4.8
+- TRAVIS=travis CXX=g++-4.8
+notifications:
+  slack:
+    secure: LYExzyFL+OHpjhalnMg8m5dTDH/Dh3H7nlSOMJYopfn9hyWLLkNEtdIXoR3YcxIuknAnFwHUPrTZAGeNup9V2+1DN2Mbv5PpOLpjR+xB/DtcrKuOIxLx59EV+UifHmrF1JuatH2sN0Z2Yjzhu34ll4kJJL7jha1hwAYDfsJNw/wa/O3PynL0/uSc+niy3CP+QBxFILHJ7vEm9qWgPxoa9u6wL5I3Bb5I5UjKA6sRkY/yf0xkW4ifhV0sqgR9SX6Sitd/WNYlAZ5EnaOiyKOVYnEmKPMmilKjJkOhYwTRnWjHx6kc/yzTPVZy294sCFFCP+U9Ukznoxs1o/4FXKC+a4xkRJun1uJY54G09Ga4wlDx9cqi8u52VN6kWOQ8MHEkj3q8GQl5okyOS+QSln1OBZqFRTHTn3YCBHgTuu6TsB5kfELCTk5ty5EOITe5pED+flyiyq6jAbZQ56C37jLmC68GBWQLb+l2CHvcIr9DmCftK/H4t9qBQfF3Vi3Fv5RNGD5v0jsfZAZ71WLQoRxC8jTIgb3cagKstDEbiPQCOcpBBKJJ2zH55O35o2vuqSekUPll+Te915b5rDzE2qIXrdZMH041/B+qU2SGmEuhgHxU41IaCtJxIB6a8VA48mpp5Wtee5LytrdtpOiZty+0FrusmBC8sqUbwcLPZCpKpIw=
