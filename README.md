@@ -12,6 +12,8 @@ Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to ma
 ```
 DATABASE_URL=postgres://jrob@localhost:5432/floworky
 ```
+#### (Optional) Configure Atom with Nuclide for Flow
+Floworky uses flow for static type checking, which can be manually run using `npm run flow`.  If you are using Atom to contribute, you can [use Nuclide](https://nuclide.io/docs/editor/setup/#quick-install) for type annotation information within your editor.
 
 ## Technical Stack
 
