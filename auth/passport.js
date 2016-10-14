@@ -1,23 +1,41 @@
+const bcrypt = require('bcrypt')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const Sequelize = require( 'sequelize' )
-const encryptPassword = require( './encryptPassword' )
 
 const User = require('../database/models').User
 const OPTIONS = { usernameField: 'email' }
 
-const findUser = ( email, password ) =>
-  User.findOne({ email, password: encryptPassword( password ), email_verified: true })
+const ERROR_MESSAGE = "Incorrect email or password. Have you verified your email?"
+
+const findUser = ( email, password ) => {
+  return User.findOne({ where: { email, email_verified: true }})
+    .then( user =>
+      new Promise( (resolve, reject) => {
+        if( ! user ) {
+          reject({ message: ERROR_MESSAGE })
+        }
+
+        bcrypt.compare( password, user.password, (error, result ) => {
+          if( result ) {
+            resolve( user )
+          } else {
+            reject( error )
+          }
+        })
+      })
+    )
+}
 
 const strategy = new LocalStrategy( OPTIONS, ( email, password, done ) => {
   findUser( email, password)
     .then( user => {
-      if( !user ){
-        return done( null, false, { message: "Incorrect email or password. Have you verified your email?" })
+      if( ! user ){
+        done( null, false, { message: ERROR_MESSAGE })
       } else {
         done( null, user)
       }
-    }).catch( error => done( err ))
+    }).catch( error => done( null, false, error ))
 })
 
 passport.use( strategy )
@@ -25,7 +43,6 @@ passport.use( strategy )
 passport.serializeUser( ( user, done ) => done( null, user.id ) )
 
 passport.deserializeUser( ( id, done ) => {
-  console.log( 'deserializeUser', id )
   User.findById( id )
     .then( user => done( null, { id: user.id, email: user.email }))
     .catch( error => done( error, null ))

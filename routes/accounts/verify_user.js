@@ -1,14 +1,9 @@
+const moment = require( 'moment' )
+
 const whereClause = hash => {
-  return {
-    where: {
-      $and: [{
-        hash,
-        createdAt: {
-          $gt: new Date( new Date() - ( 60 * 4 * 60 ))
-        }
-      }]
-    }
-  }
+  const $gt = moment().subtract({ hours: 4 }).utc()
+
+  return { where: { $and: [{ hash, createdAt: { $gt } }] } }
 }
 
 const testForCode = result => {
