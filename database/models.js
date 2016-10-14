@@ -8,6 +8,10 @@ const User = sequelize.define( 'user', {
     autoIncrement: true
   },
   email: Sequelize.STRING,
+  email_verified: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   password: Sequelize.STRING
 })
 
@@ -32,4 +36,12 @@ const Item = sequelize.define( 'item', {
   user_id: Sequelize.INTEGER
 })
 
-module.exports = { sequelize, User, Item }
+const VerificationCode = sequelize.define( 'verification_code', {
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  hash: Sequelize.STRING
+})
+
+module.exports = { sequelize, User, Item, VerificationCode }
