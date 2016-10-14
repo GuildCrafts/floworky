@@ -12,6 +12,8 @@ Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to ma
 ```
 DATABASE_URL=postgres://jrob@localhost:5432/floworky
 ```
+#### (Optional) Configure Atom with Nuclide for Flow
+Floworky uses flow for static type checking, which can be manually run using `npm run flow`.  If you are using Atom to contribute, you can [use Nuclide](https://nuclide.io/docs/editor/setup/#quick-install) for type annotation information within your editor.
 
 ## Technical Stack
 
@@ -34,17 +36,6 @@ DATABASE_URL=postgres://jrob@localhost:5432/floworky
 * Assertion Library: [Chai](http://chaijs.com/)
 * Test Spies, Stubs and Mocks: [Sinon](http://sinonjs.org/)
 * Test Coverage: [Istanbul](https://github.com/gotwarlost/istanbul)
-* Static Type Checking: [Flow](https://flowtype.org)
-
-### Flow
-Use the flow pragma ```//@flow``` on a given file to check the file for type errors. After selecting the files, either use the cli script ```npm run flow``` on the terminal or use the Nuclide IDE to use flow for type checking.
-For more complete documentation about flow and annotations please checkout the [flow website](https://flowtype.org/docs/quick-reference.html)
-
-### Configure Atom w/ Nuclide for Flow
-In order to configure atom  to use Nuclide:
-* Download the Nuclide package in the package manager in settings
-* Enable the Nuclide package
-Once you have completed these steps you are now able to use flow within the editor and see the errors that are shown on the lower left corner.
 
 ### Resources
 See [RESOURCES.md](RESOURCES.md)

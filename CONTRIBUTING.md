@@ -14,3 +14,4 @@
 * All tests passing - aiming for 100% test coverage
 * No linting errors
 * Spaces (2), not tabs
+* Flow Type Annotations are included
