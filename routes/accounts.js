@@ -2,6 +2,9 @@ const express = require( 'express' )
 
 const encryptPassword = require( '../auth/encryptPassword' )
 const passport = require( '../auth/passport' )
+const RegistrationEmail = require( '../src/mail/registration_email.js' )
+
+const { testForCode, whereClause } = require( './accounts/verify_user' )
 
 const router = express.Router()
 
@@ -19,8 +22,27 @@ router.post( '/register', ( request, response , next) => {
   const { email, password } = request.body
 
   User.create({ email, password: encryptPassword( password ) })
-    .then( user => {
-      request.login( user, ( error ) => {
+    .then( user => RegistrationEmail.send( user ))
+    .then( user => response.redirect( '/accounts/verify' ))
+})
+
+router.get( '/verify', (request, response ) => {
+  response.render( 'accounts/verify' )
+})
+
+router.get( '/verify/:hash', ( request, response, next ) => {
+  const { User, VerificationCode } = request.app.get( 'models' )
+  const { hash } = request.params
+
+  VerificationCode.findOne( whereClause( hash ))
+    .then( testForCode )
+    .then( result => User.update(
+      { email_verified: true},
+      { where: { id: result.user_id }})
+    )
+    .then( result => {
+      const [ id ] = result
+      request.login( { id }, error => {
         if( error ) {
           return next( error )
         }
@@ -28,6 +50,7 @@ router.post( '/register', ( request, response , next) => {
         return response.redirect( '/items' )
       })
     })
+    .catch( error => response.render( 'accounts/verify' ))
 })
 
 router.get( '/login', ( request, response ) => {
