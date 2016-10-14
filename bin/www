@@ -30,7 +30,9 @@ server.on('error', onError)
 server.on('listening', onListening)
 
 // TODO: Add migrations and remove force: true; tables dropped every time server starts
-sequelize.sync({ force: true }).then( result =>
+const force = process.env.PRE_MIGRATION_SYNC === 'true'
+
+sequelize.sync({ force }).then( result =>
   server.listen( port )
 )
 
