@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { fetchItems, testForSearch, respondWithItems } = require( './items/item_response' )
+const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './items/item_response' )
 const { buildTree } = require( './items/tree_creation' )
 
 router.get( '/', ( request, response ) => {
@@ -9,9 +9,9 @@ router.get( '/', ( request, response ) => {
 
   const { user, query } = request
 
-  Item.findAll( fetchItems( user.id ))
+  Item.findAll( allItemsQuery( user.id ))
     .then( buildTree )
-    .then( testForSearch( Item, query.search ))
+    .then( filteredItemsQuery( Item, query, user.id ) )
     .then( respondWithItems( response, user ))
 })
 

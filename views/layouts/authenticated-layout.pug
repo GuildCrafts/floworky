@@ -23,6 +23,18 @@ html
           .form-group
             input.form-control(type='text', name='search', placeholder='Search')
           button.btn.btn-default(type='submit') Search
+        form.navbar-form.navbar-left(method='get', action='/items')
+          .btn-group(data-toggle='buttons')
+            label.btn.btn-primary
+              input.completed_filter(type='radio', name='completed_filter', value='all', autocomplete='off', checked='checked')
+              |  all items
+            label.btn.btn-primary
+              input.completed_filter(type='radio', name='completed_filter', value='completed' autocomplete='off')
+              |  completed
+            label.btn.btn-primary
+              input.completed_filter(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
+              |  incomplete
+          button.btn.btn-default(type='submit') Filter
         .collapse.navbar-collapse#navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li.dropdown
