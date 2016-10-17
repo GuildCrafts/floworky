@@ -5,6 +5,8 @@ mixin display( nodes, depth )
     .item(data-id=entry.id)
       .heading(data-id=entry.id, data-completed=entry.completed)
         .completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
+        a(href=`/items/${entry.id}`)
+          .glyphicon.glyphicon-record(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
         .title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
           span(data-id=entry.id)=entry.title
           input.edit-title.hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
@@ -25,14 +27,15 @@ block content
     .form-group
       label Select Parent
       select.form-control(data-style='btn', name='parent_id')
-        option(value='0') None
         each item in items
           option(value=`${item.id}`)= item.title
 
     button.btn.btn-primary(type='submit') Submit
 
-  div
-    h3 Your ToDo's:
 
-    .item-page
-      +display( tree, 0 )
+  h4= breadcrumbs.join( ' > ' )
+  .root(data-id=root.id, class={completed: root.completed})
+    .individual(data-id=root.id, data-completed=root.completed)
+      h1.title(data-id=root.id, data-completed=root.completed)= root.title
+    .description= root.description
+  +display( tree, 0 )
