@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "nf start",
+    "start:dev": "nf start -f Profile_dev",
     "lint": "eslint --color *.js; exit 0;",
     "test:watch": "mocha -w",
     "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec"
