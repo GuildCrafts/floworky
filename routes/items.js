@@ -24,15 +24,16 @@ router.post( '/', ( request, response ) => {
     .then( result => response.redirect( '/items' ))
 })
 
-router.post( '/:id/completed', ( request, response ) => {
+router.post( '/:id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
-
   const { id } = request.params
-  const { completed } = request.body
+  const where = { id, user_id: request.user.id }
 
-  Item.update({ completed }, { where: { id, user_id: request.user.id }})
+  Item.update( Item.filterParameters( request.body ), { where })
     .then( result => response.json({ success: true, id }))
-    .catch( error => response.json({ success: false, id, message: error.message }))
+    .catch( error =>
+      response.json({ success: false, id, message: error.message })
+    )
 })
 
 module.exports = router
