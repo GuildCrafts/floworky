@@ -8,7 +8,7 @@ router.get( '/', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
   const { user, query } = request
-  
+
   Item.findAll( allItemsQuery( user.id ))
     .then( buildTree )
     .then( filteredItemsQuery( Item, query, user.id ) )
