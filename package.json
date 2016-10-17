@@ -16,6 +16,7 @@
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
+    "db": "^1.0.6",
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "express-session": "^1.14.1",
@@ -38,6 +39,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
     "nodemon": "^1.10.2",
+    "sequelize-cli": "^2.4.0",
     "sinon": "^1.17.6"
   }
 }
