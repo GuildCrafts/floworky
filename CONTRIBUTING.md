@@ -14,4 +14,5 @@
 * All tests passing - aiming for 100% test coverage
 * No linting errors
 * Spaces (2), not tabs
+* No lines may be longer than 80 characters
 * Flow Type Annotations are included
