@@ -11,10 +11,9 @@
     "lint": "eslint --color *.js; exit 0;",
     "test:watch": "mocha -w",
     "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
-    "migrate": "node_modules/.bin/sequelize db:migrate",
-    "migrate:undo": "node_modules/.bin/sequelize db:migrate:undo",
-    "migrate:undo:all": "node_modules/.bin/sequelize db:migrate:undo:all",
-    "migrate:test": "node_modules/.bin/sequelize db:migrate --url "
+    "migrate": "sequelize db:migrate",
+    "migrate:undo:all": "sequelize db:migrate:undo:all",
+    "migrate:test": "sequelize db:migrate --url "
   },
   "dependencies": {
     "bcrypt": "^0.8.7",

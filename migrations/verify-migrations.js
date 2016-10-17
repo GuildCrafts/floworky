@@ -3,6 +3,10 @@
 const { VerificationCode }  = require('../database/models')
 
 module.exports = {
-  up: ( migration, DataTypes ) => migration.createTable( VerificationCode.tableName, VerificationCode.attributes ) ,
-  down: ( migration, DataTypes ) => migration.dropTable ( VerificationCode.tableName )
+  up: ( migration, DataTypes ) => {
+    return migration.createTable( VerificationCode.tableName, VerificationCode.attributes )
+  },
+  down: ( migration, DataTypes ) => {
+    return migration.dropTable ( VerificationCode.tableName )
+  }
 }
