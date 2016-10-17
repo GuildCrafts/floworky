@@ -39,3 +39,11 @@ Floworky uses flow for static type checking, which can be manually run using `np
 
 ### Resources
 See [RESOURCES.md](RESOURCES.md)
+
+### Migrations
+* [Sequelize-Cli List of Commands](https://www.npmjs.com/package/sequelize-cli)
+* [Sequelize-Cli Migrations](http://docs.sequelizejs.com/en/latest/docs/migrations/)
+* Update model and then run npm script commands included below
+* NPM Script commands: db:migrate, db:migrate:undo, db:migrate:undo:all
+
+
