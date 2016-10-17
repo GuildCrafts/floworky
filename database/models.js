@@ -8,7 +8,6 @@ const User = sequelize.define( 'user', {
     autoIncrement: true
   },
   email: Sequelize.STRING,
-  bob: Sequelize.STRING,
   email_verified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
