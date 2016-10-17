@@ -7,6 +7,7 @@
     "node": "6.6.0"
   },
   "scripts": {
+    "start:dev" : "nf start --procfile Procfile_dev",
     "start": "nf start",
     "lint": "eslint --color *.js; exit 0;",
     "test:watch": "mocha -w",
