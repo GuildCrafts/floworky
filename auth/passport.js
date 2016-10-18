@@ -3,7 +3,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const Sequelize = require( 'sequelize' )
 
-const User = require('../database/models').User
+const User = require('../models/index').User
 const OPTIONS = { usernameField: 'email' }
 
 const ERROR_MESSAGE = "Incorrect email or password. Have you verified your email?"
