@@ -19,7 +19,13 @@
 ### Migrations
 * [Sequelize-Cli List of Commands](https://www.npmjs.com/package/sequelize-cli)
 * [Sequelize-Cli Migrations](http://docs.sequelizejs.com/en/latest/docs/migrations/)
-* Update model and then run npm script commands included below
-* NPM Script commands: db:migrate, db:migrate:undo, db:migrate:undo:all
+* When the database schema is updated the ```npm run migrate``` command needs to run in order to update the schema
+* When schema updated are required, sequelize schema migrations are provided with instructions to run in the PR message
+* When data migrations are required, sequelize data migrations are provided with instructions to run in the PR message
+* NPM Script commands: 
+  * migrate ( run pending migrations ), 
+  * migrate:undo ( revert the last migration run ), 
+  * migrate:undo:all ( revert all migrations ran ),
+  * migrate:test ( runs a test database )
 * Testing migrations requires placing your database url inside of the migrate:test script
-``` "migrate:test": "node_modules/.bin/sequelize db:migrate --url postgres://user@localhost:5432/floworky-test" ```
+``` "migrate:test": "sequelize db:migrate --url postgres://user@localhost:5432/floworky-test" ```

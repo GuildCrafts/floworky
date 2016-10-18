@@ -12,8 +12,9 @@
     "test:watch": "mocha -w",
     "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
     "migrate": "sequelize db:migrate",
+    "migrate:undo": "sequelize db:migrate:undo",
     "migrate:undo:all": "sequelize db:migrate:undo:all",
-    "migrate:test": "sequelize db:migrate --url "
+    "migrate:test": "sequelize db:migrate --url postgres://whoami@localhost:5432/floworky-test"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",

@@ -39,6 +39,3 @@ Floworky uses flow for static type checking, which can be manually run using `np
 
 ### Resources
 See [RESOURCES.md](RESOURCES.md)
-
-
-
