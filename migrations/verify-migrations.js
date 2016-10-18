@@ -1,6 +1,6 @@
 'use strict'
 
-const { VerificationCode }  = require('../database/models')
+const { VerificationCode } = require('../database/models')
 
 module.exports = {
   up: ( migration, DataTypes ) => 

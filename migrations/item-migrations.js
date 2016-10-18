@@ -1,6 +1,6 @@
 'use strict'
 
-const { Item }  = require('../database/models')
+const { Item } = require('../database/models')
 
 module.exports = {
   up: ( migration, DataTypes ) => 
