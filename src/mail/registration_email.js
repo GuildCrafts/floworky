@@ -1,5 +1,5 @@
 const transporter = require('./mailer')
-const { VerificationCode } = require( '../../database/models' )
+const { VerificationCode } = require( '../../models/index' )
 const encryptPassword = require( '../../auth/encryptPassword' )
 
 const send = user => {

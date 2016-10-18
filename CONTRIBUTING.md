@@ -5,9 +5,10 @@
 * Create a topic branch.  Branch names should begin with the issue number, followed by text describing the work.  Please use lower-kebab-case (i.e. `2-readme-updated`).
 * Complete work
 * Submit a pull request
-  * If the schema requires a change, create a migration. See [existing migrations](/migrations) for examples.
-  ```sequelize migration:create --name NAME_OF_MIGRATION```
-  * If data must be migrated, create a data migration. See []() for example.
+  * If data must be migrated, create a data migration. See below for example:
+  * Model: ```sequelize model:create --name TableName --attributes email:string,password:string```
+  * Migration: ```sequelize migrations:create --name add-email-verified-to-users```
+  * Updates or Creates database schema: ```npm run migrate```
 
 ## Quality Requirements
 * Write intention revealing code - use well named identifiers for variables, functions, css classes, etc.

@@ -19,6 +19,7 @@ router.get( '/register', ( request, response ) => {
 
 router.post( '/register', ( request, response , next) => {
   const User = request.app.get( 'models' ).User
+
   const { email, password } = request.body
 
   User.create({ email, password: encryptPassword( password ) })
