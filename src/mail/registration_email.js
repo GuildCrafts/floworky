@@ -8,6 +8,7 @@ const send = user => {
   return VerificationCode.create({ user_id: user.id, hash })
     .then( code => transporter.sendMail( options( user.email, hash )))
     .then( result => user )
+    // .catch( error => {throw new Error('error creating user: ' + user + '- ' + error)} )
 }
 
 const options = ( to, code ) => {
