@@ -8,10 +8,11 @@ Please read the [contribution guidelines](CONTRIBUTING.md).
 
 ## Setting up Development Environment
 
-Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to manage process startup.  This requires the use of a `.env` file to specify the environment variables required by floworky (note that this is an example that includes values that will need to be set for your own environment):
+Floworky uses [`node-foreman`](https://github.com/strongloop/node-foreman) to manage process startup. This requires the use of a `.env` file to specify the environment variables required by floworky:
 ```
-DATABASE_URL=postgres://jrob@localhost:5432/floworky
+echo DATABASE_URL=postgres://`whoami`@localhost:5432/floworky >> .env
 ```
+A postgres database named `floworky` must be created prior to starting the application for the first time.
 
 You must run ```npm run migrate``` prior to application startup to check for any schema or data migrations that need to be applied to your database.
 
