@@ -1,0 +1,31 @@
+extends ../layouts/help-layout
+
+block content
+
+  .container#modal-container
+    ul.nav.nav-tabs
+      li.active
+        a(data-toggle='tab', href='#howto') How-to
+      li
+        a(data-toggle='tab', href='#commands') Commands
+      li
+        a(data-toggle='tab', href='#support') Support
+    .tab-content
+      #howto.tab-pane.fade.in.active
+        h3 How To's
+        iframe(src='https://www.youtube.com/embed/SOPYrxvojVo', frameborder='0')
+        .topic-list
+          ul
+          each topic in topics
+            p
+            li.singleTopic
+              a.btn.btn-info.topic-selector(href='#', class=`topic-${topic.UserTopic.viewed}`, data-id=topic.id, data-url=topic.url)= topic.title
+      #commands.tab-pane.fade
+        h3 Commands
+        p Command details are coming soon!
+      #support.tab-pane.fade
+        h3 Contact
+        p 
+          |Please contact us if you have any questions. Just email us. 
+          a(href="mailto:floworky@gmail.com?subject=I%20Need%20A%20Little%20Help") Email Address
+

@@ -35,6 +35,7 @@ html
               input.completed_filter(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
               |  incomplete
           button.btn.btn-default(type='submit') Filter
+          a.btn.btn-default(data-toggle='modal', href='/help/howtos/', data-target='#myModal') Help
         .collapse.navbar-collapse#navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li.dropdown
@@ -45,9 +46,11 @@ html
                   a(href='/accounts/logout') Log Out
                 li.dropdown-header= user.email
 
+
     .container
       block content
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous')
     script(src='/javascripts/items.js')
+    
