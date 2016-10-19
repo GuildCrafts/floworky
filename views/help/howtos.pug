@@ -1,0 +1,13 @@
+extends ../layouts/help-layout
+
+block content
+  h1 Getting Started
+
+  .topic-content
+    iframe(width="560" height="315" frameborder="0" allowfullscreen)
+    .content Select a topic
+
+  ul
+    each topic in topics
+      li
+        a.topic-selector(href='#', data-id=topic.id, data-content=topic.content, data-url=topic.url )= topic.title
