@@ -14,7 +14,8 @@
     "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
     "migrate": "sequelize db:migrate",
     "migrate:undo": "sequelize db:migrate:undo",
-    "migrate:undo:all": "sequelize db:migrate:undo:all"
+    "migrate:undo:all": "sequelize db:migrate:undo:all",
+    "postinstall": "npm run migrate"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
