@@ -26,10 +26,8 @@
   display: inline;
 }
 
-.heading {
-  display: inline;
-}
-
-.hidden {
-  display: none;
+.topic-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
