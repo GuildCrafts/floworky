@@ -6,13 +6,14 @@ const cookieParser = require( 'cookie-parser' )
 const bodyParser = require( 'body-parser' )
 const session = require( 'express-session' )
 
-const models = require( './models/index' )
+const models = require( './models' )
 const passport = require( './auth/passport' )
 const protectRoute = require( './auth/protectRoute' )
 
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
 const items = require( './routes/items' )
+const help = require( './routes/help' )
 
 const app = express()
 
@@ -41,6 +42,7 @@ app.use( passport.session() )
 app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
+app.use( '/help', protectRoute, help )
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {
