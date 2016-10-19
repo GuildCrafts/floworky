@@ -1,13 +1,19 @@
-require( 'dotenv' ).config()
+const  fs = require('fs')
+
+if( fs.existsSync( '.env' ) ) {
+  require( 'dotenv' ).config()
+} else {
+  console.log( ".env not found, skipping dotenv config..." )
+}
 
 module.exports = {
   "development": {
-    "url": process.env.DATABASE_URL
+     "use_env_variable": "DATABASE_URL"
   },
   "test": {
-    "url": process.env.DATABASE_URL
+     "use_env_variable": "DATABASE_URL"
   },
   "production": {
-    "url": process.env.DATABASE_URL
+     "use_env_variable": "DATABASE_URL"
   }
 }
