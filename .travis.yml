@@ -9,8 +9,7 @@ deploy:
   app:
     master: safe-taiga-54899
     production: still-fjord-35466
-  run:
-    - npm run migrate
+  run: "npm run migrate"
   on:
     repo: GuildCrafts/floworky
 addons:
