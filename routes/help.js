@@ -17,6 +17,18 @@ router.get('/howtos', ( request, response ) => {
     { id: 8, title: 'Number 8', content: 'Content for 8', url: 'https://www.youtube.com/embed/rPVk-QbyP6s' },
   ]
 
+  const userTopics = [
+    { user_id: 1, topic_id: 2, viewed: true },
+    { user_id: 4, topic_id: 1, viewed: true },
+    { user_id: 2, topic_id: 3, viewed: true },
+    { user_id: 3, topic_id: 4, viewed: true },
+    { user_id: 5, topic_id: 1, viewed: true },
+    { user_id: 6, topic_id: 2, viewed: true },
+    { user_id: 7, topic_id: 3, viewed: true },
+    { user_id: 4, topic_id: 4, viewed: true },
+    { user_id: 4, topic_id: 6, viewed: true },
+    { user_id: 4, topic_id: 6, viewed: true },
+  ]
   response.render( 'help/howtos', { topics: data } )
 })
 
