@@ -2,10 +2,13 @@ const express = require( 'express' )
 const router = express.Router()
 
 router.get('/', ( request, response ) => {
+
   response.redirect( 'help/howtos' )
 })
 
 router.get('/howtos', ( request, response ) => {
+  // Help.findAll()
+  // .then ( redirect(view,  { info from findAll}))
   const data = [
     { id: 1, title: 'Number 1', content: 'Content for 1', url: 'https://www.youtube.com/embed/rPVk-QbyP6s' },
     { id: 2, title: 'Number 2', content: 'Content for 2', url: 'https://www.youtube.com/embed/rPVk-QbyP6s' },
