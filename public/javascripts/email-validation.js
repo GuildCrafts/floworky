@@ -23,5 +23,5 @@ const submitHandler = function(form) {
 }
 
 $(document).ready(function() {
-  $('#registration').validate.addClass(Object.assign({}, VALIDATION, submitHandler))
+  $('#registration').validate({errorClass: "alert-danger"}, Object.assign({}, VALIDATION, submitHandler))
 })
