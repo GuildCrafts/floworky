@@ -6,7 +6,7 @@ const cookieParser = require( 'cookie-parser' )
 const bodyParser = require( 'body-parser' )
 const session = require( 'express-session' )
 
-const models = require( './models/index' )
+const models = require( './models' )
 const passport = require( './auth/passport' )
 const protectRoute = require( './auth/protectRoute' )
 
