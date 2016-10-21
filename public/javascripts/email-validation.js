@@ -18,10 +18,8 @@ const VALIDATION = {
   }
 }
 
-const submitHandler = function(form) {
-  form.submit();
-}
+const submitHandler = form => form.submit()
 
-$(document).ready(function() {
+$( document ).ready( () => { 
   $('#registration').validate({errorClass: "alert-danger"}, Object.assign({}, VALIDATION, submitHandler))
 })
