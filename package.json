@@ -1,5 +1,5 @@
 {
-  "name": "workflowy",
+  "name": "floworky",
   "version": "0.0.0",
   "private": true,
   "description": "Open Source Tracking of your Work Flow",
@@ -19,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "db": "^1.0.6",
     "debug": "~2.2.0",
@@ -26,6 +27,7 @@
     "express": "~4.13.4",
     "express-session": "^1.14.1",
     "foreman": "^2.0.0",
+    "isemail": "^2.2.1",
     "moment": "^2.15.1",
     "morgan": "~1.7.0",
     "nodemailer": "^2.6.4",
