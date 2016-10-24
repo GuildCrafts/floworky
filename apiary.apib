@@ -1,0 +1,24 @@
+## Accounts [/accounts]
+
+### Register User [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /register
+
+    + Body
+
+            {
+                "email": "me@me.com",
+                "password": "123"
+            }
+
++ Response 202 (application/json)
+
+    + Body
+
+            {
+                "message":"Please check your email"
+            }

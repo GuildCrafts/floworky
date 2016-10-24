@@ -9,10 +9,13 @@ const session = require( 'express-session' )
 const models = require( './models/index' )
 const passport = require( './auth/passport' )
 const protectRoute = require( './auth/protectRoute' )
+const checkToken = require( './auth/checkToken' )
 
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
 const items = require( './routes/items' )
+const apiAccounts = require( './routes/api/accounts')
+
 
 const app = express()
 
@@ -41,6 +44,7 @@ app.use( passport.session() )
 app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
+app.use( '/api/v1/accounts', apiAccounts )
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {

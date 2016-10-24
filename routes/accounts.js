@@ -1,12 +1,10 @@
 const express = require( 'express' )
+const router = express.Router()
 
-const encryptPassword = require( '../auth/encryptPassword' )
 const passport = require( '../auth/passport' )
-const RegistrationEmail = require( '../src/mail/registration_email.js' )
-
+const { register } = require( './accounts/accounts_route' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
 
-const router = express.Router()
 
 const AUTH_OPTIONS = {
   successRedirect: '/items',
@@ -17,14 +15,8 @@ router.get( '/register', ( request, response ) => {
   response.render( 'accounts/register' )
 })
 
-router.post( '/register', ( request, response , next) => {
-  const User = request.app.get( 'models' ).User
-
-  const { email, password } = request.body
-
-  User.create({ email, password: encryptPassword( password ) })
-    .then( user => RegistrationEmail.send( user ))
-    .then( user => response.redirect( '/accounts/verify' ))
+router.post( '/register', ( request, response ) => {
+  register( request, response.redirect( '/accounts/verify' ) )
 })
 
 router.get( '/verify', (request, response ) => {

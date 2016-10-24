@@ -9,6 +9,9 @@
   * [sequelize model:create](https://www.npmjs.com/package/sequelize-cli)
   * [sequelize migrations:create](https://www.npmjs.com/package/sequelize-cli)
 
+* To create an api endpoint use jsonwebtoken to allow the user to verify routes.
+  * [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
 ## Quality Requirements
 * Write intention revealing code - use well named identifiers for variables, functions, css classes, etc.
 * Functions are small and serve a single purpose
