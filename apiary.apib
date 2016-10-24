@@ -86,3 +86,26 @@ Floworky is a workflow tool for productivity
                   }
                 ]
             }
+
+### Create Item [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /create
+            Authorization: 'token-string'
+
+    + Body
+
+            {
+                "title": "Some Title",
+                "description": "Some Description",
+                "parent_id": 0
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {}

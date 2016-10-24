@@ -11,4 +11,14 @@ router.get( '/', ( request, response ) => {
     .then( data => response.json( { data } ) )
 })
 
+router.post( '/create', ( request, response ) => {
+  const { Item } = request.app.get( 'models' )
+
+  const { title, description, parent_id } = request.body
+  const { user } = request.decoded
+
+  Item.create({ title, description, parent_id, user_id: user.id })
+    .then( result => response.status( 200 ).json( {} ) )
+})
+
 module.exports = router

@@ -6,7 +6,7 @@ const { buildTree } = require( './items/tree_creation' )
 const findAllItems = require('./items/find_all_items')
 
 router.get( '/', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { user, query } = request
 
@@ -15,7 +15,7 @@ router.get( '/', ( request, response ) => {
 })
 
 router.post( '/', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { title, description, parent_id } = request.body
 
@@ -23,8 +23,9 @@ router.post( '/', ( request, response ) => {
     .then( result => response.redirect( '/items' ))
 })
 
-router.post( '/:id', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+router.post( '/:id/completed', ( request, response ) => {
+  const { Item } = request.app.get( 'models' )
+
   const { id } = request.params
   const where = { id, user_id: request.user.id }
 
