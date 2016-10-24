@@ -39,10 +39,12 @@ router.get( '/verify/:hash', ( request, response, next ) => {
     .then( testForCode )
     .then( result => User.update(
       { email_verified: true },
-      { where: { id: result.user_id }})
+      { returning: true, where: { id: result.user_id }})
     )
     .then( result => {
-      const [ id ] = result
+      const [ count, rows ] = result
+      const { id } = rows[ 0 ]
+
       request.login( { id }, error => {
         if( error ) {
           return next( error )
