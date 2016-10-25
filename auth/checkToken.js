@@ -1,19 +1,37 @@
 const token = require( 'jsonwebtoken' )
-require( 'dotenv' ).config()
 
-module.exports = ( request, response, next ) => {
-  const authToken = request.body.token || request.query.token || request.headers.authorization || request.headers( 'x-access-token' )
+const checkForToken = request => {
+  const authToken = request.headers.authorization || request.header( 'x-access-token' )
 
-  if ( authToken ) {
-    token.verify(token, process.env.SUPERSECRET, ( error, decoded ) => {
-      if ( error ) {
-        return response.status( 401 ).json( { success: false })
+  return new Promise( (resolve, reject) => {
+    if( authToken != undefined ) {
+      resolve( authToken )
+    } else {
+      reject()
+    }
+  })
+}
+
+const verifyToken = authToken => {
+  return new Promise ( (resolve, reject) => {
+    token.verify( authToken, process.env.SUPERSECRET, (error, decoded) => {
+      if( error ) {
+        reject( error )
       } else {
-        request.decoded = decoded
-        next()
+        resolve( decoded )
       }
     })
-  } else {
-    return response.status( 403 ).send({ success: false })
-  }
+  })
 }
+
+const checkToken = ( request, response, next ) => {
+  checkForToken( request )
+    .then( verifyToken )
+    .then( decodedToken => {
+      request.decoded = decodedToken
+      next()
+    })
+    .catch( error => response.status( 403 ).send({}) )
+}
+
+module.exports = checkToken

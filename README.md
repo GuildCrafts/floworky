@@ -26,6 +26,7 @@ Floworky uses flow for static type checking, which can be manually run using `np
 * [Express.js](https://expressjs.com/) ([Documentation](https://expressjs.com/en/4x/api.html))
 * [Passport](http://passportjs.org/) ([Documentation](http://passportjs.org/docs))
 * [passport-local](https://github.com/jaredhanson/passport-local)
+* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 
 ### Database
 * [Postgres](https://www.postgresql.org/)

@@ -2,7 +2,7 @@ const express = require( 'express' )
 const router = express.Router()
 
 const passport = require( '../auth/passport' )
-const { register } = require( './accounts/accounts_route' )
+const { register } = require( './accounts/register' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
 
 
@@ -16,7 +16,11 @@ router.get( '/register', ( request, response ) => {
 })
 
 router.post( '/register', ( request, response ) => {
-  register( request, response.redirect( '/accounts/verify' ) )
+  const { User } = request.app.get( 'models' )
+  const { email, password } =request.body
+
+  register( User, email, password )
+    .then( user => response.redirect( '/accounts/verify' ))
 })
 
 router.get( '/verify', (request, response ) => {
