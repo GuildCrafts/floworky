@@ -2,37 +2,32 @@ extends ../layouts/help-layout
 
 block content
 
-  .help-modal
-    .help-nav-tabs
-      ul.nav.nav-tabs
-        li
-          a(href='/help/howtos' class="active") How-to
-        li
-          a(href='/help/commands') Commands
-        li
-          a(href='/help/support') Support
+  .container
+    h1 Maximum Help Topics
 
-    div.current
-      h1 Getting Started
-
-      .topic-content
-        iframe(width="560" height="315" frameborder="0" allowfullscreen)
-        .content Select a topic
-
-      ul
+    ul.nav.nav-tabs
+      li.active
+        a(data-toggle='tab', href='#howto') How-to
+      li
+        a(data-toggle='tab', href='#commands') Commands
+      li
+        a(data-toggle='tab', href='#support') Support
+    .tab-content
+      #howto.tab-pane.fade.in.active
+        h3 How To's
+        ul
         each topic in topics
           li
             a.btn.btn-default.topic-selector(href='#', data-id=topic.id, data-content=topic .content, data-url=topics.url )= topics.title
-    div
-      h1 Commands
-      p 
-        strong Add and edit  
-        |Type just as you would in a text editor or word processor. Press Enter to add new items.
-      p 
-        strong Show controls 
-        |Hover over the bullet of an item.
+      #commands.tab-pane.fade
+        h3 Commands
+        p 
+          strong Show controls 
+          |Type just as you would in a text editor or word processor. Press Enter to add new items.
+      #support.tab-pane.fade
+        h3 Menu 2
+        p 
+          |Please contact us if you have any questions. Just email us. 
+          a(href="mailto:floworky@gmail.com?subject=I%20Need%20A%20Little%20Help") Email Address
 
-    div
-      h1 Support
-      p Please contact us if you have any questions. Just email us.
-        a(href="mailto:floworky@gmail.com?subject=I%20Need%20A%20Little%20Help") Email Address
+

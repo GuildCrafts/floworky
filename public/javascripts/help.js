@@ -1,19 +1,29 @@
-$(document).ready( topicSelector() => {
-  $( 'a.topic-selector' ).click( ( event ) => {
-    event.preventDefault()
 
-    // const element = $( event.target)
-    // const topic_id = element.data( 'id' )
-    // const viewed = ! element.userTopic( 'viewed')
+  
+// const howToToggle = () => {
+//   $( '#help-how-to' ).click( ( event ) => {
+//     $( '#how-to-content' ).toggleClass('current')
+//   })
+// }
 
-    $( '.topic-content iframe' ).attr( 'src', $(this).data( 'url' ) )
-    // $( '.topic-content .content' ).text( $(this).data( 'content' ) )
+// const commandsToggle = () => {
+//   $( '#help-commands' ).click( ( event ) => {
+//     $( '#commands-content' ).toggleClass('current')
+//   })
+// }
+
+// const supportToggle = () => {
+//   $( '#help-support' ).click( ( event ) => {
+//     $( '#support-content' ).toggleClass('current')
+//   })
+// }
 
 
-    //insert association
+$(document).ready( () => {
 
-    //toggle completed
+  $('#myTabs a[href="#how-to-content"]').tab('show')
+  $('#myTabs a[href="#commands-content"]').tab('show')
+  $('#myTabs a[href="#how-to-content"]').tab('show')
 
-    //show check mark
-  })
+
 })
