@@ -14,11 +14,16 @@ router.get( '/howtos', ( request, response ) => {
 
   const { user } = request
 
-  UserTopic.findAll( allHelpItemsQuery( user.id ))
-  .then( helpData => {
-    console.log("YOUR HELP DATAAAAA", helpData)
-    response.render( 'help/howtos', { topics: helpData } )
-  })
+  User.find({ id: request.user.id })
+    .then( user => { 
+      // console.log('--------------', user )
+      console.log (user.getUsers() ) })
+    .then( helpTopics  => {
+      console.log( "YOUR HELP DATAAAAA", helpTopics )
+      response.render( 'help/howtos', { topics: helpTopics } )
+    })
+
+  // UserTopic.findAll( allHelpItemsQuery( user.id ))
 })
 
 

@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        models.User.hasMany( models.UserTopic )
+        models.User.belongsToMany( models.Topic, { through: models.UserTopic, foreignKey: 'user_id', otherKey: 'topic_id' } )
       }
     }
   });

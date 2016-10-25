@@ -1,7 +1,7 @@
-const FETCH_ATTRIBUTES = [ 'UserId', 'TopicId', 'viewed', 'id' ]
+const FETCH_ATTRIBUTES = [ 'user_id', 'topic_id', 'viewed', 'id' ]
 
 const allHelpItemsQuery = user_id => (
-  { order: [['TopicId', 'ASC']], where: { user_id }, FETCH_ATTRIBUTES }
+  { order: [['topic_id', 'ASC']], where: { user_id }, FETCH_ATTRIBUTES }
 )
 
 
