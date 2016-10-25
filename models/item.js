@@ -1,4 +1,7 @@
 'use strict';
+
+const VALID_PARAMETERS = [ 'completed', 'title', 'description' ]
+
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define('Item', {
     title: DataTypes.STRING,
@@ -10,6 +13,15 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+      },
+      filterParameters: params => {
+        return VALID_PARAMETERS.reduce( (memo, key) => {
+          if( params[ key ] !== undefined ) {
+            memo[ key ] = params[ key ]
+          }
+
+          return memo
+        }, {} )
       }
     }
   });
