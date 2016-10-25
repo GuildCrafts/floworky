@@ -4,11 +4,12 @@ block content
   .container
     h1 Register for Floworky...
     .row
-      form.form-horizontal(method='post')
-        .form-group
+      form.validation.form-horizontal(method='post')
+        .form-group.email-container
           label.col-sm-2.control-label(for='email') Email
           .col-sm-5
-            input.form-control(type='email', name='email', id='email', placeholder='Email')
+            input.form-control(type='email', name='email', id='email', placeholder='jane@doe.com')
+            .help-block.hidden Please enter a valid email address
 
         .form-group
           label.col-sm-2.control-label(for='password') Password
