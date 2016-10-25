@@ -9,23 +9,15 @@ router.get( '/', ( request, response ) => {
 
 router.get( '/howtos', ( request, response ) => {
   const User = request.app.get('models').User
-  const Topic = request.app.get('models').Topic
-  const UserTopic = request.app.get('models').UserTopic
 
   const { user } = request
 
   User.find({ id: request.user.id })
-    .then( user => { 
-      // console.log('--------------', user )
-      console.log (user.getUsers() ) })
+    .then( user => user.getTopics() )
     .then( helpTopics  => {
-      console.log( "YOUR HELP DATAAAAA", helpTopics )
       response.render( 'help/howtos', { topics: helpTopics } )
     })
-
-  // UserTopic.findAll( allHelpItemsQuery( user.id ))
 })
-
 
 router.get( '/commands', ( request, response ) => {
   response.render( 'help/commands', { commands: data } )
