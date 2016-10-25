@@ -21,3 +21,16 @@
   text-decoration: line-through;
   color: #777;
 }
+
+
+/*  HELP MODAL STYLING  */
+.help-modal div {
+  display:none;
+}
+.help-modal .help-nav-tabs {
+  display: block;
+}
+
+.help-modal .current {
+  display:block;
+}
