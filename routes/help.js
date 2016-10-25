@@ -19,12 +19,5 @@ router.get( '/howtos', ( request, response ) => {
     })
 })
 
-router.get( '/commands', ( request, response ) => {
-  response.render( 'help/commands', { commands: data } )
-})
-
-router.get( '/support', ( request, response ) => {
-  response.render( 'help/support' )
-})
 
 module.exports = router
