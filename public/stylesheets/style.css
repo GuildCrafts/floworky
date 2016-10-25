@@ -23,14 +23,22 @@
 }
 
 
-/*  HELP MODAL STYLING  */
-/*.help-modal div {
-  display:none;
-}
-.help-modal .help-nav-tabs {
-  display: block;
+
+
+/*    STYLING HELP    */
+
+.topic-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.help-modal .current {
-  display:block;
-}*/
+.topic-list li {
+  list-style-type: none;
+}
+
+.topic-list .btn-default {
+  padding: 1px 4px;
+  font-size: 14px;
+  margin: 4px 2px 0 0;
+}
