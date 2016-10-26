@@ -1,14 +1,7 @@
-const FETCH_PARAMS = {
-  method: 'post',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include'
-}
 
-const params = data =>
-  Object.assign( {}, FETCH_PARAMS, { body: JSON.stringify( data ) } )
+
+// const params = data =>
+
 
 const checkJsonForSuccessField = json => {
   if( json.success ) {
@@ -18,42 +11,58 @@ const checkJsonForSuccessField = json => {
   }
 }
 
-
-const toggleOn = classToShow => {
-  $( classToShow[ 0 ] ).addClass( 'viewed' )
-}
-
-const clickToUpdate = event => {
-  const classToShow = $( event.target )
-
-  toggleOn( classToShow )
-}
-
 const completedClicked = event => {
   const element = $( event.target )
-  const id = element.data( 'id' )
-  const completed = ! element.data( 'completed' )
+  const topicId = element.data( 'id' )
 
-  fetch( `/items/${id}`, params({ completed: completed } ) )
-    .then( result => result.json() )
-    .then( checkJsonForSuccessField )
+  fetch( `/help/${topicId}`, Object.assign( {}, 
+    {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    }, 
+    { 
+      body: JSON.stringify( { 
+        viewed: true 
+      }) 
+    }) 
+  )
+    .then( result => {
+      console.log(result)
+      return result.json()
+    })
+    // .then( result => {
+    //   console.log(result)
+    //   return checkJsonForSuccessField(result)
+    // } )
     .then( json => { 
-      const parent = $( `.title[data-id=${id}]` )
-        element.data( 'completed', completed )
-        if( completed ) {
-          parent.addClass( 'completed' )
-        }
+      console.log("hit the jquery again",json.success)
+      return element.addClass( 'viewed' )
       }
     )
   }
 
+ //  const parent = $( `.title[data-id=${id}]` )
+ //       element.data( 'completed', completed )
+ //       if( completed ) {
+ //         parent.addClass( 'completed' )
+ //       } else {
+ //         parent.removeClass( 'completed' )
+ //       }
+ //     }
+ //   )
+ // }
+
+// const FETCH_PARAMS = 
+
 
 $(document).ready( () => {
-  $( '.topic-selector').click( () => {
-    $(this).addClass('viewed')
-  })
-  // $( '.topic-selector' ).click( clickToUpdate( '.topic-selector' ))
-  // $( '.description > span' ).click( clickToUpdate( 'description' ))
-  // $( '.completeToggle' ).click( completedClicked )
+  // $( '.topic-selector').click( function() {
+  //   $(this).addClass('viewed')
+  // })
+  $( '.topic-selector' ).click( completedClicked )
 })
 

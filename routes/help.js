@@ -21,15 +21,21 @@ router.get( '/howtos', ( request, response ) => {
 })
 
 router.post( '/:topicId', ( request, response ) => {
-  console.log('GOT HERE!!!!!!!!!!!!!!!!!!!')
   const Topic = request.app.get('models').Topic
   const UserTopic = request.app.get('models').UserTopic
   const { topicId } = request.params
-  const where = { topicId, topic_id: request.usertopic.topic_id}
-  console.log('-----------',request.UserTopic)
+  const userId = request.user.id
 
-  UserTopic.update( UserTopic.request.body, { where } )
-    .then( result => console.log(result))
+  const where = { topic_id: topicId, user_id: userId}
+
+  UserTopic.update( { viewed: true }, { where } )
+    .then( result => {
+      // console.log('-----------THIS THING',result)
+      return response.json({ success: true, topicId })
+    })
+    .catch( error => 
+      response.json({ success: false, id, message: error.message })
+    )
 })
 
 
