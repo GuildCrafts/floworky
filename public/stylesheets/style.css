@@ -26,6 +26,11 @@
   display: inline;
 }
 
+
+
+
+/*    STYLING HELP    */
+
 .topic-list {
   display: flex;
   flex-direction: row;
@@ -40,3 +45,5 @@
   padding: 1px 4px;
   font-size: 14px;
   margin: 4px 2px 0 0;
+}
+

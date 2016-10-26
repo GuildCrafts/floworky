@@ -16,7 +16,7 @@ router.get( '/howtos', ( request, response ) => {
     .then( user => user.getTopics() )
     .then( helpTopics  => {
       // console.log(helpTopics)
-      response.render( 'help/howtos', { topics: helpTopics, user } )
+      response.render( 'help/howtos', { topics: helpTopics } )
     })
 })
 
@@ -31,5 +31,6 @@ router.post( '/:topicId', ( request, response ) => {
   UserTopic.update( UserTopic.request.body, { where } )
     .then( result => console.log(result))
 })
+
 
 module.exports = router
