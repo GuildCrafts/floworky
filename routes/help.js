@@ -11,7 +11,7 @@ router.get( '/howtos', ( request, response ) => {
   const User = request.app.get('models').User
   const { user } = request
 
-  User.find({ id: request.user.id })
+  User.findById( request.user.id )
     .then( user => user.getTopics() )
     .then( helpTopics  => {
       response.render( 'help/howtos', { topics: helpTopics } )
@@ -26,9 +26,9 @@ router.post( '/:topicId', ( request, response ) => {
   const where = { topic_id: topicId, user_id: userId}
 
   UserTopic.update( { viewed: true }, { where } )
-    .then( result => {
-      return response.json({ success: true, topicId })
-    })
+    .then( result => 
+      response.json({ success: true, topicId })
+    )
     .catch( error => 
       response.json({ success: false, id, message: error.message })
     )
