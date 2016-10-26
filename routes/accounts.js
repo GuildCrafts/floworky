@@ -5,6 +5,7 @@ const passport = require( '../auth/passport' )
 const RegistrationEmail = require( '../src/mail/registration_email.js' )
 
 const { testForCode, whereClause } = require( './accounts/verify_user' )
+const { createRootItem } = require( './items/item_response')
 
 const router = express.Router()
 
@@ -18,13 +19,17 @@ router.get( '/register', ( request, response ) => {
 })
 
 router.post( '/register', ( request, response , next) => {
-  const User = request.app.get( 'models' ).User
+  const { User, Item } = request.app.get( 'models' )
 
   const { email, password } = request.body
 
   User.create({ email, password: encryptPassword( password ) })
+    .then( createRootItem( Item ))
     .then( user => RegistrationEmail.send( user ))
     .then( user => response.redirect( '/accounts/verify' ))
+    .catch( error => {
+      response.render( 'error', { error } )
+    })
 })
 
 router.get( '/verify', (request, response ) => {
@@ -49,7 +54,6 @@ router.get( '/verify/:hash', ( request, response, next ) => {
         if( error ) {
           return next( error )
         }
-
         return response.redirect( '/items' )
       })
     })
