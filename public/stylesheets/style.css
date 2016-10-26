@@ -24,6 +24,7 @@
 
 .heading > .title {
   display: inline;
+}
 
 .topic-list {
   display: flex;

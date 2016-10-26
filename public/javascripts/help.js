@@ -1,29 +1,59 @@
+const FETCH_PARAMS = {
+  method: 'post',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  credentials: 'include'
+}
 
-  
-// const howToToggle = () => {
-//   $( '#help-how-to' ).click( ( event ) => {
-//     $( '#how-to-content' ).toggleClass('current')
-//   })
-// }
+const params = data =>
+  Object.assign( {}, FETCH_PARAMS, { body: JSON.stringify( data ) } )
 
-// const commandsToggle = () => {
-//   $( '#help-commands' ).click( ( event ) => {
-//     $( '#commands-content' ).toggleClass('current')
-//   })
-// }
+const checkJsonForSuccessField = json => {
+  if( json.success ) {
+    Promise.resolve( json )
+  } else {
+    Promise.reject( json.message )
+  }
+}
 
-// const supportToggle = () => {
-//   $( '#help-support' ).click( ( event ) => {
-//     $( '#support-content' ).toggleClass('current')
-//   })
-// }
+
+const toggleOn = classToShow => {
+  $( classToShow[ 0 ] ).addClass( 'viewed' )
+}
+
+const clickToUpdate = event => {
+  const classToShow = $( event.target )
+
+  toggleOn( classToShow )
+}
+
+const completedClicked = event => {
+  const element = $( event.target )
+  const id = element.data( 'id' )
+  const completed = ! element.data( 'completed' )
+
+  fetch( `/items/${id}`, params({ completed: completed } ) )
+    .then( result => result.json() )
+    .then( checkJsonForSuccessField )
+    .then( json => { 
+      const parent = $( `.title[data-id=${id}]` )
+        element.data( 'completed', completed )
+        if( completed ) {
+          parent.addClass( 'completed' )
+        }
+      }
+    )
+  }
 
 
 $(document).ready( () => {
-
-  $('#myTabs a[href="#how-to-content"]').tab('show')
-  $('#myTabs a[href="#commands-content"]').tab('show')
-  $('#myTabs a[href="#how-to-content"]').tab('show')
-
-
+  $( '.topic-selector').click( () => {
+    $(this).addClass('viewed')
+  })
+  // $( '.topic-selector' ).click( clickToUpdate( '.topic-selector' ))
+  // $( '.description > span' ).click( clickToUpdate( 'description' ))
+  // $( '.completeToggle' ).click( completedClicked )
 })
+
