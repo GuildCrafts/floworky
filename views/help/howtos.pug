@@ -15,12 +15,13 @@ block content
     .tab-content
       #howto.tab-pane.fade.in.active
         h3 How To's
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SOPYrxvojVo" frameborder="0"></iframe>
+        iframe(width='560', height='315', src='https://www.youtube.com/embed/SOPYrxvojVo', frameborder='0')
         .topic-list
           ul
           each topic in topics
-            li
-              a.btn.btn-default.topic-selector(href='#', data-id=topic.id, data-url=topic.url )= topic.title
+            p
+            li.singleTopic
+              a.btn.btn-default.topic-selector(href='#', class=`topic-${topic.UserTopic.viewed}`, data-id=topic.id, data-url=topic.url)= topic.title
       #commands.tab-pane.fade
         h3 Commands
         p 

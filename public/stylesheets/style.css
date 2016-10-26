@@ -28,8 +28,7 @@
 
 
 
-
-/*    STYLING HELP    */
+/***    STYLING HELP    ***/
 
 .topic-list {
   display: flex;
@@ -47,7 +46,11 @@
   margin: 4px 2px 0 0;
 }
 
-.viewed {
-  background: red;
+.viewed,
+.singleTopic > .topic-true {
+  color: white;
+  background: #777;
+  border: 1px black solid;
 }
+
 
