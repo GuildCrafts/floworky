@@ -1,0 +1,22 @@
+.topic-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.topic-list li {
+  list-style-type: none;
+}
+
+.topic-list .btn-default {
+  padding: 1px 4px;
+  font-size: 14px;
+  margin: 4px 2px 0 0;
+}
+
+.viewed,
+.singleTopic > .topic-true {
+  color: white;
+  background: #777;
+  border: 1px black solid;
+}

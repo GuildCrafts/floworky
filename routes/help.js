@@ -14,7 +14,6 @@ router.get( '/howtos', ( request, response ) => {
   User.findById( request.user.id )
     .then( user => user.getTopics() )
     .then( helpTopics  => {
-      // console.log(helpTopics)
       response.render( 'help/howtos', { topics: helpTopics, user } )
     })
 })
