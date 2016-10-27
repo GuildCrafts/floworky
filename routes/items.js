@@ -4,6 +4,7 @@ const router = express.Router()
 const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './items/item_response' )
 const { buildTree } = require( './items/tree_creation' )
 const findAllItems = require('./items/find_all_items')
+const itemUpdate = require('./items/item_update');
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
@@ -23,9 +24,8 @@ router.post( '/', ( request, response ) => {
     .then( result => response.redirect( '/items' ))
 })
 
-router.post( '/:id/completed', ( request, response ) => {
-  const { Item } = request.app.get( 'models' )
-
+router.post( '/:id', ( request, response ) => {
+  const Item = request.app.get( 'models' ).Item
   const { id } = request.params
   const where = { id, user_id: request.user.id }
 

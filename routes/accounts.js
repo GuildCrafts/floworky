@@ -2,7 +2,7 @@ const express = require( 'express' )
 const router = express.Router()
 
 const passport = require( '../auth/passport' )
-const { register } = require( './accounts/register' )
+const register = require( './accounts/register' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
 
 

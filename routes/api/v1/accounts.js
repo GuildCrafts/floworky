@@ -21,7 +21,7 @@ router.post( '/authenticate', ( request, response ) => {
   findUser( User, email, password )
     .then( user => authenticate( user ) )
     .then( token => response.status( 200 ).json({ token }))
-    .catch(error => response.status( 500 ).json({ error }))
+    .catch( error => response.status( 500 ).json({ error }))
 })
 
 module.exports = router

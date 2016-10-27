@@ -44,7 +44,7 @@ app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
 
-app.use( '/api/v1', api.accounts )
+app.use( '/api/v1/accounts', api.accounts )
 app.use( '/api/v1/items', checkToken, api.items )
 
 // catch 404 and forward to error handler
