@@ -1,0 +1,111 @@
+FORMAT: 1A
+HOST: http://api.floworky.com/api/v1
+
+# floworky
+
+Floworky is a workflow tool for productivity
+
+## User [/user]
+
+### Register User [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /register
+
+    + Body
+
+            {
+                "email": "me@me.com",
+                "password": "123"
+            }
+
++ Response 201 (application/json)
+
+### Authenticate User [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /authenticate
+
+    + Body
+
+            {
+                "email": "me@me.com",
+                "password": "123"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+               "token": 'token-string'
+            }
+
+## Item [/items]
+
+### All Items [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /
+            Authorization: 'token-string'
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "tree": [
+                  {
+                    "id": 1,
+                    "title": "give dev $200",
+                    "description": "in exchange for egiftcard",
+                    "completed": false,
+                    "parent_id": 0,
+                    "user_id": 11,
+                    "createdAt": "2016-10-25T20:40:17.123Z",
+                    "updatedAt": "2016-10-25T20:40:17.123Z"
+                  },
+                  {
+                    "id": 2,
+                    "title": "check bank acct",
+                    "description": "now",
+                    "completed": false,
+                    "parent_id": 1,
+                    "user_id": 11,
+                    "createdAt": "2016-10-25T20:40:29.015Z",
+                    "updatedAt": "2016-10-25T20:40:29.015Z"
+                  }
+                ]
+            }
+
+### Create Item [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Location: /create
+            Authorization: 'token-string'
+
+    + Body
+
+            {
+                "title": "Some Title",
+                "description": "Some Description",
+                "parent_id": 0
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {}

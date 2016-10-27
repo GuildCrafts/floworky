@@ -2,33 +2,15 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const Sequelize = require( 'sequelize' )
+const findUser = require('./comparePassword');
 
 const User = require('../models/index').User
 const OPTIONS = { usernameField: 'email' }
 
 const ERROR_MESSAGE = "Incorrect email or password. Have you verified your email?"
 
-const findUser = ( email, password ) => {
-  return User.findOne({ where: { email, email_verified: true }})
-    .then( user =>
-      new Promise( (resolve, reject) => {
-        if( ! user ) {
-          reject({ message: ERROR_MESSAGE })
-        }
-
-        bcrypt.compare( password, user.password, (error, result ) => {
-          if( result ) {
-            resolve( user )
-          } else {
-            reject( error )
-          }
-        })
-      })
-    )
-}
-
 const strategy = new LocalStrategy( OPTIONS, ( email, password, done ) => {
-  findUser( email, password)
+  findUser( User, email, password )
     .then( user => {
       if( ! user ){
         done( null, false, { message: ERROR_MESSAGE })
