@@ -8,7 +8,7 @@ block content
         .form-group.email-container
           label.col-sm-2.control-label(for='email') Email
           .col-sm-5
-            input.form-control(type='email', name='email', id='email', placeholder='jane@doe.com')
+            input.form-control(type='email', name='email', id='email', placeholder=email? email: 'Email')
             .help-block.hidden Please enter a valid email address
 
         .form-group
@@ -19,3 +19,5 @@ block content
         .form-group
           .col-sm-offset-2.col-sm-5
             button.btn.btn-primary(type='submit') Sign Up
+            if error
+              span.error= error
