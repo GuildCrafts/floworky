@@ -39,6 +39,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "apiaryio": "^1.0.5",
     "chai": "^3.5.0",
     "eslint": "^3.6.0",
     "eslint-plugin-react": "^6.3.0",
