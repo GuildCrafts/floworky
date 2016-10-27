@@ -15,6 +15,7 @@ router.get( '/howtos', ( request, response ) => {
     .then( user => user.getTopics() )
     .then( helpTopics  => {
       response.render( 'help/howtos', { topics: helpTopics, user } )
+      response.render( 'help/howtos', { topics: helpTopics } )
     })
 })
 
@@ -23,7 +24,7 @@ router.post( '/:topicId', ( request, response ) => {
   
   const { topicId } = request.params
   const userId = request.user.id
-  const where = { topic_id: topicId, user_id: userId }
+  const where = { topic_id: topicId, user_id: userId}
 
   UserTopic.update( { viewed: true }, { where } )
     .then( result => 
