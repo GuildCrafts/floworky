@@ -3,20 +3,19 @@ const router = express.Router()
 
 const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './items/item_response' )
 const { buildTree } = require( './items/tree_creation' )
+const findAllItems = require('./items/find_all_items')
 
 router.get( '/', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { user, query } = request
 
-  Item.findAll( allItemsQuery( user.id ))
-    .then( buildTree )
-    .then( filteredItemsQuery( Item, query, user.id ) )
-    .then( respondWithItems( response, user ))
+  findAllItems( Item, user, query )
+    .then( respondWithItems( user, data => response.render( 'items/index', data ) ) )
 })
 
 router.post( '/', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { title, description, parent_id } = request.body
 

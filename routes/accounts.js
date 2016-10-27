@@ -1,13 +1,11 @@
 const express = require( 'express' )
+const router = express.Router()
 
-const encryptPassword = require( '../auth/encryptPassword' )
 const passport = require( '../auth/passport' )
-const RegistrationEmail = require( '../src/mail/registration_email.js' )
-
+const register = require( './accounts/register' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
 const addUserTopics = require( './accounts/add_user_topics' )
 
-const router = express.Router()
 
 const AUTH_OPTIONS = {
   successRedirect: '/items',

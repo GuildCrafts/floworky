@@ -37,7 +37,7 @@ const whereCompleted = query => {
   return {}
 }
 
-const respondWithItems = (response, user) => ({ items, tree }) =>
-  response.render( 'items/index', { user, items, tree: tree.children() })
+const respondWithItems = ( user, callback ) => ({ items, tree }) =>
+  callback({ user, items, tree: tree.children() })
 
 module.exports = { allItemsQuery, filteredItemsQuery, respondWithItems }
