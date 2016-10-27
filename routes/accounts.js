@@ -5,6 +5,7 @@ const passport = require( '../auth/passport' )
 const RegistrationEmail = require( '../src/mail/registration_email.js' )
 
 const { testForCode, whereClause } = require( './accounts/verify_user' )
+const addUserTopics = require( './accounts/add_user_topics' )
 
 const router = express.Router()
 
@@ -17,18 +18,12 @@ router.get( '/register', ( request, response ) => {
   response.render( 'accounts/register' )
 })
 
-const addUserTopics = UserTopic => user => 
-  Topic.all()
-    .then( topics => topics.map( topic => ({ user_id: user.id, topic_id: topic.id }) ) )
-    .then( topics => UserTopic.bulkCreate( topics, { fields: [ 'user_id', 'topic_id' ] } ))
-    .then( result => user )
-
 router.post( '/register', ( request, response , next) => {
   const { User, UserTopic, Topic } = request.app.get( 'models' )
   const { email, password } = request.body
 
   User.create({ email, password: encryptPassword( password ) })
-    .then( addUserTopics( UserTopic ) )
+    .then( addUserTopics( Topic, UserTopic ) )
     .then( user => RegistrationEmail.send( user ))
     .then( user => response.redirect( '/accounts/verify' ))
 })
