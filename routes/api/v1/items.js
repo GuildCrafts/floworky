@@ -1,6 +1,5 @@
 const express = require( 'express' )
 const router = express.Router()
-const itemUpdate = require('../../items/item_update')
 
 const findAllItems = require('../../items/find_all_items')
 
@@ -12,7 +11,7 @@ router.get( '/', ( request, response ) => {
     .then( data => response.json( { data } ) )
 })
 
-router.post( '/create', ( request, response ) => {
+router.post( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
 
   const { title, description, parent_id } = request.body

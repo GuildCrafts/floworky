@@ -4,7 +4,6 @@ const router = express.Router()
 const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './items/item_response' )
 const { buildTree } = require( './items/tree_creation' )
 const findAllItems = require('./items/find_all_items')
-const itemUpdate = require('./items/item_update');
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
