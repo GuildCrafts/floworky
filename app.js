@@ -16,7 +16,6 @@ const accounts = require( './routes/accounts' )
 const items = require( './routes/items' )
 const help = require( './routes/help' )
 const api = require( './routes/api/manifest').v1
-const help = require( './routes/help' )
 
 const app = express()
 

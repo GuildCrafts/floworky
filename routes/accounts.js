@@ -16,13 +16,6 @@ router.get( '/register', ( request, response ) => {
   response.render( 'accounts/register' )
 })
 
-
-const addUserTopics = UserTopic => user => 
-  Topic.all()
-    .then( topics => topics.map( topic => ({ user_id: user.id, topic_id: topic.id }) ) )
-    .then( topics => UserTopic.bulkCreate( topics, { fields: [ 'user_id', 'topic_id' ] } ))
-    .then( result => user )
-
 router.post( '/register', ( request, response ) => {
   const { User, UserTopic, Topic } = request.app.get( 'models' )
   const { email, password } = request.body
