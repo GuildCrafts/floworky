@@ -15,6 +15,11 @@ mixin display( nodes, depth )
         +display( entry.children, depth + 1 )
 
 block content
+
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+
   h1 Items
 
   form(method='post', action='/items')
