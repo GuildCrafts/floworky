@@ -23,8 +23,4 @@ const completedClicked = event => {
 
 $(document).ready( () => {
   $( '.topic-selector' ).click( completedClicked )
-
-  $("#help-modal-btn").click(function(){
-        $("#help-modal-body").modal();
-    });
 })
