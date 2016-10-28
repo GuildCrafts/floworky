@@ -4,6 +4,7 @@ const router = express.Router()
 const passport = require( '../auth/passport' )
 const register = require( './accounts/register' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
+const validateEmail = require( '../src/mail/validate_email' )
 
 
 const AUTH_OPTIONS = {
@@ -19,8 +20,10 @@ router.post( '/register', ( request, response ) => {
   const { User } = request.app.get( 'models' )
   const { email, password } =request.body
 
-  register( User, email, password )
+  validateEmail( email )
+    .then( validEmail => register( User, validEmail, password ) )
     .then( user => response.redirect( '/accounts/verify' ))
+    .catch( error => response.render( 'accounts/register', { error, email } ) )
 })
 
 router.get( '/verify', (request, response ) => {
