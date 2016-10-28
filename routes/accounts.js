@@ -5,6 +5,8 @@ const passport = require( '../auth/passport' )
 const register = require( './accounts/register' )
 const { testForCode, whereClause } = require( './accounts/verify_user' )
 const addUserTopics = require( './accounts/add_user_topics' )
+const validateEmail = require( '../src/mail/validate_email' )
+
 
 
 const AUTH_OPTIONS = {
@@ -20,10 +22,12 @@ router.post( '/register', ( request, response ) => {
   const { User, UserTopic, Topic } = request.app.get( 'models' )
   const { email, password } = request.body
 
-  User.create({ email, password: encryptPassword( password ) })
+  validateEmail( email )
     .then( addUserTopics( Topic, UserTopic ) )
-    .then( user => RegistrationEmail.send( user ))
+    .then( validEmail => register( User, validEmail, password ) )
+
     .then( user => response.redirect( '/accounts/verify' ))
+    .catch( error => response.render( 'accounts/register', { error, email } ) )
 })
 
 router.get( '/verify', (request, response ) => {
