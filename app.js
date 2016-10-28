@@ -14,6 +14,7 @@ const checkToken = require( './auth/checkToken' )
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
 const items = require( './routes/items' )
+const help = require( './routes/help' )
 const api = require( './routes/api/manifest').v1
 const help = require( './routes/help' )
 
@@ -45,15 +46,9 @@ app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
 app.use( '/help', protectRoute, help )
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 app.use( '/api/v1/accounts', api.accounts )
 app.use( '/api/v1/items', checkToken, api.items )
-=======
->>>>>>> e57f102... Define Help Functionality [Closes #66 #67]
-=======
->>>>>>> 4e17f6d... Define Help Functionality [Closes #66 #67]
 
 // catch 404 and forward to error handler
 app.use( (req, res, next) => {
