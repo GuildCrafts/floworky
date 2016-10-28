@@ -2,9 +2,7 @@ extends ../layouts/help-layout
 
 block content
 
-  .container
-    h1 Maximum Help Topics
-
+  .container#modal-container
     ul.nav.nav-tabs
       li.active
         a(data-toggle='tab', href='#howto') How-to
@@ -15,20 +13,18 @@ block content
     .tab-content
       #howto.tab-pane.fade.in.active
         h3 How To's
-        iframe(width='560', height='315', src='https://www.youtube.com/embed/SOPYrxvojVo', frameborder='0')
+        iframe(src='https://www.youtube.com/embed/SOPYrxvojVo', frameborder='0')
         .topic-list
           ul
           each topic in topics
             p
             li.singleTopic
-              a.btn.btn-default.topic-selector(href='#', class=`topic-${topic.UserTopic.viewed}`, data-id=topic.id, data-url=topic.url)= topic.title
+              a.btn.btn-info.topic-selector(href='#', class=`topic-${topic.UserTopic.viewed}`, data-id=topic.id, data-url=topic.url)= topic.title
       #commands.tab-pane.fade
         h3 Commands
-        p 
-          strong Show controls 
-          |Type just as you would in a text editor or word processor. Press Enter to add new items.
+        p Command details are coming soon!
       #support.tab-pane.fade
-        h3 Menu 2
+        h3 Contact
         p 
-          |Please contact us if you have any questions. Just email us. 
-          a(href="mailto:floworky@gmail.com?subject=I%20Need%20A%20Little%20Help") Email Address
+          |Please contact us if you have any questions. 
+          a(href="mailto:floworky@gmail.com?subject=I%20Need%20A%20Little%20Help") Just email us.
