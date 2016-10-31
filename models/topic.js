@@ -6,7 +6,11 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        models.Topic.belongsToMany( models.User, { through: models.UserTopic, foreignKey: 'topic_id', otherKey: 'user_id' } )
+        models.Topic.belongsToMany( models.User, {
+          through: models.UserTopic,
+          foreignKey: 'topic_id',
+          otherKey: 'user_id'
+        })
       }
     }
   });
