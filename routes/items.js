@@ -25,8 +25,11 @@ router.post( '/', ( request, response ) => {
 
 router.post( '/:id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
+  const CompletedItems = request.app.get( 'models' ).CompletedItems
   const { id } = request.params
   const where = { id, user_id: request.user.id }
+
+  CompletedItems.toggle({item_id: id, completedBy: request.user.id})
 
   Item.update( Item.filterParameters( request.body ), { where })
     .then( result => response.json({ success: true, id }))

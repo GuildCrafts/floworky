@@ -74,7 +74,6 @@ const completedClicked = event => {
   const element = $( event.target )
   const id = element.data( 'id' )
   const completed = ! element.data( 'completed' )
-
   fetch( `/items/${id}`, params({ completed: completed } ) )
     .then( result => result.json() )
     .then( checkJsonForSuccessField )
@@ -89,6 +88,8 @@ const completedClicked = event => {
       }
     )
   }
+
+
 
 $(document).ready( () => {
   $( '.edit-title' ).keypress( titleEdited )

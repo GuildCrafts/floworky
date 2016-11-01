@@ -11,7 +11,7 @@ module.exports = {
       item_id: {
         type: Sequelize.INTEGER
       },
-      completedBy: {
+      user_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
