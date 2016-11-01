@@ -20,15 +20,13 @@ router.get( '/howtos', ( request, response ) => {
 
 router.post( '/:topicId', ( request, response ) => {
   const UserTopic = request.app.get('models').UserTopic
-  
+
   const { topicId } = request.params
   const userId = request.user.id
   const where = { topic_id: topicId, user_id: userId }
 
   UserTopic.update( { viewed: true }, { where } )
-    .then( result => 
-      response.json({ success: true, topicId })
-    )
+    .then( result => response.json({ success: true, topicId }))
     .catch( error => 
       response.json({ success: false, id, message: error.message })
     )

@@ -7,8 +7,6 @@ const { testForCode, whereClause } = require( './accounts/verify_user' )
 const addUserTopics = require( './accounts/add_user_topics' )
 const validateEmail = require( '../src/mail/validate_email' )
 
-
-
 const AUTH_OPTIONS = {
   successRedirect: '/items',
   failureRedirect: '/accounts/login'
@@ -25,7 +23,6 @@ router.post( '/register', ( request, response ) => {
   validateEmail( email )
     .then( addUserTopics( Topic, UserTopic ) )
     .then( validEmail => register( User, validEmail, password ) )
-
     .then( user => response.redirect( '/accounts/verify' ))
     .catch( error => response.render( 'accounts/register', { error, email } ) )
 })
