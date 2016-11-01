@@ -1,3 +1,4 @@
+
 const token = require( 'jsonwebtoken' )
 
 const authenticate = user => {

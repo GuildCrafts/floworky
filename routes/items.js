@@ -23,6 +23,10 @@ router.post( '/', ( request, response ) => {
     .then( result => response.redirect( '/items' ))
 })
 
+router.get( '/weekly', ( request, response ) => {
+  response.render('items/weekly_review', {user: request.user})
+})
+
 router.post( '/:id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
   const CompletedItems = request.app.get( 'models' ).CompletedItems
