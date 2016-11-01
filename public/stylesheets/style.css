@@ -3,7 +3,14 @@ body{
   top: 0;
   left: 0;
   margin: 0;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Roboto:300', Arial, sans-serif;
+}
+button{
+  margin: 0;
+  padding: 0;
+  gutter: 0;
+  height: inherit;
+  width: inherit;
 }
 input [type="submit"]{
   margin: 0;
@@ -11,11 +18,16 @@ input [type="submit"]{
 
 .navbar{
   display: flex;
-  background-color:#444;
+  background-color: #444;
   --navbar-height: 6vh;
   height: var(--navbar-height);
   border-bottom: 1px solid #111;
   min-width: 100%;
+}
+
+.navbar__star{
+  color: #aaa;
+  background-color: #555;
 }
 
 .navbar__header{
@@ -68,7 +80,7 @@ input [type="submit"]{
 .navbar__btn-group {
   position: relative;
   display: inline-block;
-  top: -.5vh;
+  bottom: .2vh;
 }
 
 .collapse{
@@ -83,7 +95,7 @@ input [type="submit"]{
 .dropdown__toggle{
   position: fixed;
   top: 0;
-  right: 8px;
+  right: 5px;
   color: #fff;
   text-decoration: none;
 }
@@ -103,8 +115,8 @@ input [type="submit"]{
     border: 1px solid #111;
     border-top: none;
     position: fixed;
-    top: 5.85vh;
-    right: 8px;
+    top: 5.9vh;
+    right: 5px;
     background-color:#666;
     text-align: left;
     z-index: 101;
@@ -156,7 +168,7 @@ input [type="submit"]{
 .btn{
   display: inline-block;
   border: 1px solid #111;
-  padding: 3px 5px 0px 5px;
+  padding: 5px;
   font-size: 14px;
 }
 .btn--primary{
@@ -178,8 +190,18 @@ input [type="submit"]{
   display: inline;
 }
 
-.navbar__btn{
-  height: 5vh;
+.btn--hidden{
+  display: none;
+}
+
+.btn--navbar{
+  padding: 1.5vh;
+  /*height: var(--navbar-height);*/
+}
+
+.btn--filter{
+  position:fixed;
+  right: 50px;
 }
 .navbar__form--right{
   float: right;

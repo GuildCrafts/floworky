@@ -90,6 +90,27 @@ const completedClicked = event => {
     )
   }
 
+  const getFilterStatus = () => {
+    const pageURL= decodeURIComponent(window.location.search)
+    const parameterMatch = /completed_filter=(.*)/
+    let filterStatus = parameterMatch.exec(pageURL)
+    if(filterStatus === null){
+      $('#btn--completed').removeClass('btn--hidden')
+      return
+    }
+    switch (filterStatus[1]){
+      case 'completed':
+        $('#btn--incomplete').removeClass('btn--hidden')
+        break
+      case 'incomplete':
+        $('#btn--all').removeClass('btn--hidden')
+        break
+      default:
+        $('#btn--completed').removeClass('btn--hidden')
+      }
+    }
+
+
 $(document).ready( () => {
   $( '.edit-title' ).keypress( titleEdited )
   $( '.title > span' ).click( clickToUpdate( 'title' ))
@@ -105,4 +126,5 @@ $(document).ready( () => {
       $('dropdown__toggle').removeClass('dropdown__toggle--open')
     }
   })
+  getFilterStatus()
 })

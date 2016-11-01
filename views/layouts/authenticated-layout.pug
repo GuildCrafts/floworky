@@ -19,25 +19,19 @@ html
       form.navbar__form.navbar--left(method='get', action='/items')
         .form.form--inline
           input.form__control(type='text', name='search', placeholder='Search')
-        button.btn.btn--secondary.navbar__btn(type='submit') Search
-      form.navbar__form.navbar__form--right(method='get', action='/items')
-          .navbar__btn-group.btn--inline(data-toggle='buttons')
-            label.btn.btn--primary.navbar__btn
-              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='all', autocomplete='off', checked='checked')
-              |  All Items
-            label.btn.btn--primary.navbar__btn
-              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='completed' autocomplete='off')
-              |  Completed
-            label.btn.btn--primary.navbar__btn
-              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
-              |  Incomplete
-          button.btn.btn--secondary.navbar__btn.btn--inline(type='submit') Filter
+          .btn.navbar__star
+            | &#x2605;
+      .navbar__btn-group.btn--inline(data-toggle='buttons')
+        form.navbar--form.navbar--right(method='get', action='/items')
+          button.btn.btn--primary.btn--navbar.btn--filter.btn--hidden(type='submit' value='all' name="completed_filter")#btn--all Show All
+          button.btn.btn--primary.btn--navbar.btn--filter.btn--hidden(type='submit' value='completed' name="completed_filter")#btn--completed Show Completed
+          button.btn.btn--primary.btn--navbar.btn--filter.btn--hidden(type='submit' value='incomplete' name="completed_filter")#btn--incomplete Show Incomplete
       .collapse.navbar__collapse#navbar-collapse
         ul.navbar__toggle.navbar--right
           li.dropdown
-            a.dropdown__toggle.btn.btn--primary.navbar__btn(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            a.dropdown__toggle.btn.btn--primary.btn--navbar(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
               span.icon.icon--caret
-              | Menu
+              | &blacktriangledown;
             ul.dropdown__menu.dropdown--hidden
               li.dropdown__item
                 a.dropdown__link(href='/accounts/logout') Log Out
