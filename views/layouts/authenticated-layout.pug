@@ -18,9 +18,9 @@ html
         a.navbar__brand(href='/') floworky
       form.navbar__form.navbar--left(method='get', action='/items')
         .form.form--inline
-          input.form__control(type='text', name='search', placeholder='Search')
-          .btn.navbar__star
-            | &#x2605;
+          input.form__control.navbar__searchbox(type='text', name='search', placeholder='Search')
+      .navbar__star.btn.btn--star
+        | &#x2605;
       .navbar__btn-group.btn--inline(data-toggle='buttons')
         form.navbar--form.navbar--right(method='get', action='/items')
           button.btn.btn--primary.btn--navbar.btn--filter.btn--hidden(type='submit' value='all' name="completed_filter")#btn--all Show All
@@ -29,7 +29,7 @@ html
       .collapse.navbar__collapse#navbar-collapse
         ul.navbar__toggle.navbar--right
           li.dropdown
-            a.dropdown__toggle.btn.btn--primary.btn--navbar(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            a.dropdown__toggle.btn.btn--primary.btn--navbar.btn--dropdown(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
               span.icon.icon--caret
               | &blacktriangledown;
             ul.dropdown__menu.dropdown--hidden

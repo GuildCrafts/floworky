@@ -3,6 +3,7 @@ body{
   top: 0;
   left: 0;
   margin: 0;
+  background-color: #F6F6F6;
   font-family: 'Roboto:300', Arial, sans-serif;
 }
 button{
@@ -18,20 +19,26 @@ input [type="submit"]{
 
 .navbar{
   display: flex;
-  background-color: #444;
-  --navbar-height: 6vh;
+  background-color: #3D3D3D;
+  --navbar-height: 32px;
   height: var(--navbar-height);
   border-bottom: 1px solid #111;
   min-width: 100%;
+
 }
 
 .navbar__star{
-  color: #aaa;
-  background-color: #555;
+  color: #EAEAEA;
+  position: absolute;
+  background-color: #666666;
+  top: 5.5px;
+  margin-left: 5px;
+  border-radius: 3px;
 }
 
 .navbar__header{
   display: inline;
+  padding-top: 2px
 }
 
 .navbar__toggle{
@@ -45,7 +52,7 @@ input [type="submit"]{
 }
 
 .navbar__brand{
-  color: #aaa;
+  color: #EBEBEB;
   opacity: .9;
   height: 18px;
   width: 80px;
@@ -58,6 +65,9 @@ input [type="submit"]{
 
 .navbar__form{
   display: inline;
+  position: relative;
+  top: 4px;
+  padding-top: 2px;
 }
 
 .sr-only{
@@ -80,7 +90,17 @@ input [type="submit"]{
 .navbar__btn-group {
   position: relative;
   display: inline-block;
-  bottom: .2vh;
+}
+
+.navbar__searchbox {
+    background-color: #EBEBEB;
+    border-radius: 5px;
+}
+.navbar__searchbox:hover, .navbar__searchbox:focus{
+  background-color: #FFFFFF;
+  border: none;
+  box-shadow: none;
+  outline: none;  
 }
 
 .collapse{
@@ -115,7 +135,7 @@ input [type="submit"]{
     border: 1px solid #111;
     border-top: none;
     position: fixed;
-    top: 5.9vh;
+    top: var(--navbar-height);
     right: 5px;
     background-color:#666;
     text-align: left;
@@ -159,11 +179,14 @@ input [type="submit"]{
 .form--inline{
   display: inline;
 }
-.form__control{}
+.form__control{
+  font-family: 'Roboto'
+}
 .form__radio{}
 .form__radio--hidden{
   display: none;
 }
+
 
 .btn{
   display: inline-block;
@@ -194,9 +217,18 @@ input [type="submit"]{
   display: none;
 }
 
+.btn--no-border{
+  border: none;
+}
+
 .btn--navbar{
-  padding: 1.5vh;
+  padding: 0.43em;
+  color: #EBEBEB;
   /*height: var(--navbar-height);*/
+}
+
+.btn--dropdown{
+  padding: 0.49em;
 }
 
 .btn--filter{
@@ -208,6 +240,15 @@ input [type="submit"]{
   position: absolute;
   right: 100px;
 }
+.btn--star{
+  border-color: #484848;
+  font-size: 12px;
+  padding: 3px;
+}
+.btn--star:hover{
+  box-shadow: 0 0 5px #666666;
+}
+
 
 
 
