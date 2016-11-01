@@ -7,47 +7,44 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    link(href='https://fonts.googleapis.com/css?family=Contrail+One', rel='stylesheet')
-
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:300', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Taviraj', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapsed', aria-expanded='false')
-            span.sr-only
-          a.navbar-brand.logo(href='/') floworky
-        form.navbar-form.navbar-left(method='get', action='/items')
-          .form-group
-            input.form-control(type='text', name='search', placeholder='Search')
-          button.btn.btn-default(type='submit') Search
-        form.navbar-form.navbar-left(method='get', action='/items')
-          .btn-group(data-toggle='buttons')
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='all', autocomplete='off', checked='checked')
-              |  all items
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='completed' autocomplete='off')
-              |  completed
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
-              |  incomplete
-          button.btn.btn-default(type='submit') Filter
-        .collapse.navbar-collapse#navbar-collapse
-          ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                span.caret
-              ul.dropdown-menu
-                li
-                  a(href='/accounts/logout') Log Out
-                li.dropdown-header= user.email
+    nav.navbar
+      .navbar__header
+        button.navbar__toggle.navbar__toggle--collapsed(type='button', data-toggle='collapsed', aria-expanded='false')
+          span.sr-only
+        a.navbar__brand(href='/') floworky
+      form.navbar__form.navbar--left(method='get', action='/items')
+        .form.form--inline
+          input.form__control(type='text', name='search', placeholder='Search')
+        button.btn.btn--secondary.navbar__btn(type='submit') Search
+      form.navbar__form.navbar__form--right(method='get', action='/items')
+          .navbar__btn-group.btn--inline(data-toggle='buttons')
+            label.btn.btn--primary.navbar__btn
+              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='all', autocomplete='off', checked='checked')
+              |  All Items
+            label.btn.btn--primary.navbar__btn
+              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='completed' autocomplete='off')
+              |  Completed
+            label.btn.btn--primary.navbar__btn
+              input.form__radio.form__radio--hidden(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
+              |  Incomplete
+          button.btn.btn--secondary.navbar__btn.btn--inline(type='submit') Filter
+      .collapse.navbar__collapse#navbar-collapse
+        ul.navbar__toggle.navbar--right
+          li.dropdown
+            a.dropdown__toggle.btn.btn--primary.navbar__btn(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+              span.icon.icon--caret
+              | Menu
+            ul.dropdown__menu.dropdown--hidden
+              li.dropdown__item
+                a.dropdown__link(href='/accounts/logout') Log Out
+              li.dropdown__item.dropdown__header= user.email
 
     .container
       block content
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous')
     script(src='/javascripts/items.js')

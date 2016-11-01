@@ -96,4 +96,13 @@ $(document).ready( () => {
   $( '.edit-description' ).keypress( descriptionEdited )
   $( '.description > span' ).click( clickToUpdate( 'description' ))
   $( '.completeToggle' ).click( completedClicked )
+  $('.dropdown__toggle').click(function(){
+    if($('.dropdown__menu').hasClass('dropdown--hidden')){
+      $('.dropdown__menu').removeClass('dropdown--hidden')
+      $('.dropdown__toggle').addClass('dropdown__toggle--open')
+        } else {
+      $('.dropdown__menu').addClass('dropdown--hidden')
+      $('dropdown__toggle').removeClass('dropdown__toggle--open')
+    }
+  })
 })

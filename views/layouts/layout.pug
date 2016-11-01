@@ -7,28 +7,24 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    link(href='https://fonts.googleapis.com/css?family=Contrail+One', rel='stylesheet')
-
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/css?family=Taviraj', rel='stylesheet' )
+    link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
 
   body
     nav.navbar
-      .container-fluid
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', target='#navbar-collapse', aria-expanded='false')
-            span.sr-only Toggle Navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand.logo(href='/') floworky
+      .navbar__header
+        button.navbar-toggle.collapsed(type='button', target='#navbar-collapse', aria-expanded='false')
+          span.sr-only Toggle Navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand.logo(href='/') floworky
 
-        .collapse.navbar-collapse#navbar-collapse
-          .navbar-right
-            a.btn.navbar-btn(href='/accounts/login', role='button') Login
+      .collapse.navbar-collapse#navbar-collapse
+        .navbar-right
+          a.btn.navbar-btn(href='/accounts/login', role='button') Login
 
     block content
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous')
