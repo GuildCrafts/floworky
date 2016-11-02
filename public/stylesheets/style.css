@@ -5,6 +5,7 @@ body{
   margin: 0;
   background-color: #F6F6F6;
   font-family: 'Roboto:300', Arial, sans-serif;
+  overflow-x: hidden;
 }
 button{
   margin: 0;
@@ -20,7 +21,7 @@ input [type="submit"]{
 .navbar{
   display: flex;
   background-color: #3D3D3D;
-  --navbar-height: 32px;
+  --navbar-height: 29px;
   height: var(--navbar-height);
   border-bottom: 1px solid #111;
   min-width: 100%;
@@ -31,14 +32,14 @@ input [type="submit"]{
   color: #EAEAEA;
   position: absolute;
   background-color: #666666;
-  top: 5.5px;
+  top: 4px;
   margin-left: 5px;
   border-radius: 3px;
 }
 
 .navbar__header{
   display: inline;
-  padding-top: 2px
+  padding-top: 3px;
 }
 
 .navbar__toggle{
@@ -57,17 +58,18 @@ input [type="submit"]{
   height: 18px;
   width: 80px;
   margin-top: 10px;
-  font-size: 1em;
+  font-size: 0.9em;
   text-decoration: none;
+  padding-top: 2px;
   padding-right: 2em;
+  padding-left: 4px;
   font-family: 'Taviraj', Arial, sans-serif;
 }
 
 .navbar__form{
   display: inline;
   position: relative;
-  top: 4px;
-  padding-top: 2px;
+  top: 2px;
 }
 
 .sr-only{
@@ -89,18 +91,22 @@ input [type="submit"]{
 
 .navbar__btn-group {
   position: relative;
-  display: inline-block;
+  display: inline-block
 }
 
 .navbar__searchbox {
     background-color: #EBEBEB;
     border-radius: 5px;
+    margin: 2px 0;
+    padding: 4px;
+    padding-bottom: 3px;
+    width: 200px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
 }
 .navbar__searchbox:hover, .navbar__searchbox:focus{
   background-color: #FFFFFF;
-  border: none;
-  box-shadow: none;
-  outline: none;  
 }
 
 .collapse{
@@ -113,9 +119,10 @@ input [type="submit"]{
 }
 
 .dropdown__toggle{
+  --dropdown-right-position: 15px;
   position: fixed;
   top: 0;
-  right: 5px;
+  right: var(--dropdown-right-position);
   color: #fff;
   text-decoration: none;
 }
@@ -136,7 +143,7 @@ input [type="submit"]{
     border-top: none;
     position: fixed;
     top: var(--navbar-height);
-    right: 5px;
+    right: 15px;
     background-color:#666;
     text-align: left;
     z-index: 101;
@@ -171,8 +178,17 @@ input [type="submit"]{
 .dropdown__header{}
 
 .icon{
+  color: grey;
 }
 .icon__caret{}
+
+.icon__star{
+  font-size: 1.5em;
+  position: relative;
+  top: -30px;
+  left: 720px;
+  opacity: 0.4
+}
 
 .form{
 }
@@ -222,18 +238,18 @@ input [type="submit"]{
 }
 
 .btn--navbar{
-  padding: 0.43em;
-  color: #EBEBEB;
-  /*height: var(--navbar-height);*/
+  padding: 4.5px;
+  color: #FFFFFF;
 }
 
 .btn--dropdown{
-  padding: 0.49em;
+  position: fixed;
+  padding: 4px 10px 7px;
 }
 
 .btn--filter{
-  position:fixed;
-  right: 50px;
+  position: fixed;
+  right: 45px;
 }
 .navbar__form--right{
   float: right;
@@ -255,32 +271,56 @@ input [type="submit"]{
 .logo {
 }
 
-.item .children {
+.workpage__item .workpage__children {
   margin-left: 20px;
 }
 
-.item .title {
+.workpage__item .workpage__title {
   font-weight: bold;
 }
 
-.item .description {
+.workpage__item .workpage__description {
   color: #888;
   padding-left: 7px;
 }
 
-.title.completed > span, .title.completed > input {
+.workpage__title.completed > span, .workpage__title.completed > input {
   text-decoration: line-through;
   color: #777;
 }
 
-.heading > .title {
+.workpage__heading > .workpage__title {
   display: inline;
 }
 
-.heading {
+.workpage__heading {
   display: inline;
 }
 
-.hidden {
+.item--hidden {
   display: none;
 }
+
+.workpage{
+  display: block;
+  width: 700px;
+  min-height: 300px;
+  margin: 20px 0 20px 17.5%;
+  border: solid 1px #d6d6d6;
+  border-radius: 2px;
+  background-color: #ffffff;
+  padding: 40px 60px 10px;
+}
+.workpage__item{
+  position: relative;
+  clear: both;
+  display: unset;
+}
+
+.workpage__toggle{
+  display: inline;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.edit-title{}

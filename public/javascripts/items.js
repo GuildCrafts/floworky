@@ -24,8 +24,8 @@ const selector = ( parent, id, tagToShow ) =>
   `.${parent}[data-id=${id}] > ${tagToShow}`
 
 const toggle = ( elementToShow, elementToHide ) => {
-  $( elementToHide[ 0 ] ).addClass( 'hidden' )
-  $( elementToShow[ 0 ] ).removeClass( 'hidden' )
+  $( elementToHide[ 0 ] ).addClass( 'item--hidden' )
+  $( elementToShow[ 0 ] ).removeClass( 'item--hidden' )
 }
 
 const clickToUpdate = parentClass => event => {
@@ -39,8 +39,9 @@ const clickToUpdate = parentClass => event => {
 const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
-  const elementToShow = $( selector( 'title', id, 'span' ) )
-
+  const elementToShow = $( selector( 'workpage__title', id, 'span' ) )
+  console.log('hide->'+elementToHide[0])
+  console.log('show->'+elementToShow[0])
   if( event.charCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
     fetch( `/items/${id}`, params( { title: updatedTitle } ) )
@@ -56,8 +57,8 @@ const titleEdited = event => {
 const descriptionEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
-  const elementToShow = $( selector( 'description', id, 'span' ) )
-
+  const elementToShow = $( selector( 'workpage__description', id, 'span' ) )
+  console.log(elementToShow, elementToHide)
   if( event.charCode === RETURN_KEY ) {
     let updatedDescription = elementToHide[0].value
     fetch( `/items/${id}`, params( { description: updatedDescription } ) )
@@ -79,7 +80,7 @@ const completedClicked = event => {
     .then( result => result.json() )
     .then( checkJsonForSuccessField )
     .then( json => {
-      const parent = $( `.title[data-id=${id}]` )
+      const parent = $( `.workpage__title[data-id=${id}]` )
         element.data( 'completed', completed )
         if( completed ) {
           parent.addClass( 'completed' )
@@ -110,21 +111,23 @@ const completedClicked = event => {
       }
     }
 
+    const dropdownToggle = () => {
+      if($('.dropdown__menu').hasClass('dropdown--hidden')){
+        $('.dropdown__menu').removeClass('dropdown--hidden')
+        $('.dropdown__toggle').addClass('dropdown__toggle--open')
+          } else {
+        $('.dropdown__menu').addClass('dropdown--hidden')
+        $('.dropdown__toggle').removeClass('dropdown__toggle--open')
+      }
+    }
+
 
 $(document).ready( () => {
   $( '.edit-title' ).keypress( titleEdited )
-  $( '.title > span' ).click( clickToUpdate( 'title' ))
+  $( '.workpage__title > span' ).click( clickToUpdate( 'workpage__title' ))
   $( '.edit-description' ).keypress( descriptionEdited )
-  $( '.description > span' ).click( clickToUpdate( 'description' ))
-  $( '.completeToggle' ).click( completedClicked )
-  $('.dropdown__toggle').click(function(){
-    if($('.dropdown__menu').hasClass('dropdown--hidden')){
-      $('.dropdown__menu').removeClass('dropdown--hidden')
-      $('.dropdown__toggle').addClass('dropdown__toggle--open')
-        } else {
-      $('.dropdown__menu').addClass('dropdown--hidden')
-      $('dropdown__toggle').removeClass('dropdown__toggle--open')
-    }
-  })
+  $( '.workpage__description > span' ).click( clickToUpdate( 'workpage__description' ))
+  $( '.workpage__toggle' ).click( completedClicked )
+  $('.dropdown__toggle').click( dropdownToggle )
   getFilterStatus()
 })

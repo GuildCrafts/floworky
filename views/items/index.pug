@@ -2,20 +2,35 @@ extends ../layouts/authenticated-layout
 
 mixin display( nodes, depth )
   each entry in nodes
-    .item(data-id=entry.id)
-      .heading(data-id=entry.id, data-completed=entry.completed)
-        .completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
-        .title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
+    .workpage__item(data-id=entry.id)
+      .workpage__heading(data-id=entry.id, data-completed=entry.completed)
+        .workpage__toggle.completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
+          |&#9679;
+        .workpage__title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
           span(data-id=entry.id)=entry.title
-          input.edit-title.hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
-      .description(data-id=entry.id)
+          input.edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
+      .workpage__description(data-id=entry.id)
           span(data-id=entry.id)=entry.description
-          input.edit-description.hidden(data-id=entry.id, type='text', name='edit-description', value=entry.description)
-      .children
+          input.edit-description.item--hidden(data-id=entry.id, type='text', name='edit-description', value=entry.description)
+      .workpage__children
         +display( entry.children, depth + 1 )
 
 block content
 
+    ol.breadcrumb
+      li
+        a(href=`/items/${breadcrumbs[0].id}`)= breadcrumbs[0].title
+
+    each crumb in breadcrumbs.slice( 1, breadcrumbs.length - 1 )
+      li
+        a(href=`/items/${crumb.id}`)= crumb.title
+
+  div
+    .workpage
+      .icon.icon__star
+        | &#x2606;
+      +display( tree, 0 )
+  hr
   form(method='post', action='/items')
     .form-group
       input.form-control(type='text', name='title', placeholder='ToDo Title')
@@ -29,9 +44,3 @@ block content
           option(value=`${item.id}`)= item.title
 
     button.btn.btn-primary(type='submit') Submit
-
-  div
-    h3 Your ToDo's:
-
-    .item-page
-      +display( tree, 0 )
