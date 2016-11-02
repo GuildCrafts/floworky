@@ -40,9 +40,7 @@ const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'workpage__title', id, 'span' ) )
-  console.log('hide->'+elementToHide[0])
-  console.log('show->'+elementToShow[0])
-  if( event.charCode === RETURN_KEY ) {
+  if( event.keyCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
     fetch( `/items/${id}`, params( { title: updatedTitle } ) )
       .then( result => result.json() )
@@ -58,8 +56,7 @@ const descriptionEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'workpage__description', id, 'span' ) )
-  console.log(elementToShow, elementToHide)
-  if( event.charCode === RETURN_KEY ) {
+  if( event.keyCode === RETURN_KEY ) {
     let updatedDescription = elementToHide[0].value
     fetch( `/items/${id}`, params( { description: updatedDescription } ) )
       .then( result => result.json() )
