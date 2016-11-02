@@ -9,7 +9,8 @@ const validateEmail = require( '../../../src/mail/validate_email' )
 router.post( '/register', ( request, response ) => {
   const { User } = request.app.get( 'models' )
   const { email, password } =request.body
-
+  debugger;
+  console.log('email--->' + email)
   validateEmail( email )
     .then( validEmail => register( User, validEmail, password ) )
     .then( user => response.status( 201 ).json({}) )
