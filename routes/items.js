@@ -28,35 +28,34 @@ router.get( '/weekly', ( request, response ) => {
 })
 
 router.post( '/:id', ( request, response ) => {
-  const { Item, Audit } = request.app.get( 'models' )
+  const { Item } = request.app.get( 'models' )
   const { id } = request.params
   const where = { id, user_id: request.user.id }
   console.log('request.body: ' , request.body , ' where: ' , where);
 
   Item.filterParameters( request.body )
-    .then(result =>
-      Item.update( result, { where })  //request.body = {completed: true}
+    .then(result => {
+      Item.update( result, { where, individualHooks: true })  //request.body = {completed: true}
       .then( jsonResponse => {
-        console.log('jsonResponse',jsonResponse);
         response.json({ success: true, id })
       })
       .catch( error => response.json({ success: false, id, message: error.message }))
-    )
-
-  if ( request.body.hasOwnProperty('completed') ) {
-    let old_value = ! request.body.completed
-    console.log('old_value',old_value);
-    Audit.create({
-      table_name: 'Items',
-      field_id: id,
-      field_name: 'completed',
-      old_value: old_value.toString(),
-      new_value: request.body.completed.toString(),
-      field_type: 'BOOLEAN',
-      user_id: request.user.id
     })
-  }
-  
+
+  // if ( request.body.hasOwnProperty('completed') ) {
+  //   let old_value = ! request.body.completed
+  //   console.log('old_value',old_value);
+  //   Audit.create({
+  //     table_name: 'Items',
+  //     field_id: id,
+  //     field_name: 'completed',
+  //     old_value: old_value.toString(),
+  //     new_value: request.body.completed.toString(),
+  //     field_type: 'BOOLEAN',
+  //     user_id: request.user.id
+  //   })
+  // }
+
   if ( request.body.hasOwnProperty('title') ){
     console.log('title changed');
   }
