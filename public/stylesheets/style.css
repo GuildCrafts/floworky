@@ -4,7 +4,8 @@ body{
   left: 0;
   margin: 0;
   background-color: #F6F6F6;
-  font-family: 'Roboto:300', Arial, sans-serif;
+  background-color: #F9F9FA;
+  font-family: 'Roboto', Arial, sans-serif;
   overflow-x: hidden;
 }
 button{
@@ -16,6 +17,20 @@ button{
 }
 input [type="submit"]{
   margin: 0;
+}
+
+.landing__header{
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 30px;
+}
+
+.landing__header--title{
+  font-size: 42px;
+}
+
+.landing__header--subtitle{
+  font-size: 20px;
+  color: #666;
 }
 
 .navbar{
@@ -37,6 +52,18 @@ input [type="submit"]{
   top: 4px;
   margin-left: 5px;
   border-radius: 3px;
+}
+
+.navbar__home {
+  background-color: #f9f9fa;
+  border: none;
+  padding: 1em 1em 0;
+}
+
+.navbar__home--right {
+  position: absolute;
+  right: 20px;
+  top: 15px;
 }
 
 .navbar__header{
@@ -66,6 +93,10 @@ input [type="submit"]{
   padding-right: 2em;
   padding-left: 4px;
   font-family: 'Taviraj', Arial, sans-serif;
+}
+
+.navbar__brand--big {
+  font-size: 1.65em;
 }
 
 .navbar__form{
@@ -114,17 +145,60 @@ input [type="submit"]{
   right: 100px;
 }
 
+.container__home {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .form{}
+
+.form__label {
+  float: left;
+  font-size: 11px;
+  color: #234;
+}
+
+.form__input--home {
+  padding: 10px 4px;
+  font-size: 20px;
+  width: 95%;
+  margin: 5px 2px;
+  border-radius: 1px;
+  border: solid 1px #DDDDDD;
+  background-color: #f8f8fe;
+}
+
+.form__input--home:focus {
+  border-color: #B6B6B6;
+}
+
+
 .form--inline{
   display: inline;
 }
 .form__control{
-  font-family: 'Roboto'
+  font-family: 'Roboto:300'
 }
 .form__radio{}
 .form__radio--hidden{
   display: none;
 }
+
+.form__login {
+  background-color: #fff;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  border: solid 1px #DDDDDD;
+  border-radius: 8px;
+  padding: 1.5em;
+  width: 300px;
+}
+
+.form__login--addendum {
+  font-size: 0.85em;
+  color: #234;
+ }
 
 .btn{
   display: inline-block;
@@ -143,6 +217,46 @@ input [type="submit"]{
 .btn--secondary{
   margin: 0;
 }
+
+.btn__display {
+  text-align: center;
+  display: inline-block;
+}
+
+.btn--large {
+  margin-top: 20px;
+  height: 100px;
+  width: 260px;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  align-items: center;
+  font-size: 26px;
+}
+
+/*.btn--wide {
+  width: 200px;
+}*/
+
+.btn__home {
+  background-color: #3C5977;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn__home:hover {
+  background-color: #324962;
+}
+
+.btn__home--normal {
+  width: 5.4em;
+  height: 1em;
+  font-size: 14px;
+  padding: 0.8em;
+}
+
 
 .btn--inline{
   display: inline;
@@ -341,4 +455,8 @@ input [type="submit"]{
   top: -30px;
   left: 720px;
   opacity: 0.4
+}
+
+.help-block--hidden{
+    display: none;
 }

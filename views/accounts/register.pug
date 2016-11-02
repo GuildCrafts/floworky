@@ -1,23 +1,21 @@
-extends ../layouts/email-form-layout
+extends ../layouts/layout
 
 block content
-  .container
-    h1 Register for Floworky...
-    .row
-      form.validation.form-horizontal(method='post')
-        .form-group.email-container
-          label.col-sm-2.control-label(for='email') Email
-          .col-sm-5
-            input.form-control(type='email', name='email', id='email', placeholder=email? email: 'Email')
-            .help-block.hidden Please enter a valid email address
+  .container__home
+    .landing__header
+      .landing__header--title Organize Your Brain
+      .landing__header--subtitle FloWorky is a notebook for lists. Use it to be more productive and creative.
+    form.form__login(method='post')
+      .form--group.email-container
+        label.col-sm-2.form__label(for='email') Email:
+        br
+        input.form__input--home(type='email', name='email', id='email')
+        .help-block.form__login--addendum.help-block--hidden Please enter a valid email address
 
-        .form-group
-          label.col-sm-2.control-label(for='password') Password
-          .col-sm-5
-            input.form-control(type='password', name='password', id='password', placeholder='Password')
+      .form--group
+        label.col-sm-2.form__label(for='password') Password:
+        br
+        input.form__input--home(type='password', name='password', id='password')
 
-        .form-group
-          .col-sm-offset-2.col-sm-5
-            button.btn.btn-primary(type='submit') Sign Up
-            if error
-              span.error= error
+      .form--group
+        button.btn.btn__home.btn--large(type='submit') Sign Up
