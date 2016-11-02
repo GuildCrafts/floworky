@@ -11,18 +11,45 @@ class ItemTree {
     return this.root.children
   }
 
+  findRootId() {
+    return this.items.find( item => item.is_root ).id
+  }
+
   buildMap() {
     this.map = this.items.reduce( this.itemReducer, {} )
-    this.root = new ItemNode({ id: 0, title: 'Home' })
-    this.map[ 0 ] = this.root
+    this.root = this.map[ this.findRootId() ]
   }
 
   buildTree() {
     this.buildMap()
 
-    this.items.forEach( item =>
-      this.map[ item.parent_id ].addChild( this.map[ item.id ] )
-    )
+    this.items.forEach( item => {
+      if ( ! item.is_root && item.parent_id != 0 ) {
+        this.map[ item.parent_id ].addChild( this.map[ item.id ] )
+      }
+    })
+  }
+
+  subTree( id ) {
+    const ids = this.bfs( this.map[ id ] )
+      .map( node => node.id )
+      .concat( this.findPathTo( id ))
+      .concat( id )
+
+    const items = this.items.filter( item => ids.includes( item.id ) )
+      .map( item => Object.assign( {}, item.toJson(), { is_root: item.id === id } ))
+
+    return new ItemTree( items )
+  }
+
+  bfs( node ) {
+    if( node.hasChildren() ) {
+      return node.children.reduce( (memo, child) => {
+        return memo.concat( child, this.bfs( child ) )
+      }, [] )
+    } else {
+      return []
+    }
   }
 
   itemReducer( memo, item ) {
@@ -45,7 +72,7 @@ class ItemTree {
 
   findPathTo( id, path=[] ) {
     if( id === 0 ) {
-      return path
+      return [ ...path.slice( 1 ) ]
     } else {
       const parent_id = this.map[ id ].parent_id
 
