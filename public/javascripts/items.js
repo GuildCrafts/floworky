@@ -39,7 +39,7 @@ const clickToUpdate = parentClass => event => {
 const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
-  const elementToShow = $( selector( 'workpage__title', id, 'span' ) )
+  const elementToShow = $( selector( 'item__title', id, 'span' ) )
   if( event.keyCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
     fetch( `/items/${id}`, params( { title: updatedTitle } ) )
@@ -55,7 +55,7 @@ const titleEdited = event => {
 const descriptionEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
-  const elementToShow = $( selector( 'workpage__description', id, 'span' ) )
+  const elementToShow = $( selector( 'item__description', id, 'span' ) )
   if( event.keyCode === RETURN_KEY ) {
     let updatedDescription = elementToHide[0].value
     fetch( `/items/${id}`, params( { description: updatedDescription } ) )
@@ -77,12 +77,12 @@ const completedClicked = event => {
     .then( result => result.json() )
     .then( checkJsonForSuccessField )
     .then( json => {
-      const parent = $( `.workpage__title[data-id=${id}]` )
+      const parent = $( `.item__title[data-id=${id}]` )
         element.data( 'completed', completed )
         if( completed ) {
-          parent.addClass( 'completed' )
+          parent.addClass( 'item__title--completed' )
         } else {
-          parent.removeClass( 'completed' )
+          parent.removeClass( 'item__title--completed' )
         }
       }
     )
@@ -120,11 +120,11 @@ const completedClicked = event => {
 
 
 $(document).ready( () => {
-  $( '.edit-title' ).keypress( titleEdited )
-  $( '.workpage__title > span' ).click( clickToUpdate( 'workpage__title' ))
-  $( '.edit-description' ).keypress( descriptionEdited )
-  $( '.workpage__description > span' ).click( clickToUpdate( 'workpage__description' ))
-  $( '.workpage__toggle' ).click( completedClicked )
+  $( '.item__edit-title' ).keypress( titleEdited )
+  $( '.item__title > span' ).click( clickToUpdate( 'item__title' ))
+  $( '.item__edit-description' ).keypress( descriptionEdited )
+  $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
+  $( '.item__toggle' ).click( completedClicked )
   $('.dropdown__toggle').click( dropdownToggle )
   getFilterStatus()
 })

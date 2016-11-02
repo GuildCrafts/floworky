@@ -2,17 +2,17 @@ extends ../layouts/authenticated-layout
 
 mixin display( nodes, depth )
   each entry in nodes
-    .workpage__item(data-id=entry.id)
-      .workpage__heading(data-id=entry.id, data-completed=entry.completed)
-        .workpage__toggle.completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
+    .item(data-id=entry.id)
+      .item__heading(data-id=entry.id, data-completed=entry.completed)
+        .item__toggle(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
           |&#9679;
-        .workpage__title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
+        .item__title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
           span(data-id=entry.id)=entry.title
-          input.edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
-      .workpage__description(data-id=entry.id)
+          input.item__edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
+      .item__description(data-id=entry.id)
           span(data-id=entry.id)=entry.description
-          input.edit-description.item--hidden(data-id=entry.id, type='text', name='edit-description', value=entry.description)
-      .workpage__children
+          input.item__edit-description.item--hidden(data-id=entry.id, type='text', name='edit-description', value=entry.description)
+      .item__children
         +display( entry.children, depth + 1 )
 
 block content
