@@ -20,6 +20,8 @@ input [type="submit"]{
 
 .navbar{
   display: flex;
+  position: fixed;
+  top: 0;
   background-color: #3D3D3D;
   --navbar-height: 29px;
   height: var(--navbar-height);
@@ -252,12 +254,12 @@ input [type="submit"]{
 .workpage{
   display: block;
   width: 700px;
-  min-height: 300px;
-  margin: 20px 0 20px 17.5%;
+  min-height: 400px;
+  margin: 50px 0 20px 17.5%;
   border: solid 1px #d6d6d6;
   border-radius: 2px;
   background-color: #ffffff;
-  padding: 40px 60px 10px;
+  padding: 40px 60px;
 }
 
 .workpage__item .workpage__children {
@@ -301,6 +303,28 @@ input [type="submit"]{
 
 .workpage__toggle:hover{
   background-color: #AAAAAA;
+}
+
+.workpage__description{
+  font-size: 12px;
+}
+
+.workpage__footer{
+ width: 820px;
+ position: relative;
+ left: -60px;
+ margin: 0;
+ margin-top: 20px;
+ height: 30px;
+ border-radius: 2px;
+ display: block;
+}
+.workpage__footer__content{
+  margin: 0 60px;
+  border-top:solid 1px #d6d6d6;
+  opacity: 0.5;
+  padding-top: 8px;
+  font-size: 12px;
 }
 
 .item--hidden {
