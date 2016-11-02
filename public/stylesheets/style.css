@@ -72,9 +72,6 @@ input [type="submit"]{
   top: 2px;
 }
 
-.sr-only{
-}
-
 .navbar--left{
   float: left;
 
@@ -109,89 +106,13 @@ input [type="submit"]{
   background-color: #FFFFFF;
 }
 
-.collapse{
+.navbar__form--right{
+  float: right;
+  position: absolute;
+  right: 100px;
 }
 
-.dropdown{
-  right: 0;
-  top: 0;
-  color: #fff;
-}
-
-.dropdown__toggle{
-  --dropdown-right-position: 15px;
-  position: fixed;
-  top: 0;
-  right: var(--dropdown-right-position);
-  color: #fff;
-  text-decoration: none;
-}
-
-
-.dropdown__menu{
-    list-style:none;
-    font-family:sans-serif;
-    font-size: 0.85em;
-    min-width: 90px;
-    max-width: 150px;
-    min-height: 40px;
-    margin: 0;
-    padding: 3px 0;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 1px solid #111;
-    border-top: none;
-    position: fixed;
-    top: var(--navbar-height);
-    right: 15px;
-    background-color:#666;
-    text-align: left;
-    z-index: 101;
-}
-.dropdown--hidden {
-  display: none;
-}
-.dropdown__header{
-  font-size:0.8em;
-  color:#aaa;
-}
-
-
-.dropdown__link:hover{
-  background-color:#444;
-}
-
-.dropdown__item{
-  margin: 0;
-  --item-padding: 2.5px;
-  padding: 2.5px 8px;
-}
-
-.dropdown__link{
-  text-decoration: none;
-  color: #fff;
-  width: 100%;
-  display: block;
-  padding: var(--item-padding);
-}
-
-.dropdown__header{}
-
-.icon{
-  color: grey;
-}
-.icon__caret{}
-
-.icon__star{
-  font-size: 1.5em;
-  position: relative;
-  top: -30px;
-  left: 720px;
-  opacity: 0.4
-}
-
-.form{
-}
+.form{}
 .form--inline{
   display: inline;
 }
@@ -202,7 +123,6 @@ input [type="submit"]{
 .form__radio--hidden{
   display: none;
 }
-
 
 .btn{
   display: inline-block;
@@ -216,9 +136,6 @@ input [type="submit"]{
 }
 .btn--primary:hover, .dropdown__toggle--open{
   background-color: #666;
-}
-.dropdown__toggle--open{
-  border-bottom: none;
 }
 
 .btn--secondary{
@@ -249,26 +166,98 @@ input [type="submit"]{
 
 .btn--filter{
   position: fixed;
+  width: 150px;
   right: 45px;
 }
-.navbar__form--right{
-  float: right;
-  position: absolute;
-  right: 100px;
-}
+
 .btn--star{
   border-color: #484848;
   font-size: 12px;
   padding: 3px;
+  z-index: 5;
 }
+
 .btn--star:hover{
-  box-shadow: 0 0 5px #666666;
+  box-shadow: 0 0 0 3px #666666;
+}
+
+.dropdown{
+  right: 0;
+  top: 0;
+  color: #fff;
+}
+
+.dropdown__toggle{
+  --dropdown-right-position: 15px;
+  position: fixed;
+  top: 0;
+  right: var(--dropdown-right-position);
+  color: #fff;
+  text-decoration: none;
 }
 
 
+.dropdown__menu{
+  list-style:none;
+  font-family:sans-serif;
+  font-size: 0.85em;
+  min-width: 90px;
+  max-width: 150px;
+  min-height: 40px;
+  margin: 0;
+  padding: 3px 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #111;
+  border-top: none;
+  position: fixed;
+  top: var(--navbar-height);
+  right: 15px;
+  background-color:#666;
+  text-align: left;
+  z-index: 101;
+}
+.dropdown--hidden {
+  display: none;
+}
+.dropdown__header{
+  font-size:0.8em;
+  color:#aaa;
+}
 
+.dropdown__link:hover{
+  background-color:#444;
+}
 
-.logo {
+.dropdown__item{
+  margin: 0;
+  --item-padding: 2.5px;
+  padding: 2.5px 8px;
+}
+
+.dropdown__link{
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  display: block;
+  padding: var(--item-padding);
+}
+
+.dropdown__header{}
+
+.dropdown__toggle--open{
+  border-bottom: none;
+}
+
+.workpage{
+  display: block;
+  width: 700px;
+  min-height: 300px;
+  margin: 20px 0 20px 17.5%;
+  border: solid 1px #d6d6d6;
+  border-radius: 2px;
+  background-color: #ffffff;
+  padding: 40px 60px 10px;
 }
 
 .workpage__item .workpage__children {
@@ -276,7 +265,6 @@ input [type="submit"]{
 }
 
 .workpage__item .workpage__title {
-  font-weight: bold;
 }
 
 .workpage__item .workpage__description {
@@ -297,30 +285,36 @@ input [type="submit"]{
   display: inline;
 }
 
-.item--hidden {
-  display: none;
-}
-
-.workpage{
-  display: block;
-  width: 700px;
-  min-height: 300px;
-  margin: 20px 0 20px 17.5%;
-  border: solid 1px #d6d6d6;
-  border-radius: 2px;
-  background-color: #ffffff;
-  padding: 40px 60px 10px;
-}
 .workpage__item{
   position: relative;
   clear: both;
-  display: unset;
+  padding-bottom: 4px;
 }
 
 .workpage__toggle{
   display: inline;
+  padding: 0 4px;
   border-radius: 100%;
   margin-right: 5px;
+  background-color: #e0e0e0;
 }
 
-.edit-title{}
+.workpage__toggle:hover{
+  background-color: #AAAAAA;
+}
+
+.item--hidden {
+  display: none;
+}
+
+.icon{
+  color: grey;
+}
+
+.icon__star{
+  font-size: 1.5em;
+  position: relative;
+  top: -30px;
+  left: 720px;
+  opacity: 0.4
+}
