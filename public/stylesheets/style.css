@@ -18,6 +18,10 @@ button{
 input [type="submit"]{
   margin: 0;
 }
+a{
+  margin: 0;
+  padding: 0;
+}
 
 .landing__header{
   font-family: 'Open Sans', sans-serif;
@@ -42,6 +46,7 @@ input [type="submit"]{
   height: var(--navbar-height);
   border-bottom: 1px solid #111;
   min-width: 100%;
+  z-index: 100;
 
 }
 
@@ -156,13 +161,14 @@ input [type="submit"]{
   float: left;
   font-size: 11px;
   color: #234;
+  padding-left: 4px;
 }
 
 .form__input--home {
   padding: 10px 4px;
   font-size: 20px;
   width: 95%;
-  margin: 5px 2px;
+  margin: 0px 2px 20px;
   border-radius: 1px;
   border: solid 1px #DDDDDD;
   background-color: #f8f8fe;
@@ -192,7 +198,7 @@ input [type="submit"]{
   border: solid 1px #DDDDDD;
   border-radius: 8px;
   padding: 1.5em;
-  width: 300px;
+  width: 280px;
 }
 
 .form__login--addendum {
@@ -223,17 +229,6 @@ input [type="submit"]{
   display: inline-block;
 }
 
-.btn--large {
-  margin-top: 20px;
-  height: 100px;
-  width: 260px;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  align-items: center;
-  font-size: 26px;
-}
-
 /*.btn--wide {
   width: 200px;
 }*/
@@ -257,6 +252,18 @@ input [type="submit"]{
   padding: 0.8em;
 }
 
+.btn--large {
+  margin-top: 20px;
+  height: 100px;
+  width: 270px;
+  border-radius: 6px;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  align-items: center;
+  font-size: 32px;
+  font-weight: lighter;
+}
 
 .btn--inline{
   display: inline;
@@ -271,13 +278,13 @@ input [type="submit"]{
 }
 
 .btn--navbar{
-  padding: 4.5px;
+  padding: 5px;
   color: #FFFFFF;
 }
 
 .btn--dropdown{
   position: fixed;
-  padding: 4px 10px 7px;
+  padding: 4px 10px 7.5px;
 }
 
 .btn--filter{

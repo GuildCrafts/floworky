@@ -2,7 +2,8 @@ extends ./layouts/layout
 
 block content
     .container__home
-      h1 Get your workflow on lockdown...
-      p with the best productivity app around...
-      p.btn__display
-        a.btn.btn__home.btn--large.btn--wide(href='/accounts/register', role='button') Sign Up
+      .landing__header
+        .landing__header--title Organize Your Brain
+        .landing__header--subtitle FloWorky is a notebook for lists. Use it to be more productive and creative.
+      a.form--group(type="submit" href='/accounts/register', role='button')
+        button.btn.btn__home.btn--large Sign Up
