@@ -1,27 +1,18 @@
 class ItemNode {
   constructor( item ) {
-    const { id, parent_id, title, description, completed, is_root } = item
+    const { id, parent_id, title, description, completed } = item
 
     this.id = id
     this.parent_id = parent_id
     this.title = title
     this.description = description
     this.completed = completed
-    this.is_root = is_root
 
     this.children = []
   }
 
   addChild( child ) {
     this.children.push( child )
-  }
-
-  hasChildren() {
-    return this.children.length > 0
-  }
-
-  toString() {
-    return `[${this.id}] "${this.title}"`
   }
 }
 

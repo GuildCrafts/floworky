@@ -4,30 +4,17 @@
   font-family: 'Contrail One', cursive;
 }
 
-.item {
-  padding-top: 5px;
+.item .children {
   margin-left: 20px;
 }
 
-.root {
-  margin-left: 0px;
-}
-
-.root .title {
-  font-size: 150%;
-}
-
-.title {
+.item .title {
   font-weight: bold;
 }
 
-.title {
-  padding-left: 5px;
-}
-
-.description {
+.item .description {
   color: #888;
-  padding-left: 10px;
+  padding-left: 7px;
 }
 
 .title.completed > span, .title.completed > input {

@@ -1,9 +1,9 @@
-const { allItemsQuery, filterSelectedItems } = require( './item_response' )
+const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './item_response' )
 const { buildTree } = require( './tree_creation' )
 
-const findAllItems = ( Item, user, query ) => 
+const findAllItems = ( Item, user, query ) =>
   Item.findAll( allItemsQuery( user.id ))
     .then( buildTree )
-    .then( filterSelectedItems( Item, query, user.id ) )
+    .then( filteredItemsQuery( Item, query, user.id ) )
 
 module.exports = findAllItems

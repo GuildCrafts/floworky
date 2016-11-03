@@ -25,31 +25,14 @@ block content
     .form-group
       label Select Parent
       select.form-control(data-style='btn', name='parent_id')
+        option(value='0') None
         each item in items
           option(value=`${item.id}`)= item.title
 
     button.btn.btn-primary(type='submit') Submit
 
-  ol.breadcrumb
-    li
-      a(href=`/items/${breadcrumbs[0].id}`)= breadcrumbs[0].title
-
-  each crumb in breadcrumbs.slice( 1, breadcrumbs.length - 1 )
-    li
-      a(href=`/items/${crumb.id}`)= crumb.title
-
   div
     h3 Your ToDo's:
 
-  .root(data-id=root.id)
-    .heading(data-id=root.id, data-completed=root.completed)
-      .completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=root.id, data-completed=root.completed)
-      .title(data-id=root.id, data-completed=root.completed, class={completed: root.completed})
-        span(data-id=root.id)=root.title
-        input.edit-title.hidden(data-id=root.id, type='text', name='edit-title', value=root.title)
-    .description(data-id=root.id)
-        span(data-id=root.id)=root.description
-        input.edit-description.hidden(data-id=root.id, type='text', name='edit-description', value=root.description)
-
-  .item-page
-    +display( tree, 0 )
+    .item-page
+      +display( tree, 0 )
