@@ -18,18 +18,19 @@ body{
   right: 0;
 }
 
-.login-page__header{
+.login-page__header {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  margin-bottom: 30px;
+  margin: 44.5px 0;
 }
 
-.login-page__header--title{
-  font-size: 42px;
+.login-page__header--title {
+  font-size: 45px;
 }
 
-.login-page__header--subtitle{
-  font-size: 20px;
+.login-page__header--subtitle {
+  margin-top: 16px;
+  font-size: 22px;
   color: #666;
 }
 
@@ -39,7 +40,7 @@ body{
   top: 15px;
 }
 
-.navbar{
+.navbar {
   --navbar-color:  #3D3D3D;
   --navbar-height: 29px;
   display: flex;
@@ -53,7 +54,7 @@ body{
 
 }
 
-.navbar__star{
+.navbar__star {
   color: #EAEAEA;
   position: absolute;
   background-color: #666666;
@@ -62,22 +63,22 @@ body{
   border-radius: 3px;
 }
 
-.navbar__header{
+.navbar__header {
   display: inline;
   padding-top: 3px;
 }
 
-.navbar__toggle{
+.navbar__toggle {
   display: inline;
   list-style: none;
 }
 
-.navbar__toggle--collapsed{
+.navbar__toggle--collapsed {
   display: inline;
   visibility: hidden;
 }
 
-.navbar__brand{
+.navbar__brand {
   color: #EBEBEB;
   opacity: .9;
   height: 18px;
@@ -95,17 +96,17 @@ body{
   font-size: 1.65em;
 }
 
-.navbar__form{
+.navbar__form {
   display: inline;
   position: relative;
   top: 2px;
 }
 
-.navbar--left{
+.navbar--left {
   float: left;
 
 }
-.navbar--right{
+.navbar--right {
   float: right;
   right: 0;
 }
@@ -332,7 +333,7 @@ body{
 
 .btn--large {
   margin-top: 20px;
-  height: 100px;
+  height: 90px;
   width: 270px;
   border-radius: 6px;
   text-align: center;
@@ -361,7 +362,7 @@ body{
 
 .btn--dropdown {
   position: fixed;
-  padding: 4px 10px 7.5px;
+  padding: 4px 10px 7.25px;
 }
 
 .btn--filter {
