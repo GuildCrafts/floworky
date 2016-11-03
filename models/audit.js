@@ -2,8 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Audit = sequelize.define('Audit', {
     table_name: DataTypes.STRING,
-    field_id: DataTypes.STRING,
-    field_name: DataTypes.STRING,
+    element_id: DataTypes.STRING,
+    element_name: DataTypes.STRING,
     old_value: DataTypes.STRING,
     new_value: DataTypes.STRING,
     field_type: DataTypes.STRING,

@@ -14,8 +14,10 @@ const params = data =>
 
 const checkJsonForSuccessField = json => {
   if( json.success ) {
+    console.log('checking for json success');
     Promise.resolve( json )
   } else {
+    console.log('rejecting for json failure');
     Promise.reject( json.message )
   }
 }

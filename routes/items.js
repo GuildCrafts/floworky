@@ -31,11 +31,17 @@ router.post( '/:id', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
   const { id } = request.params
   const where = { id, user_id: request.user.id }
-  console.log('request.body: ' , request.body , ' where: ' , where);
-
+console.log('pre',request.body);
   Item.filterParameters( request.body )
-    .then(result => {
-      Item.update( result, { where, individualHooks: true })  //request.body = {completed: true}
+    .then( result => {
+      console.log('post',result);
+      const fields = Object.keys(result)
+      return {result, fields}
+    })
+    .then(({result, fields}) => {
+      let data_type_string = `Item.tableAttributes.${fields}.type.constructor.key`
+      let data_type = eval(data_type_string)
+      Item.update( result, { where, individualHooks: true, updateType: fields  , data_type: data_type  })  //request.body = {completed: true}
       .then( jsonResponse => {
         response.json({ success: true, id })
       })
@@ -55,16 +61,6 @@ router.post( '/:id', ( request, response ) => {
   //     user_id: request.user.id
   //   })
   // }
-
-  if ( request.body.hasOwnProperty('title') ){
-    console.log('title changed');
-  }
-
-  if (request.body.hasOwnProperty('description') ){
-    console.log('description changed');
-  }
-
-
 })
 
 module.exports = router
