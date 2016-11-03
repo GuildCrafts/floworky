@@ -151,14 +151,14 @@ body{
 }
 
 .dropdown__menu{
-  list-style:none;
-  font-family:sans-serif;
+  list-style: none;
+  font-family :sans-serif;
   font-size: 0.85em;
-  min-width: 90px;
-  max-width: 150px;
+  min-width: 95px;
+  min-width: 150px;
   min-height: 40px;
   margin: 0;
-  padding: 3px 0;
+  padding: 9px 6px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border: 1px solid #111;
@@ -175,19 +175,21 @@ body{
   display: none;
 }
 
-.dropdown__header {
-  font-size:0.8em;
-  color:#aaa;
-}
-
 .dropdown__item {
   margin: 0;
-  padding: 3px 8px 2.5px;
+  padding: 4px 8px 2.5px;
   font-size: 13px;
+}
+
+.dropdown__item--header {
+  text-align: center;
+  font-size:11px;
+  color:#aaa;
 }
 
 .dropdown__item--link {
   text-decoration: none;
+  padding-left: 3px;
   color: #fff;
   width: 100%;
   display: block;
@@ -203,7 +205,7 @@ body{
 
 .workpage {
   display: block;
-  width: 37.5%;
+  width: 50%;
   min-height: 800px;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -212,7 +214,7 @@ body{
   border-radius: 2px;
   background-color: #ffffff;
   padding: 40px 60px;
-  margin-left: 28%;
+  margin-left: 20%;
 }
 
 .workpage__main {
@@ -283,22 +285,23 @@ body{
   color: #777;
 }
 
-.btn{
+.btn {
   display: inline-block;
   border: 1px solid #111;
   padding: 5px;
   font-size: 13px;
   font-weight: lighter;
+  cursor: pointer;
 }
-.btn--primary{
+.btn--primary {
   background-color: #555;
   color: #fff;
 }
-.btn--primary:hover, .dropdown__toggle--open{
+.btn--primary:hover, .dropdown__toggle--open {
   background-color: #666;
 }
 
-.btn--secondary{
+.btn--secondary {
   margin: 0;
 }
 
@@ -358,7 +361,7 @@ body{
 
 .btn--dropdown {
   position: fixed;
-  padding: 4px 10px 7px;
+  padding: 4px 10px 7.5px;
 }
 
 .btn--filter {
@@ -474,6 +477,7 @@ body{
 }
 
 .icon {
+  cursor: default;
   color: grey;
 }
 
@@ -511,7 +515,7 @@ body{
 }
 
 .form__control{
-  font-family: 'Roboto'
+  font-family: 'Roboto';
 }
 
 .form__login {

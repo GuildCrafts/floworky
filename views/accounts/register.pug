@@ -6,15 +6,15 @@ block content
       .login-page__header--subtitle FloWorky is a notebook for lists. Use it to be more productive and creative.
     form.form__login(method='post')
       .form--group.email-container
-        label.col-sm-2.form__label(for='email') Email:
+        label.form__label(for='email') Email:
         br
         input.form__input--login-page(type='email', name='email', id='email')
         .form__help-block.form__help-block--hidden Please enter a valid email address
 
       .form--group
-        label.col-sm-2.form__label(for='password') Password:
+        label.form__label(for='password') Password:
         br
         input.form__input--login-page(type='password', name='password', id='password')
 
       .form--group
-        button.btn.btn__home.btn--large(type='submit') Sign Up
+        button.btn.btn__login-page.btn--large(type='submit') Sign Up
