@@ -26,13 +26,13 @@ block content
         a(href=`/items/${crumb.id}`)= crumb.title
 
   div.main-page
-    .workpage
-      .workpage__main
+    .work-page
+      .work-page__main
         .icon.icon__star
           | &#x2606;
         +display( tree, 0 )
-      .workpage__footer
-        .workpage__footer__content
+      .work-page__footer
+        .work-page__footer__content
           | Make lists, not war.
   hr
   form.form--add-item(method='post', action='/items')
