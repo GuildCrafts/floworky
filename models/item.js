@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
           if( params[ key ] !== undefined ) {
             memo[ key ] = params[ key ]
           }
+          
           return memo
         }, {} )
       }

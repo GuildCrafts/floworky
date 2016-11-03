@@ -40,6 +40,7 @@ const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'item__title', id, 'span' ) )
+
   if( event.keyCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
     fetch( `/items/${id}`, params( { title: updatedTitle } ) )
@@ -56,6 +57,7 @@ const descriptionEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'item__description', id, 'span' ) )
+
   if( event.keyCode === RETURN_KEY ) {
     let updatedDescription = elementToHide[0].value
     fetch( `/items/${id}`, params( { description: updatedDescription } ) )
@@ -91,39 +93,37 @@ const completedClicked = event => {
   const getFilterStatus = () => {
     const pageURL= decodeURIComponent(window.location.search)
     const parameterMatch = /completed_filter=(.*)/
-    let filterStatus = parameterMatch.exec(pageURL)
-    if(filterStatus === null){
-      $('#btn--completed').removeClass('btn--hidden')
-      return
-    }
+    const filterStatus = parameterMatch.exec(pageURL)
+
     switch (filterStatus[1]){
       case 'completed':
-        $('#btn--incomplete').removeClass('btn--hidden')
+        $( '#btn--incomplete' ).removeClass( 'btn--hidden' )
         break
       case 'incomplete':
-        $('#btn--all').removeClass('btn--hidden')
+        $( '#btn--all' ).removeClass( 'btn--hidden' )
         break
       default:
-        $('#btn--completed').removeClass('btn--hidden')
+        $( '#btn--completed' ).removeClass( 'btn--hidden' )
       }
     }
 
     const getCheckedStatus = () => {
-      const treeItems = document.getElementsByClassName('item__title')
-      for(let i=0; i<treeItems.length; i++){
-        if(treeItems[i].dataset.completed === 'data-completed'){
-          $(treeItems[i]).addClass('item__title--completed')
+      const treeItems = document.getElementsByClassName( 'item__title' )
+
+      for( let i = 0; i < treeItems.length; i++ ){
+        if( treeItems[i].dataset.completed === 'data-completed' ){
+          $( treeItems[i] ).addClass( 'item__title--completed' )
         }
       }
     }
 
     const dropdownToggle = () => {
-      if($('.dropdown__menu').hasClass('dropdown--hidden')){
-        $('.dropdown__menu').removeClass('dropdown--hidden')
-        $('.dropdown__toggle').addClass('dropdown__toggle--open')
-          } else {
-        $('.dropdown__menu').addClass('dropdown--hidden')
-        $('.dropdown__toggle').removeClass('dropdown__toggle--open')
+      if( $( '.dropdown__menu' ).hasClass( 'dropdown--hidden' ) ){
+        $( '.dropdown__menu' ).removeClass( 'dropdown--hidden' )
+        $( '.dropdown__toggle' ).addClass( 'dropdown__toggle--open' )
+      } else {
+        $( '.dropdown__menu' ).addClass( 'dropdown--hidden' )
+        $( '.dropdown__toggle' ).removeClass( 'dropdown__toggle--open' )
       }
     }
 
@@ -134,7 +134,7 @@ $(document).ready( () => {
   $( '.item__edit-description' ).keypress( descriptionEdited )
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
   $( '.item__toggle' ).click( completedClicked )
-  $('.dropdown__toggle').click( dropdownToggle )
+  $( '.dropdown__toggle' ).click( dropdownToggle )
   getFilterStatus()
   getCheckedStatus()
 })
