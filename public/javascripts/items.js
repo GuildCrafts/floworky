@@ -108,6 +108,15 @@ const completedClicked = event => {
       }
     }
 
+    const getCheckedStatus = () => {
+      const treeItems = document.getElementsByClassName('item__title')
+      for(let i=0; i<treeItems.length; i++){
+        if(treeItems[i].dataset.completed === 'data-completed'){
+          $(treeItems[i]).addClass('item__title--completed')
+        }
+      }
+    }
+
     const dropdownToggle = () => {
       if($('.dropdown__menu').hasClass('dropdown--hidden')){
         $('.dropdown__menu').removeClass('dropdown--hidden')
@@ -127,4 +136,5 @@ $(document).ready( () => {
   $( '.item__toggle' ).click( completedClicked )
   $('.dropdown__toggle').click( dropdownToggle )
   getFilterStatus()
+  getCheckedStatus()
 })
