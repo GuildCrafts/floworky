@@ -25,7 +25,7 @@ block content
       li
         a(href=`/items/${crumb.id}`)= crumb.title
 
-  div
+  div.main-page
     .workpage
       .workpage__main
         .icon.icon__star
@@ -35,16 +35,17 @@ block content
         .workpage__footer__content
           | Make lists, not war.
   hr
-  form(method='post', action='/items')
+  form.form--add-item(method='post', action='/items')
+    .form__header Add Items
     .form-group
-      input.form-control(type='text', name='title', placeholder='ToDo Title')
+      input.form__control(type='text', name='title', placeholder='ToDo Title')
     .form-group
-      input.form-control(type='text', name='description', placeholder='ToDo Description')
+      input.form__control(type='text', name='description', placeholder='ToDo Description')
     .form-group
-      label Select Parent
-      select.form-control(data-style='btn', name='parent_id')
+      label.form__label Parent:
+      select.form__control(data-style='btn', name='parent_id')
         option(value='0') None
         each item in items
           option(value=`${item.id}`)= item.title
 
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn--primary(type='submit') Submit

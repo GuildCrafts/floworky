@@ -40,6 +40,18 @@ body{
   top: 15px;
 }
 
+.main-page{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .navbar {
   --navbar-color:  #3D3D3D;
   --navbar-height: 29px;
@@ -205,8 +217,10 @@ body{
 }
 
 .workpage {
+  font-family:'Open Sans';
+  position: relative;
   display: block;
-  width: 50%;
+  width: 700px;
   min-height: 800px;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -215,7 +229,6 @@ body{
   border-radius: 2px;
   background-color: #ffffff;
   padding: 40px 60px;
-  margin-left: 20%;
 }
 
 .workpage__main {
@@ -233,7 +246,7 @@ body{
   margin: 40px 50px 10px;
   position: relative;
   text-align: center;
-  bottom: 0;
+  bottom: 50px;
 }
 
 .workpage__footer__content {
@@ -258,7 +271,8 @@ body{
 
 .item__toggle {
   display: inline;
-  padding: 0 4px;
+  font-size: 14px;
+  padding: 0 6px;
   border-radius: 100%;
   margin-right: 5px;
   background-color: #e0e0e0;
@@ -519,6 +533,11 @@ body{
   font-family: 'Roboto';
 }
 
+.form__header{
+  font-family: 'Open Sans', Arial;
+  text-align: center;
+  font-weight: bolder;
+}
 .form__login {
   background-color: #fff;
   text-align: center;
@@ -528,6 +547,17 @@ body{
   border-radius: 8px;
   padding: 1.5em;
   width: 280px;
+}
+
+.form--add-item{
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #888;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #3D3D3D;
 }
 
 .form__help-block {
