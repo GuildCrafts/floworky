@@ -93,9 +93,13 @@ const completedClicked = event => {
   const getFilterStatus = () => {
     const pageURL= decodeURIComponent(window.location.search)
     const parameterMatch = /completed_filter=(.*)/
-    const filterStatus = parameterMatch.exec(pageURL)[1]
+    const filterStatus = parameterMatch.exec(pageURL)
     //without the if statement, function breaks when there is no param and button disappears
-    switch (filterStatus){
+    if( filterStatus === null ){
+      $( '#btn--completed' ).removeClass( 'btn--hidden' )
+      return
+    }
+    switch ( filterStatus[1] ){
       case 'completed':
         $( '#btn--incomplete' ).removeClass( 'btn--hidden' )
         break

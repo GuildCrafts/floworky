@@ -17,14 +17,6 @@ mixin display( nodes, depth )
 
 block content
 
-    ol.breadcrumb
-      li
-        a(href=`/items/${breadcrumbs[0].id}`)= breadcrumbs[0].title
-
-    each crumb in breadcrumbs.slice( 1, breadcrumbs.length - 1 )
-      li
-        a(href=`/items/${crumb.id}`)= crumb.title
-
   div.main-page
     .work-page
       .work-page__main
