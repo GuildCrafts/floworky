@@ -5,6 +5,11 @@ const minusSevenDays = todaysDate.subtract(7, 'days')
 console.log('-7: ', minusSevenDays.format("dddd, MMMM Do YYYY, h:mm:ss a"), '\n');
 console.log('todaysDate: ', today.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
+const lengthOfUse = (User, where) =>
+  User.findOne({where})
+    .then(user => {
+    return Math.abs(todaysDate.diff(user.createdAt, 'days'))
+    })
 
 const bulletsCreated = (auditRecords) => {
   const createdThisWeek = auditRecords.filter(record => record.createdAt >= minusSevenDays)
@@ -52,16 +57,8 @@ const calculateStats = (Audit, user_id) => {
 }
 const grabUserStats = (User, user_id, Audit, Item) => {
   const where = {id: user_id}
-  const userStats = User.findOne({where})
-  .then(user => {
-    return Math.abs(todaysDate.diff(user.createdAt, 'days'))
-    console.log('user: ', user);
-  })
-  .then(lengthOfUse => {
-    console.log('lengthOfUse', lengthOfUse);
-    return calculateStats(Audit, user_id)
-  })
-
+  const userStats = calculateStats(Audit, user_id)
+  userStats.lengthOfUse = lengthOfUse(User, where)
   return userStats
 }
 
