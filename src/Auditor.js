@@ -18,35 +18,33 @@ const returnAuditOptions = (updateType, item, data_type) => {
       }
 
       if(type === 'title' ){
-        console.log('in title');
+        console.log('type: ', item._previousDataValues.title );
         let options = {
           table_name: 'Items',
           element_id: item.id,
           element_name: type,
           old_value: item._previousDataValues.title,
           new_value: item.title,
-          field_type: datatype,
+          field_type: data_type,
           user_id: item.user_id
         }
-        console.log('title',options);
+        console.log('title: ',options);
         return options
       }
 
       if(type === 'description'){
         let options = {
           table_name: 'Items',
-          element_id: options.where.id,
+          element_id: item.id,
           element_name: 'description',
-          old_value: ! item._previousDataValues,
+          old_value: item._previousDataValues.description,
           new_value: item.description,
-          field_type: datatype,
-          user_id: options.where.user_id
+          field_type: data_type,
+          user_id: item.user_id
         }
         console.log('description', options);
         return options
       }
-
-
     })
     console.log('auditOptions',auditOptions);
   return auditOptions

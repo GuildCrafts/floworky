@@ -34,12 +34,12 @@ module.exports = function(sequelize, DataTypes) {
         },
 
         filterParameters: params => {
-          console.log(params);
-        return VALID_PARAMETERS.reduce( (memo, key) => {
-          if( params[ key ] !== undefined ) {
-            memo[ key ] = params[ key ]
-          }
-          return memo
+          return VALID_PARAMETERS.reduce( (memo, key) => {
+            if( params[ key ] !== undefined ) {
+              memo[ key ] = params[ key ]
+            }
+
+            return memo
           }, {} )
         }
       }

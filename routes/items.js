@@ -28,39 +28,20 @@ router.get( '/weekly', ( request, response ) => {
 })
 
 router.post( '/:id', ( request, response ) => {
-  const { Item } = request.app.get( 'models' )
+  const {Item, Audit} = request.app.get( 'models' )
   const { id } = request.params
   const where = { id, user_id: request.user.id }
-console.log('pre',request.body);
-  Item.filterParameters( request.body )
-    .then( result => {
-      console.log('post',result);
-      const fields = Object.keys(result)
-      return {result, fields}
-    })
-    .then(({result, fields}) => {
-      let data_type_string = `Item.tableAttributes.${fields}.type.constructor.key`
-      let data_type = eval(data_type_string)
-      Item.update( result, { where, individualHooks: true, updateType: fields  , data_type: data_type  })  //request.body = {completed: true}
-      .then( jsonResponse => {
-        response.json({ success: true, id })
-      })
-      .catch( error => response.json({ success: false, id, message: error.message }))
-    })
+  const valid_params = Item.filterParameters( request.body )
+  const fields = Object.keys(valid_params)
+  let data_type_string = `Item.tableAttributes.${fields}.type.constructor.key`
+  const data_type = eval(data_type_string)
 
-  // if ( request.body.hasOwnProperty('completed') ) {
-  //   let old_value = ! request.body.completed
-  //   console.log('old_value',old_value);
-  //   Audit.create({
-  //     table_name: 'Items',
-  //     field_id: id,
-  //     field_name: 'completed',
-  //     old_value: old_value.toString(),
-  //     new_value: request.body.completed.toString(),
-  //     field_type: 'BOOLEAN',
-  //     user_id: request.user.id
-  //   })
-  // }
-})
+
+  Item.update( valid_params, { where, data_type, updateType: fields, individualHooks: true})
+    .then( result => response.json({ success: true, id }))
+    .catch( error =>
+      response.json({ success: false, id, message: error.message })
+    )
+  })
 
 module.exports = router
