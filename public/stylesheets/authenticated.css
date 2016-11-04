@@ -60,13 +60,8 @@
 }
 
 .item--depth {
-  --depth: 10px;
+  --depth: 20px;
   left: var(--depth);
-}
-
-.item--depth > .item__children > .item--depth{
-  --newdepth: calc(var(--depth) * 2);
-  left: var(--newdepth);
 }
 
 .item__heading > .item__title {
