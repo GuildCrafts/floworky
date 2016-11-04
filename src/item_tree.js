@@ -1,8 +1,9 @@
 const ItemNode = require( './item_node' )
 
 class ItemTree {
-  constructor( items=[] ) {
+  constructor( items=[], isAbsoluteRoot, rootId ) {
     this.items = items
+    this.rootId = !isAbsoluteRoot ? rootId : null
 
     this.buildTree()
   }
@@ -12,7 +13,19 @@ class ItemTree {
   }
 
   findRootId() {
+    if ( this.rootId === null ) {
+      return this.absoluteRoot
+    } else {
+      return this.relativeRoot
+    }
+  }
+
+  get absoluteRoot() {
     return this.items.find( item => item.is_root ).id
+  }
+
+  get relativeRoot() {
+    return this.items.find( item => (item.id === this.rootId) ).id
   }
 
   buildMap() {
@@ -39,7 +52,7 @@ class ItemTree {
     const items = this.items.filter( item => ids.includes( item.id ) )
       .map( item => Object.assign( {}, item.toJson(), { is_root: item.id === id } ))
 
-    return new ItemTree( items )
+    return new ItemTree( items, false, id )
   }
 
   bfs( node ) {

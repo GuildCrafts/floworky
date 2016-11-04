@@ -5,6 +5,7 @@ mixin display( nodes, depth )
     .item(data-id=entry.id)
       .heading(data-id=entry.id, data-completed=entry.completed)
         .completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
+        a.viewItemLink.glyphicon.glyphicon-asterisk(aria-hidden='true', href=`/items/${entry.id}`)
         .title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
           span(data-id=entry.id)=entry.title
           input.edit-title.hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
@@ -30,20 +31,20 @@ block content
 
     button.btn.btn-primary(type='submit') Submit
 
-  ol.breadcrumb
-    li
-      a(href=`/items/${breadcrumbs[0].id}`)= breadcrumbs[0].title
+  hr
 
-  each crumb in breadcrumbs.slice( 1, breadcrumbs.length - 1 )
-    li
-      a(href=`/items/${crumb.id}`)= crumb.title
-
-  div
-    h3 Your ToDo's:
+  if breadcrumbs.length > 1
+    ol.breadcrumb
+      li
+        a(href=`/items/${breadcrumbs[0].id}`)= breadcrumbs[0].title
+      each crumb in breadcrumbs.slice( 1, breadcrumbs.length - 1 )
+        li
+          a(href=`/items/${crumb.id}`)= crumb.title
 
   .root(data-id=root.id)
     .heading(data-id=root.id, data-completed=root.completed)
       .completeToggle.glyphicon.glyphicon-ok(aria-hidden='true', data-id=root.id, data-completed=root.completed)
+      a.viewItemLink.glyphicon.glyphicon-asterisk(aria-hidden='true', href=`/items/${root.id}`)
       .title(data-id=root.id, data-completed=root.completed, class={completed: root.completed})
         span(data-id=root.id)=root.title
         input.edit-title.hidden(data-id=root.id, type='text', name='edit-title', value=root.title)

@@ -4,9 +4,37 @@
   font-family: 'Contrail One', cursive;
 }
 
+.breadcrumb {
+  margin-top: 20px;
+}
+
+.breadcrumb li+li::before {
+  content: '';
+  padding: 5px;
+}
+
+.breadcrumb li {
+  margin-left: 0px;
+}
+
+.breadcrumb li::after {
+  content: '>';
+  padding-left: 8px;
+  color: #ccc;
+}
+
 .item {
   padding-top: 5px;
   margin-left: 20px;
+}
+
+a.viewItemLink {
+  color: #000;
+  margin-left: 5px;
+}
+
+.item .completeToggle, .item a.viewItemLink {
+  font-size: 10px;
 }
 
 .root {

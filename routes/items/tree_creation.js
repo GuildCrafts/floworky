@@ -1,6 +1,6 @@
 const ItemTree = require( '../../src/item_tree' )
 
-const buildTree = items => ({ items, tree: new ItemTree( items )})
+const buildTree = (items, rootIsChild, rootId) => ({ items, tree: new ItemTree( items, rootIsChild, rootId )})
 
 const buildSubTree = item_id => ({items, tree}) =>
   ({items, tree: tree.subTree( item_id ) })

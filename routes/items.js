@@ -7,8 +7,9 @@ const findAllItems = require('./items/find_all_items')
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
   const { user, query } = request
+  const isAbsoluteRoot = true
 
-  findAllItems( Item, user, query )
+  findAllItems( Item, user, query, isAbsoluteRoot )
     .then( generateBreadcrumbs )
     .then( respondWithItems( user, data => response.render( 'items/index', data ) ) )
 })
@@ -16,10 +17,11 @@ router.get( '/', ( request, response ) => {
 router.get( '/:item_id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
   const { user } = request
-  const itemId = parseInt( request.params.item_id )
-  const query = selectedItemsQuery(itemId)
+  const isAbsoluteRoot = false
+  const rootId = parseInt( request.params.item_id )
+  const query = selectedItemsQuery(rootId)
 
-  findAllItems( Item, user, query )
+  findAllItems( Item, user, query, isAbsoluteRoot, rootId )
     .then( generateBreadcrumbs )
     .then( respondWithItems( user, data => response.render( 'items/index', data ) ) )
 })
