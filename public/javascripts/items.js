@@ -94,7 +94,7 @@ const completedClicked = event => {
     const pageURL= decodeURIComponent(window.location.search)
     const parameterMatch = /completed_filter=(.*)/
     const filterStatus = parameterMatch.exec(pageURL)
-    //without the if statement, function breaks when there is no param and button disappears
+
     if( filterStatus === null ){
       $( '#btn--completed' ).removeClass( 'btn--hidden' )
       return

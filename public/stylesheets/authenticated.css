@@ -59,6 +59,16 @@
   padding-bottom: 4px;
 }
 
+.item--depth {
+  --depth: 10px;
+  left: var(--depth);
+}
+
+.item--depth > .item__children > .item--depth{
+  --newdepth: calc(var(--depth) * 2);
+  left: var(--newdepth);
+}
+
 .item__heading > .item__title {
   display: inline;
 }
@@ -78,6 +88,7 @@
 
 .item__description {
   font-size: 12px;
+  margin-left: 20px;
 }
 
 .item--hidden {
