@@ -1,0 +1,77 @@
+.login-page {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F9F9FA;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.login-page__brand {
+  color: #EBEBEB;
+  opacity: .9;
+  height: 18px;
+  width: 80px;
+  margin-top: 10px;
+  font-size: 0.9em;
+  text-decoration: none;
+  padding-top: 2px;
+  padding-right: 2em;
+  padding-left: 4px;
+  font-family: 'Taviraj', Arial, sans-serif;
+  font-size: 1.65em;
+}
+
+.login-page__header {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  margin: 44.5px 0;
+}
+
+.login-page__header--title {
+  font-size: 45px;
+}
+
+.login-page__header--subtitle {
+  margin-top: 16px;
+  font-size: 22px;
+  color: #666;
+}
+
+.login-page__corner-button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.btn__login-page {
+  background-color: #3C5977;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn__login-page:hover {
+  background-color: #324962;
+}
+
+.btn__login-page--normal {
+  width: 5.4em;
+  height: 1em;
+  font-size: 14px;
+  padding: 0.8em;
+  padding-bottom: 0.9em;
+}
+
+.form--login {
+  background-color: #fff;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  border: solid 1px #DDDDDD;
+  border-radius: 8px;
+  padding: 1.5em;
+  width: 280px;
+}
