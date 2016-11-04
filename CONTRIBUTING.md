@@ -5,9 +5,7 @@
 * Create a topic branch.  Branch names should begin with the issue number, followed by text describing the work.  Please use lower-kebab-case (i.e. `2-readme-updated`).
 * Complete work
 * Submit a pull request
-* Necessary migrations have been created with the following commands:
-  * [sequelize model:create](https://www.npmjs.com/package/sequelize-cli)
-  * [sequelize migrations:create](https://www.npmjs.com/package/sequelize-cli)
+* Necessary migrations have been created
 
 ## Quality Requirements
 * Write intention revealing code - use well named identifiers for variables, functions, css classes, etc.

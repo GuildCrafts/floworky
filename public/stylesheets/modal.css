@@ -1,0 +1,19 @@
+#modal-container {
+  padding: 25px;
+  max-width: 100%;
+}
+
+#helpModal {
+  bottom: -30%;
+  right: -50%;
+  outline: none;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+}
+
+.modal-backdrop {
+   background-color: rgba(0,0,0,0);
+}
