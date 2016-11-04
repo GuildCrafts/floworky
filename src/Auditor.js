@@ -1,7 +1,21 @@
 const returnAuditOptions = (updateType, item, data_type) => {
-  console.log('returning Audit Options',updateType, data_type);
+  console.log('returning Audit Options', updateType, data_type);
   const auditOptions = updateType.map(type => {
     console.log('type',type, 'data_type', data_type);
+      if(type === 'create'){
+        console.log('in create');
+        let options = {
+          table_name: 'Items',
+          element_id: item.id,
+          element_name: 'row',
+          old_value: 'n/a',
+          new_value: JSON.stringify(item),
+          field_type: data_type,
+          user_id: item.user_id
+        }
+        console.log('>>>>>>',item);
+        return options
+      }
       if(type === 'completed'){
         console.log('in completed');
         let options = {

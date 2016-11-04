@@ -3,6 +3,7 @@ const VALID_PARAMETERS = [ 'completed', 'title', 'description' ]
 const returnAuditOptions = require('../src/Auditor')
 
 module.exports = function(sequelize, DataTypes) {
+  const Audit = sequelize.models.Audit
   const Item = sequelize.define('Item',
     {
       title: DataTypes.STRING,
@@ -16,13 +17,13 @@ module.exports = function(sequelize, DataTypes) {
 
     {
       hooks: {
-        // afterCreate: function(item, options) {
-        // },
-        // afterDestroy: function(user, options) {
-        //   user.username = 'Toni'
-        // },
+        afterCreate: function(item, options) {
+          let {updateType, data_type} = options
+          let auditOptions = returnAuditOptions(updateType, item, data_type)
+          Audit.create(auditOptions[0], {success: true})
+        },
         afterUpdate: function(item, options) {
-          const Audit = sequelize.models.Audit
+
           let {updateType, data_type} = options
           let auditOptions = returnAuditOptions(updateType,item, data_type)
           Audit.create(auditOptions[0], {success: true})

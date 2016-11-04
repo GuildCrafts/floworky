@@ -16,7 +16,6 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       },
 
-      getAuditOptions: () => returnAuditOptions
     }
   });
   return Audit;

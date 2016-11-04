@@ -4,6 +4,7 @@ const router = express.Router()
 const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './items/item_response' )
 const { buildTree } = require( './items/tree_creation' )
 const findAllItems = require('./items/find_all_items')
+const grabUserStats = require('../src/weekly_report')
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
@@ -19,12 +20,20 @@ router.post( '/', ( request, response ) => {
 
   const { title, description, parent_id } = request.body
 
-  Item.create({ title, description, parent_id, user_id: request.user.id })
+  Item.create({ title, description, parent_id, user_id: request.user.id  }, {updateType: ['create'], individualHooks: true, data_type: 'JSON'  })
     .then( result => response.redirect( '/items' ))
 })
 
 router.get( '/weekly', ( request, response ) => {
-  response.render('items/weekly_review', {user: request.user})
+  const {User, Audit, Item} = request.app.get('models')
+
+  const user_id = request.user.id
+  // console.log('uid: ', request.user.id);
+  grabUserStats( User, user_id, Audit, Item)
+    .then(  userStats => {
+      console.log('>>>>>>>>>', userStats)
+      response.render('items/weekly_review', {userStats})
+    })
 })
 
 router.post( '/:id', ( request, response ) => {
