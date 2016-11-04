@@ -29,9 +29,10 @@
 
 .navbar__star {
   color: #EAEAEA;
-  position: absolute;
   background-color: #666666;
-  top: 4px;
+  position: relative;
+  top: 3px;
+  height: 16px;
   margin-left: 5px;
   border-radius: 3px;
 }
@@ -179,6 +180,7 @@
   position: fixed;
   width: 150px;
   right: 45px;
+  height: 29.25px;
 }
 
 .btn--star {
