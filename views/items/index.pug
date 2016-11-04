@@ -2,7 +2,7 @@ extends ../layouts/authenticated-layout
 
 mixin display( nodes, depth )
   each entry in nodes
-    .item.item--depth(data-id=entry.id)
+    .item(data-id=entry.id)
       .item__heading(data-id=entry.id, data-completed=entry.completed)
         .item__toggle(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
           |&#9679;

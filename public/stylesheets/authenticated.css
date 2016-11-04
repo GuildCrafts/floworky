@@ -59,7 +59,7 @@
   padding-bottom: 4px;
 }
 
-.item--depth {
+.item > .item__children > .item{
   --depth: 20px;
   left: var(--depth);
 }
