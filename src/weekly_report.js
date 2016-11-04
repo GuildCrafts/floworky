@@ -2,14 +2,14 @@ const moment = require('moment')
 const today = moment()
 const todaysDate = moment()
 const minusSevenDays = todaysDate.subtract(7, 'days')
-console.log('-7: ', minusSevenDays.format("dddd, MMMM Do YYYY, h:mm:ss a"), '\n');
-console.log('todaysDate: ', today.format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
-const lengthOfUse = (User, where) =>
-  User.findOne({where})
+const lengthOfUse = (User, where) =>{
+  const duration = User.findOne({where})
     .then(user => {
     return Math.abs(todaysDate.diff(user.createdAt, 'days'))
     })
+  return duration
+}
 
 const bulletsCreated = (auditRecords) => {
   const createdThisWeek = auditRecords.filter(record => record.createdAt >= minusSevenDays)
@@ -36,20 +36,17 @@ const bulletsCompleted = (auditRecords) => {
       record.new_value == true &&
       record.createdAt >= minusSevenDays
     })
-    console.log();
     return completedItems.length
 }
 
 const calculateStats = (Audit, user_id) => {
-  const stats =Audit.findAll({where: {user_id: user_id}})
+  const stats = Audit.findAll({where: {user_id: user_id}})
     .then(auditRecords => {
      let created = bulletsCreated(auditRecords)
      let changed = bulletsChanged(auditRecords)
      let completed = bulletsCompleted(auditRecords)
      let total = totalBullets(auditRecords)
-     console.log('raw Stats: ',created, changed, completed, total);
      const userStats = {created, changed, completed, total}
-     console.log('userStats: ', userStats);
      return userStats
     })
 
@@ -58,7 +55,8 @@ const calculateStats = (Audit, user_id) => {
 const grabUserStats = (User, user_id, Audit, Item) => {
   const where = {id: user_id}
   const userStats = calculateStats(Audit, user_id)
-  userStats.lengthOfUse = lengthOfUse(User, where)
+  const duration = Promise.resolve(lengthOfUse(User, where)).then(result => result)
+  userStats.duration = duration
   return userStats
 }
 

@@ -1,6 +1,12 @@
+extends ../layouts/authenticated-layout
 
 block content
   h1 Your weekly review
-  for record in userStats
-    p=record
+
+  p= `Bullets Completed: ${userStats.completed}`
+  p= `You've used WorkFlowy for ${userStats.lengthOfUse} days.`
+  p= `Bullets Created: ${userStats.created}`
+  p= `Bullets Changed: ${userStats.changed} `
+  p= `Total Bullets: ${userStats.total}`
+
   a.btn.btn-success(href="/items") Go to items

@@ -26,14 +26,14 @@ router.post( '/', ( request, response ) => {
 
 router.get( '/weekly', ( request, response ) => {
   const {User, Audit, Item} = request.app.get('models')
-
-  const user_id = request.user.id
+  const user = request.user
+  const user_id = user.id
   // console.log('uid: ', request.user.id);
   grabUserStats( User, user_id, Audit, Item)
-    .then(  userStats => {
-      console.log('>>>>>>>>>', userStats)
-      response.render('items/weekly_review', {userStats})
-    })
+  .then(  userStats => {
+      let keys = Object.keys(userStats)
+      response.render('items/weekly_review', {userStats, user, keys})
+  })
 })
 
 router.post( '/:id', ( request, response ) => {
@@ -42,7 +42,7 @@ router.post( '/:id', ( request, response ) => {
   const where = { id, user_id: request.user.id }
   const valid_params = Item.filterParameters( request.body )
   const fields = Object.keys(valid_params)
-  let data_type_string = `Item.tableAttributes.${fields}.type.constructor.key`
+  const data_type_string = `Item.tableAttributes.${fields}.type.constructor.key`
   const data_type = eval(data_type_string)
 
 
