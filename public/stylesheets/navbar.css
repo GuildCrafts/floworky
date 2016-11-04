@@ -109,7 +109,6 @@
 .dropdown__menu{
   list-style: none;
   font-family :sans-serif;
-  font-size: 0.85em;
   min-width: 95px;
   min-width: 150px;
   min-height: 40px;
@@ -133,26 +132,32 @@
 
 .dropdown__item {
   margin: 0;
-  padding: 4px 8px 2.5px;
+  width: 100%;
+  /*padding: 4px 8px 2.5px;*/
   font-size: 13px;
 }
 
 .dropdown__item--header {
   text-align: center;
+  margin-top: 4px;
   font-size:11px;
   color:#aaa;
 }
 
 .dropdown__item--link {
   text-decoration: none;
-  padding-left: 3px;
   color: #fff;
   width: 100%;
+  padding: 6px 0;
   display: block;
 }
 
 .dropdown__item--link:hover {
   background-color:#444;
+}
+
+.dropdown__item--label {
+  margin-left: 10px;
 }
 
 .dropdown__toggle--open {

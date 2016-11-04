@@ -12,7 +12,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/navbar.css')
     link(rel='stylesheet', href='/stylesheets/authenticated.css')
-      
+
   body
     nav.navbar
       .navbar__header
@@ -36,7 +36,8 @@ html
               | &blacktriangledown;
             ul.dropdown__menu.dropdown--hidden
               li.dropdown__item
-                a.dropdown__item--link(href='/accounts/logout') Log Out
+                a.dropdown__item--link(href='/accounts/logout')
+                  .dropdown__item--label Log Out
               li.dropdown__item.dropdown__item--header= user.email
 
     .container
