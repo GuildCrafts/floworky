@@ -14,8 +14,10 @@ const params = data =>
 
 const checkJsonForSuccessField = json => {
   if( json.success ) {
+    console.log('checking for json success');
     Promise.resolve( json )
   } else {
+    console.log('rejecting for json failure');
     Promise.reject( json.message )
   }
 }
@@ -74,7 +76,6 @@ const completedClicked = event => {
   const element = $( event.target )
   const id = element.data( 'id' )
   const completed = ! element.data( 'completed' )
-
   fetch( `/items/${id}`, params({ completed: completed } ) )
     .then( result => result.json() )
     .then( checkJsonForSuccessField )
@@ -89,6 +90,8 @@ const completedClicked = event => {
       }
     )
   }
+
+
 
 $(document).ready( () => {
   $( '.edit-title' ).keypress( titleEdited )
