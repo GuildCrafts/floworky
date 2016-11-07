@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     completed: DataTypes.BOOLEAN,
     is_root: DataTypes.BOOLEAN,
+    starred: DataTypes.BOOLEAN,
     parent_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER
   }, {
