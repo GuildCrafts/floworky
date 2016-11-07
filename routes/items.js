@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const { respondWithItems, generateBreadcrumbs } = require( './items/item_response' )
+const { respondWithItems, generateBreadcrumbs, respondWithStarred } = require( './items/item_response' )
 const { buildSubTree } = require( './items/tree_creation' )
 const buildFilteredItemTree = require( './items/build_filtered_item_tree' )
+const buildStarredItemArray = require( './items/build_starred_item_array' )
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
@@ -13,6 +14,14 @@ router.get( '/', ( request, response ) => {
   buildFilteredItemTree( Item, user, query )
     .then( generateBreadcrumbs )
     .then( respondWithItems( user, data => response.render( 'items/index', data )))
+})
+
+router.get( '/starred', ( request, response ) => {
+  const Item = request.app.get( 'models' ).Item
+  const { user, query } = request
+
+  buildStarredItemArray( Item, user.id )
+    .then( data => response.json( { data } ) )
 })
 
 router.get( '/:item_id', ( request, response ) => {

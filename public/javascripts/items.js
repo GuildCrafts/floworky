@@ -1,25 +1,3 @@
-const FETCH_PARAMS = {
-  method: 'post',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  credentials: 'include'
-}
-
-const RETURN_KEY = 13
-
-const params = data =>
-  Object.assign( {}, FETCH_PARAMS, { body: JSON.stringify( data ) } )
-
-const checkJsonForSuccessField = json => {
-  if( json.success ) {
-    Promise.resolve( json )
-  } else {
-    Promise.reject( json.message )
-  }
-}
-
 const selector = ( parent, id, tagToShow ) =>
   `.${parent}[data-id=${id}] > ${tagToShow}`
 
@@ -131,6 +109,24 @@ const completedClicked = event => {
       }
     }
 
+  const starredToggle = event => {
+    const element = $( event.target )
+    const id = element.data( 'id' )
+    const starred = ! element.data( 'starred' )
+
+    fetch( `/items/${id}`, params({ starred: starred } ) )
+      .then( result => result.json() )
+      .then( checkJsonForSuccessField )
+      .then( json => {
+          element.data( 'starred', starred )
+          if( starred ) {
+            element.html( '&#x2605' )
+          } else {
+            element.html( '&#x2606' )
+          }
+        }
+      )
+    }
 
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
@@ -139,6 +135,7 @@ $(document).ready( () => {
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
   $( '.item__toggle' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
+  $( '.star' ).click( starredToggle )
   getFilterStatus()
   getCheckedStatus()
 })
