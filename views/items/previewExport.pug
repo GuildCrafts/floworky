@@ -1,4 +1,14 @@
 modal
-  a.close-link x
-  .item-page
-    +display( tree, 0 )
+  .preview-window
+    .preview-window-navbar
+      h1.preview-window-header Export List
+    .preview-window-body
+      .item-page
+        +display( tree, 0 )
+    .preview-window-footer
+      label Formatted
+        input.formatted-preview(type='radio')
+      label Plain Text
+        input.plain-text-preview(type='radio')
+      a.close-link Close Modal
+      a.download-link Download List 

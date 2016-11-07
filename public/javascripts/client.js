@@ -1,24 +1,34 @@
 $(document).ready(function(){
-  var modal = document.querySelector('.modal')
-  var exportLink = document.querySelector('.export-link')
+  const modal = document.querySelector('.modal')
+  const exportLink = document.querySelector('.export-link')
+  const radioButtonFormattedText = document.querySelector('.formatted-preview')
+  const radioButtonPlainText = document.querySelector('.plain-text-preview')
+  const downloadLink = document.querySelector('.download-link')
+  const elHtml = document.querySelector('.item-page').innerHTML
 
-  exportLink.onclick = function(e) {
+  exportLink.onclick = (e) => {
     modal.style.display = 'block'
 
-    var elHtml = document.querySelector('.item-page').innerHTML;
-    var mimeType = 'text/plain';
-    var exportLink = document.querySelector('.export-link');
-
-    link.setAttribute('download', 'logFile');
-    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
-    
+    // const mimeType = 'text/plain'
+    const exportLink = document.querySelector('.export-link')
     e.preventDefault()
+
   }
 
-  var closeLink = document.querySelector('.close-link')
+  const closeLink = document.querySelector('.close-link')
 
-  closeLink.onclick = function(e) {
+  closeLink.onclick = (e) => {
     modal.style.display = 'none'
     e.preventDefault()
   }
+
+  downloadLink.onclick = (e) => {
+    downloadInnerHTML = (filename, elId, mimeType) => {
+      mimeType = mimeType || 'text/plain'
+
+      link.setAttribute('download', filename)
+      link.setAttribute('href', 'data:' +  mimeType + ';charset=utf-8' + encodeURIComponent(elHtml))
+    }
+  }
+
 })

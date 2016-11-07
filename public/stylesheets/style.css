@@ -121,8 +121,37 @@ body{
   position: absolute;
   top: 26%;
   left: 26%;
+  overflow-y: auto;
 }
 
+.preview-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-window-navbar {
+  width: 100%;
+  background-color: grey;
+  outline: .5px black solid;
+}
+
+.preview-window-body {
+  margin: 10px;
+}
+
+.preview-window-footer {
+  width: 100%;
+  background-color: grey;
+  outline: .5px black solid;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.preview-window-header {
+  padding-left: 10px;
+}
 .close-link {
   display: flex;
   flex-direction: row-reverse;
