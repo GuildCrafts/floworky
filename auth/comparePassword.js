@@ -7,7 +7,7 @@ const findUser = ( User, email, password ) => {
         if( ! user ) {
           reject({})
         }
-        
+
         bcrypt.compare( password, user.password, (error, result ) => {
           if( result ) {
             resolve( user )

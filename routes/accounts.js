@@ -8,7 +8,7 @@ const validateEmail = require( '../src/mail/validate_email' )
 
 
 const AUTH_OPTIONS = {
-  successRedirect: '/items',
+  successRedirect: '/items/weekly',
   failureRedirect: '/accounts/login'
 }
 
