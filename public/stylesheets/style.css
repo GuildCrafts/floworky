@@ -4,6 +4,11 @@
   font-family: 'Contrail One', cursive;
 }
 
+.breadcrumbs {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 .item .children {
   margin-left: 20px;
 }
