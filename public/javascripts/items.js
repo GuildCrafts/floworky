@@ -131,6 +131,25 @@ const completedClicked = event => {
       }
     }
 
+  const starredToggle = event => {
+    const element = $( event.target )
+    const id = element.data( 'id' )
+    const completed = ! element.data( 'completed' )
+
+    fetch( `/items/${id}`, params({ starred: 'true' } ) )
+      .then( result => result.json() )
+      .then( checkJsonForSuccessField )
+      .then( json => {
+        const parent = $( `.item__title[data-id=${id}]` )
+          element.data( 'completed', completed )
+          if( completed ) {
+            parent.addClass( 'item__title--completed' )
+          } else {
+            parent.removeClass( 'item__title--completed' )
+          }
+        }
+      )
+    }
 
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
@@ -139,6 +158,7 @@ $(document).ready( () => {
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
   $( '.item__toggle' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
+  $( '.icon__star' ).click( starredToggle )
   getFilterStatus()
   getCheckedStatus()
 })
