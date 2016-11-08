@@ -2,7 +2,7 @@
 
 module.exports = {
   up: ( queryInterface, Sequelize ) => {
-    queryInterface.addColumn( 'Users', 'email_verified', Sequelize.BOOLEAN )
+    queryInterface.addColumn( 'Users', 'email_verified', { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false } )
   },
 
   down: ( queryInterface, Sequelize ) => {

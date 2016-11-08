@@ -1,0 +1,22 @@
+extends ../layouts/layout
+
+block content
+  .container
+    h1 Hi! Here is Weekly Summary for *****WEEKLY DATES*****
+  .jumbotron.general_summary
+    h1 Number of:
+    .summary_detail
+      h3 Tasks Created
+      h3 ***number of tasks***
+    .summary_detail
+      h3 Tasks Edited
+      h3 **number of tasks edited****
+    .summary_detail
+      h3 Tasks completed
+      h3 ***number of tasks completed***
+    .summary_detail
+      h3 Tasks Total
+      h3 ****total number of tasks for user***
+  form(method='post', action='/items')
+    .btn-group
+      button.btn.btn-primary(type='submit') Exit
