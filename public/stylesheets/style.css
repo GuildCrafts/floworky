@@ -1,4 +1,4 @@
-body{
+body {
   min-width: 100%;
   top: 0;
   left: 0;
@@ -101,52 +101,4 @@ body{
 
 .form__help-block--hidden {
   display: none;
-}
-
-.modal {
-  display: none;
-  background-color: white;
-  list-style-type: disc;
-  width: 50%;
-  height: 50%;
-  outline: black 1px solid;
-  position: absolute;
-  top: 26%;
-  left: 26%;
-  overflow-y: auto;
-}
-
-.preview-window {
-  display: flex;
-  flex-direction: column;
-}
-
-.preview-window-navbar {
-  width: 100%;
-  background-color: grey;
-  outline: .5px black solid;
-}
-
-.preview-window-body {
-  margin: 10px;
-}
-
-.preview-window-footer {
-  width: 100%;
-  background-color: grey;
-  outline: .5px black solid;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.preview-window-header {
-  padding-left: 10px;
-}
-.close-link {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
