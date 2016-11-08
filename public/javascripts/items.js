@@ -134,18 +134,18 @@ const completedClicked = event => {
   const starredToggle = event => {
     const element = $( event.target )
     const id = element.data( 'id' )
-    const completed = ! element.data( 'completed' )
+    const starred = ! element.data( 'starred' )
+    console.log("starred!!!", starred);
 
-    fetch( `/items/${id}`, params({ starred: 'true' } ) )
+    fetch( `/items/${id}`, params({ starred: starred } ) )
       .then( result => result.json() )
       .then( checkJsonForSuccessField )
       .then( json => {
-        const parent = $( `.item__title[data-id=${id}]` )
-          element.data( 'completed', completed )
-          if( completed ) {
-            parent.addClass( 'item__title--completed' )
+          element.data( 'starred', starred )
+          if( starred ) {
+            element.addClass( 'starred' )
           } else {
-            parent.removeClass( 'item__title--completed' )
+            element.removeClass( 'starred' )
           }
         }
       )

@@ -20,7 +20,7 @@ block content
   div.main-page
     .work-page
       .work-page__main
-        .icon.icon__star(data-id=`${root.id}`)
+        .icon.icon__star(data-id=root.id, data-starred=`${root.starred}`, class={starred: root.starred})
           | &#x2606;
         +display( tree, 0 )
       .work-page__footer

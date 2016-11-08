@@ -110,3 +110,7 @@ body{
 .form__help-block--hidden {
   display: none;
 }
+
+.starred {
+  color: red;
+}
