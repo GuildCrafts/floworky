@@ -110,3 +110,22 @@ body{
 .form__help-block--hidden {
   display: none;
 }
+
+.modal {
+  display: none;
+  background-color: white;
+  list-style-type: disc;
+  width: 50%;
+  height: 50%;
+  outline: black 1px solid;
+  position: absolute;
+  top: 26%;
+  left: 26%;
+}
+
+.close-link {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
