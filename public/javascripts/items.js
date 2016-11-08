@@ -131,6 +131,25 @@ const completedClicked = event => {
       }
     }
 
+  const starredToggle = event => {
+    const element = $( event.target )
+    const id = element.data( 'id' )
+    const starred = ! element.data( 'starred' )
+    console.log("starred!!!", starred);
+
+    fetch( `/items/${id}`, params({ starred: starred } ) )
+      .then( result => result.json() )
+      .then( checkJsonForSuccessField )
+      .then( json => {
+          element.data( 'starred', starred )
+          if( starred ) {
+            element.addClass( 'starred' )
+          } else {
+            element.removeClass( 'starred' )
+          }
+        }
+      )
+    }
 
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
@@ -139,6 +158,7 @@ $(document).ready( () => {
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
   $( '.item__toggle' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
+  $( '.icon__star' ).click( starredToggle )
   getFilterStatus()
   getCheckedStatus()
 })
