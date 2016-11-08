@@ -16,7 +16,8 @@ mixin display( nodes, depth )
         +display( entry.children, depth + 1 )
 
 block content
-
+  .modal
+    include previewExport.pug
   div.main-page
     .work-page
       .work-page__main
@@ -29,8 +30,6 @@ block content
   hr
   form.form--add-item(method='post', action='/items')
     .form__header Add Items
-  h1 Items
-  form(method='post', action='/items')
     .form-group
       input.form__control(type='text', name='title', placeholder='ToDo Title')
     .form-group

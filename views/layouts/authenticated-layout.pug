@@ -12,6 +12,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/navbar.css')
     link(rel='stylesheet', href='/stylesheets/authenticated.css')
+    link(rel='stylesheet', href='/stylesheets/exportmodal.css')
 
   body
     nav.navbar
@@ -39,44 +40,8 @@ html
                 a.dropdown__item--link(href='/accounts/logout')
                   .dropdown__item--label Log Out
               li.dropdown__item.dropdown__item--header= user.email
-    .preview-window
-      .modal
-        include ../items/previewExport.pug
-    .modal
-      include ../items/previewExport.pug
-    nav.navbar.navbar-default
-      .container-fluid
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapsed', aria-expanded='false')
-            span.sr-only
-          a.navbar-brand.logo(href='/') floworky
-        form.navbar-form.navbar-left(method='get', action='/items')
-          .form-group
-            input.form-control(type='text', name='search', placeholder='Search')
-          button.btn.btn-default(type='submit') Search
-        form.navbar-form.navbar-left(method='get', action='/items')
-          .btn-group(data-toggle='buttons')
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='all', autocomplete='off', checked='checked')
-              |  all items
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='completed' autocomplete='off')
-              |  completed
-            label.btn.btn-primary
-              input.completed_filter(type='radio', name='completed_filter', value='incomplete', autocomplete='off')
-              |  incomplete
-          button.btn.btn-default(type='submit') Filter
-        .collapse.navbar-collapse#navbar-collapse
-          ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                span.caret
-              ul.dropdown-menu
-                li
-                  a(href='/accounts/logout') Log Out
-                li
-                  a.export-link Export All
-                li.dropdown-header= user.email
+              li.dropdown__item
+                a.export-link Export All
 
     .container
       block content

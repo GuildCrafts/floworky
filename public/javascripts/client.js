@@ -4,11 +4,10 @@ $(document).ready(function(){
   const radioButtonFormattedText = document.querySelector('.formatted-preview')
   const radioButtonPlainText = document.querySelector('.plain-text-preview')
   const downloadLink = document.querySelector('.download-link')
-  const elHtml = document.querySelector('.item-page').innerHTML
+  const elHtml = document.querySelector('.item-page')
 
   exportLink.onclick = (e) => {
     modal.style.display = 'block'
-
     // const mimeType = 'text/plain'
     const exportLink = document.querySelector('.export-link')
     e.preventDefault()
