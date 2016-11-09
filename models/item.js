@@ -13,9 +13,29 @@ module.exports = function(sequelize, DataTypes) {
   },
   {
     hooks: {
-      afterUpdate: function(item, options) {
-
-
+      afterUpdate: function( item, options ) {
+        const getDiff = ( newObject, oldObject ) => {
+          //assuming both object have the same keys
+          let result = []
+          for( let key in newObject ){
+            if( newObject[key] !== oldObject[key] ){
+              let temp = {
+                key: key,
+                newValue: newObject[key],
+                oldValue: oldObject[key]
+              }
+              result.push(temp)
+            }
+          }
+          return result;
+        }
+        const diff = getDiff(item.dataValues, item._previousDataValues)
+        // const Audit = sequelize.models.Audit
+        // let {updateType, data_type} = options
+        // let auditOptions = returnAuditOptions(updateType,item, data_type)
+        // Audit.create(auditOptions[0], {success: true})
+        console.log("update success------------------------>", diff );
+        // console.log("OLDVALUES*******", title, description, completed );
       }
     },
       classMethods: {
