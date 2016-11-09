@@ -16,7 +16,6 @@ block content
       h3 ***number of tasks completed***
     .summary_detail
       h3 Tasks Total
-      h3 ****total number of tasks for user***
-  form(method='post', action='/items')
+      h3=count
     .btn-group
-      button.btn.btn-primary(type='submit') Exit
+      a.btn.btn-primary(href='/items') Exit

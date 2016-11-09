@@ -9,7 +9,7 @@ const validateEmail = require( '../src/mail/validate_email' )
 const { createRootItem } = require( './items/item_response')
 
 const AUTH_OPTIONS = {
-  successRedirect: '/items',
+  successRedirect: '/summary',
   failureRedirect: '/accounts/login'
 }
 

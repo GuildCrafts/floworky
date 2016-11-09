@@ -10,8 +10,15 @@ module.exports = function(sequelize, DataTypes) {
     is_root: DataTypes.BOOLEAN,
     parent_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER
-  }, {
-    classMethods: {
+  },
+  {
+    hooks: {
+      afterUpdate: function(item, options) {
+
+
+      }
+    },
+      classMethods: {
       associate: function(models) {
         // associations can be defined here
       },
