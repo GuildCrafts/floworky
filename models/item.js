@@ -10,8 +10,36 @@ module.exports = function(sequelize, DataTypes) {
     is_root: DataTypes.BOOLEAN,
     parent_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER
-  }, {
-    classMethods: {
+  },
+  {
+    hooks: {
+      afterUpdate: function( item, options ) {
+        const getDiff = ( newObject, oldObject ) => {
+          //assuming both object have the same keys
+          let result = []
+          for( let key in newObject ){
+            if( newObject[key] !== oldObject[key] ){
+              let temp = {
+                key: key,
+                newValue: newObject[key],
+                oldValue: oldObject[key]
+              }
+              result.push(temp)
+            }
+          }
+          return result
+        }
+        const diff = getDiff(item.dataValues, item._previousDataValues)
+
+        const Audit = sequelize
+        // const Audit = sequelize.models.Audit
+        // let {updateType, data_type} = options
+        // let auditOptions = returnAuditOptions(updateType,item, data_type)
+        // Audit.create(auditOptions[0], {success: true})
+        console.log("update success------------------------>", diff );
+      }
+    },
+      classMethods: {
       associate: function(models) {
         // associations can be defined here
       },

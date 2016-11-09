@@ -41,7 +41,7 @@ router.post( '/:id', ( request, response ) => {
   const { id } = request.params
   const where = { id, user_id: request.user.id }
 
-  Item.update( Item.filterParameters( request.body ), { where })
+  Item.update( Item.filterParameters( request.body ), { where, individualHooks: true })
     .then( result => response.json({ success: true, id }))
     .catch( error =>
       response.json({ success: false, id, message: error.message })
