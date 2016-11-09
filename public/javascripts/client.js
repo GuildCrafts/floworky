@@ -1,33 +1,40 @@
 $(document).ready(function(){
   const modal = document.querySelector('.modal')
-  const exportLink = document.querySelector('.export-link')
-  const radioButtonFormattedText = document.querySelector('.formatted-preview')
-  const radioButtonPlainText = document.querySelector('.plain-text-preview')
+  const exportLink = document.querySelector('.dropdown__item--export-link')
+  const buttonFormattedText = document.getElementById('formatted-preview')
+  const buttonPlainText = document.getElementById('plain-text-preview')
   const downloadLink = document.querySelector('.download-link')
   const elHtml = document.querySelector('.item-page')
+  const previewText = document.querySelector('preview-text')
 
-  exportLink.onclick = (e) => {
+  buttonPlainText.click(function(){
+    var now = new Date().toString();
+    this.href = "data:text/plain;charset=UTF-8,"  + encodeURIComponent(now);
+});
+
+  exportLink.onclick = e => {
     modal.style.display = 'block'
     // const mimeType = 'text/plain'
-    const exportLink = document.querySelector('.export-link')
+    const exportLink = document.querySelector('.dropdown__item--export-link')
     e.preventDefault()
-
   }
 
-  const closeLink = document.querySelector('.close-link')
 
-  closeLink.onclick = (e) => {
+
+  const closeLink = document.querySelector('.preview-window__close-link')
+
+  closeLink.onclick = e => {
     modal.style.display = 'none'
     e.preventDefault()
   }
 
-  downloadLink.onclick = (e) => {
-    downloadInnerHTML = (filename, elId, mimeType) => {
-      mimeType = mimeType || 'text/plain'
+  // downloadLink.onclick = (e) => {
+  //   downloadInnerHTML = (filename, elId, mimeType) => {
+  //     mimeType = mimeType || 'text/plain'
 
-      link.setAttribute('download', filename)
-      link.setAttribute('href', 'data:' +  mimeType + ';charset=utf-8' + encodeURIComponent(elHtml))
-    }
-  }
+  //     link.setAttribute('download', filename)
+  //     link.setAttribute('href', 'data:' +  mimeType + ';charset=utf-8' + encodeURIComponent(elHtml))
+  //   }
+  // }
 
 })
