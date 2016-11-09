@@ -38,10 +38,10 @@ html
             ul.dropdown__menu.dropdown--hidden
               li.dropdown__item
                 a.dropdown__item--link(href='/accounts/logout')
+              li.dropdown__item
+                a.dropdown__item--export-link Export All
                   .dropdown__item--label Log Out
               li.dropdown__item.dropdown__item--header= user.email
-              li.dropdown__item
-                a.export-link Export All
 
     .container
       block content
