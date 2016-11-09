@@ -27,15 +27,16 @@ module.exports = function(sequelize, DataTypes) {
               result.push(temp)
             }
           }
-          return result;
+          return result
         }
         const diff = getDiff(item.dataValues, item._previousDataValues)
+
+        const Audit = sequelize
         // const Audit = sequelize.models.Audit
         // let {updateType, data_type} = options
         // let auditOptions = returnAuditOptions(updateType,item, data_type)
         // Audit.create(auditOptions[0], {success: true})
         console.log("update success------------------------>", diff );
-        // console.log("OLDVALUES*******", title, description, completed );
       }
     },
       classMethods: {
