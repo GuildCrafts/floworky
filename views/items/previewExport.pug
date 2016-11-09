@@ -3,12 +3,16 @@ modal
     .preview-window--header
       h3.preview-window--header__item Export List
   .preview-window--body
-    #preview-text.item-page
+    #preview-text.item-page.html__tree.show
       +display( tree, 0 )
+    #preview-text-text.item-page.text__tree.hidden
+      pre
+        +displayText( tree, 0 )
   .preview-window--body__item
-    Formatted
-      a#formatted-preview.preview-window--body__item(href='' download='list.txt')   Formatted
-      a#plain-text-preview.preview-window--body__item(href='' download='list.txt') Plain Text
+    a#formatted-text-preview.preview-window--body__item(href='#') Formatted
+    a#plain-text-preview.preview-window--body__item(href='#') Plain Text
   .preview-window--footer
-    a.preview-window__download-link(href='data:text/plain,mytext', download) Click to Download List
+    a.preview-window__download-link(href='' charset='200' download='list.txt') Click to Download Plain Text List
+    br
+    a.preview-window__download-link(href='' charset='200' download='list.html') Click Formatted List
     button.preview-window__close-link Close
