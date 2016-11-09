@@ -1,5 +1,5 @@
 .modal {
-/*  display: none;*/
+  display: none;
   font-family: 'Open Sans', Arial;
   background-color: white;
   list-style-type: disc;
@@ -22,8 +22,20 @@
   justify-content: space-between;
 }
 
+/*#preview-text-text.item-page.text__tree, #preview-text.item-page.html__tree {
+  display: none;
+}*/
+
 .preview-window {
   display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: none;
 }
 
 .preview-window--body {
@@ -52,9 +64,10 @@
 }
 
 .preview-window__close-link {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+  position: relative;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-bottom: 5px;
   background-color: #555;
   padding: 5px;
   font-size: 13px;
@@ -66,3 +79,10 @@
   background-color: #888;
 }
 
+a {
+  text-decoration: none;
+}
+
+.item-page-formatted {
+  background-color: red;
+}
