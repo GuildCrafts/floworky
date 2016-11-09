@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const { respondWithItems, generateBreadcrumbs, respondWithStarred } = require( './items/item_response' )
+const createAuditEntries = require( './items/audits' )
 const { buildSubTree } = require( './items/tree_creation' )
 const buildFilteredItemTree = require( './items/build_filtered_item_tree' )
 const buildStarredItemArray = require( './items/build_starred_item_array' )
@@ -46,11 +47,17 @@ router.post( '/', ( request, response ) => {
 })
 
 router.post( '/:id', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item, Audit } = request.app.get( 'models' )
   const { id } = request.params
-  const where = { id, user_id: request.user.id }
+  const user_id = parseInt( request.user.id )
 
-  Item.update( Item.filterParameters( request.body ), { where })
+  Item.findOne({ where: { id, user_id } })
+    .then( item => {
+      const oldItem = item
+      item.update( Item.filterParameters( request.body ) )
+      return oldItem
+      })
+    .then( createAuditEntries( Item, Audit, user_id ) )
     .then( result => response.json({ success: true, id }))
     .catch( error =>
       response.json({ success: false, id, message: error.message })

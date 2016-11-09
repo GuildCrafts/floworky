@@ -1,0 +1,86 @@
+.weekly-summary-modal {
+  display: none;
+  font-family: 'Open Sans', Arial;
+  background-color: white;
+  width: 370px;
+  height: 367px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  z-index: 101;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  outline: .5px #888 solid;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+  font-size: 14px;
+}
+
+.weekly-summary-modal__header {
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(rgb(196, 196, 196)), to(rgb(237, 237, 237)));
+  background-color: #EEE;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  outline: .5px #888 solid;
+}
+
+.weekly-summary-modal__general-summary {
+  outline: .5px #888 solid;
+  width: 340px;
+  height: 216px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  overflow-y: auto;
+  justify-content: center;
+  background-color: #EEE;
+}
+
+.weekly-summary-modal__summary-detail {
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 15px;
+  background-color: #EEE;
+  overflow-y: auto;
+}
+
+.weekly-summary-modal__summary-value {
+  margin-left: 5px;
+}
+
+.weekly-summary-modal__summary-label {
+  font-weight: 300;
+}
+
+.weekly-summary-modal__exit-button {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #555;
+  padding: 5px;
+  font-size: 13px;
+  color: white;
+  width: 30%;
+  margin: 10px auto;
+  border: 1px solid #111;
+}
+
+.weekly-summary-modal__exit-button:hover {
+  background-color: #888;
+  cursor: pointer;

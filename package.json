@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nf start",
-    "start:dev": "nf start --procfile Procfile.dev",
+    "start:dev": "DEBUG=floworky:* nf start --procfile Procfile.dev",
     "lint": "eslint --color *.js; exit 0;",
     "test:watch": "mocha -w",
     "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
