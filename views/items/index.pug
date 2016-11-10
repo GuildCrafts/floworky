@@ -1,29 +1,6 @@
 extends ../layouts/authenticated-layout
 
-mixin textEntry( entry, depth )
-  |#{`${" ".repeat( depth * 2 )}- ${entry.title}\n`}
-  if( entry.description )
-    |#{`${" ".repeat( depth * 2 + 2 )}"${entry.description}"`}
-
-mixin displayText( nodes, depth )
-  each entry in nodes
-    +textEntry( entry, depth )
-    +displayText( entry.children, depth + 1 )
-
-mixin display( nodes, depth )
-  each entry in nodes
-    .item(data-id=entry.id)
-      .item__heading(data-id=entry.id, data-completed=entry.completed)
-        .item__toggle(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
-          |&#9679;
-        .item__title(data-id=entry.id, data-completed=entry.completed)
-          span(data-id=entry.id)=entry.title
-          input.item__edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
-      .item__description(data-id=entry.id)
-          span(data-id=entry.id)=entry.description
-          input.item__edit-description.item--hidden(data-id=entry.id, type='text', name='edit-description', value=entry.description)
-      .item__children
-        +display( entry.children, depth + 1 )
+include mixins.pug
 
 block content
   .modal

@@ -10,12 +10,14 @@ modal
         pre
           +displayText( tree, 0 )
     .preview-window--body__item
-      a#formatted-text-preview.preview-window--body__item(href='#') Formatted Text Preview
-      a#plain-text-preview.preview-window--body__item(href='#') Plain Text Preview
+      form
+        label Formatted Text Preview
+        input#formatted-text-preview.preview-window--body__item( type='radio' name='formatted' )
+        label Plain Text Preview
+        input#plain-text-preview.preview-window--body__item( type='radio' name='plaintext' )
 
     .preview-window--footer
       p.preview-window--footer__item Press ⌘ + C to copy your list. You can paste it anywhere.
-      a.preview-window--footer__download-link(href='' rel='external' download='plaintext.txt') Click to Download Plain Text List
-      a.preview-window--footer__download-link(href='' rel='external' download='formattedtext.html') Click to Download Formatted List
-      a#downloadlink(href='#' rel='external' download='') DOWNLOAD SOMETHING
+      a.preview-window--footer__download-link(href='/items/download/plain_text' rel='external' download='floworky-export.txt') Click to Download Plain Text List
+      a.preview-window--footer__download-link(href='/items/download/html' rel='external' download='floworky-export.html') Click to Download Formatted List
       button.preview-window--footer__close-link Close

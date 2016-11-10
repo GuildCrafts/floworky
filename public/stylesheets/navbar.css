@@ -144,7 +144,7 @@
   color:#aaa;
 }
 
-.dropdown__item--link {
+.dropdown__item--link, .dropdown__item--export-link {
   text-decoration: none;
   color: #fff;
   width: 100%;
@@ -153,6 +153,10 @@
 }
 
 .dropdown__item--link:hover {
+  background-color:#444;
+}
+
+.dropdown__item--export-link:hover {
   background-color:#444;
 }
 

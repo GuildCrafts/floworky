@@ -15,6 +15,17 @@ router.get( '/', ( request, response ) => {
     .then( respondWithItems( user, data => response.render( 'items/index', data )))
 })
 
+router.get( '/download/:type', ( request, response ) => {
+  const { Item } = request.app.get( 'models' )
+
+  const { user, query } = request
+
+  response.set('Content-Type', 'text/plain')
+  buildFilteredItemTree( Item, user, query )
+    .then( generateBreadcrumbs )
+    .then( respondWithItems( user, data => response.render( `items/${request.params.type}`, data )))
+})
+
 router.get( '/:item_id', ( request, response ) => {
   const Item = request.app.get( 'models' ).Item
 
