@@ -5,8 +5,10 @@
   width: 50%;
   height: auto;
   position: absolute;
-  top: 26%;
-  left: 26%;
+  top: 20%;
+  left: 20%;
+  bottom: 20%;
+  right: 20%;
   overflow: auto;
   z-index: 101;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -31,7 +33,7 @@ a, a:visited {
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
-  background-color: #888;
+  background-color: #EEE;
   justify-content: center;
   flex-direction: row;
 }
@@ -45,13 +47,14 @@ a, a:visited {
   padding-left: 15px;
   padding-right: 15px;
   overflow-y: auto;
+  justify-content: center;
 }
 
 .preview-window--body__item {
   margin-right: 15px;
   margin-left: 15px;
-  outline: .5px #888 solid;
-  background-color: #888;
+  padding: 15px;
+  background-color: #EEE;
   justify-content: space-between;
 }
 
@@ -62,6 +65,7 @@ a, a:visited {
   flex-direction: column;
   align-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .preview-window--footer__close-link {
