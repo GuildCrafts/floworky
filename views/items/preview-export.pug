@@ -1,0 +1,17 @@
+modal
+  .preview-window
+    .preview-window--header
+      h3.preview-window--header__item Export List
+  .preview-window--body
+    #preview-text.item-page.html__tree.show
+      +display( tree, 0 )
+    #preview-text-text.item-page.text__tree.hidden
+      pre
+        +displayText( tree, 0 )
+  .preview-window--body__item
+    a#formatted-text-preview.preview-window--body__item(href='#') Formatted Text Preview
+    a#plain-text-preview.preview-window--body__item(href='#') Plain Text Preview
+  .preview-window--footer
+    a.preview-window--footer__download-link(href='' rel='external' download='plaintext.txt') Click to Download Plain Text List
+    a.preview-window--footer__download-link(href='' rel='external' download='formattedtext.html') Click to Download Formatted List
+    button.preview-window__close-link Close
