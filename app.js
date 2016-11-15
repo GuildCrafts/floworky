@@ -5,6 +5,7 @@ const logger = require( 'morgan' )
 const cookieParser = require( 'cookie-parser' )
 const bodyParser = require( 'body-parser' )
 const session = require( 'express-session' )
+const store = require( 'connect-pg-simple' )
 
 const models = require( './models/index' )
 const passport = require( './auth/passport' )
@@ -33,8 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use( session({
   secret: 'ineedtofigureoutwhattheseoptionsare',
+  store: new (store( session ))(),
   cookie: {},
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }))
 app.use( passport.initialize() )
