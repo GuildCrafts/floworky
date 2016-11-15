@@ -20,12 +20,19 @@ block content
   div.main-page
     .work-page
       .work-page__main
-        .icon.icon__star
-          | &#x2606;
+        if (root.starred)
+          .star(data-id=root.id, data-starred=`${root.starred}`)
+            | &#x272e;
+        else
+          .star(data-id=root.id, data-starred=`${root.starred}`)
+            | &#x2606;
         +display( tree, 0 )
       .work-page__footer
         .work-page__footer__content
           | Make lists, not war.
+    .starred-view__HUD
+      .starred-view__container
+
   hr
   form.form--add-item(method='post', action='/items')
     .form__header Add Items

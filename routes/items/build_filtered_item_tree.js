@@ -1,4 +1,4 @@
-const { allItemsQuery, filteredItemsQuery, respondWithItems } = require( './item_response' )
+const { allItemsQuery, filteredItemsQuery } = require( './item_response' )
 const { buildTree } = require( './tree_creation' )
 
 const buildFilteredItemTree = ( Item, user, query ) =>

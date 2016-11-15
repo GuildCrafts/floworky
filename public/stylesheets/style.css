@@ -59,14 +59,6 @@ body{
   color: grey;
 }
 
-.icon__star {
-  font-size: 1.5em;
-  position: relative;
-  top: -30px;
-  left: 103%;
-  opacity: 0.4
-}
-
 .form__label {
   float: left;
   font-size: 11px;

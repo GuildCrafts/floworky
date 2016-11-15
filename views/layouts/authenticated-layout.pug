@@ -22,7 +22,7 @@ html
       form.navbar__form.navbar--left(method='get', action='/items')
         .form.form--inline
           input.form__control.navbar__searchbox(type='text', name='search', placeholder='Search')
-      .navbar__star.btn.btn--star
+      .navbar__star.btn.btn--star#star-toggle
         | &#x2605;
       .navbar__btn-group.btn--inline(data-toggle='buttons')
         form.navbar--form.navbar--right(method='get', action='/items')
@@ -44,4 +44,6 @@ html
       block content
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='/javascripts/fetch-params.js')
     script(src='/javascripts/items.js')
+    script(src='/javascripts/starred.js')
