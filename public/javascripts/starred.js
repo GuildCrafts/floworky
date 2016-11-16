@@ -5,7 +5,7 @@ const populateHUD = () => {
     $( '<a>', { href: `/items/${id}`, class: 'starred-view__page' })
       .append( '<div>', { class: 'starred-view__inner-container' }, `${title}` )
 
-  fetch( '/items/starred', fetchParams( 'get' ) )
+  fetch( '/items/starred', fetchParams( 'GET' ) )
     .then( result => result.json() )
     .then( ({ data }) => $( '.starred-view__container' ).append(
       data.map( item => page( item.id, item.title ) )
@@ -19,9 +19,9 @@ $( document ).ready( () => {
 
     populateHUD()
     if ($( '.starred-view__HUD' ).css( 'opacity' ) === '0' ) {
-      $( '.starred-view__HUD' ).css( 'opacity', '1' )
+      $( '.starred-view__HUD' ).css({ 'opacity': '1', 'pointer-events': 'auto' })
     } else {
-      $( '.starred-view__HUD' ).css( 'opacity', '0' )
+      $( '.starred-view__HUD' ).css({ 'opacity': '0', 'pointer-events': 'none' })
     }
   })
 })

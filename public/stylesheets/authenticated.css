@@ -129,6 +129,7 @@
   transition: opacity .25s ease-out;
   -moz-transition: opacity .25s ease-out;
   -webkit-transition: opacity .25s ease-out;
+  pointer-events: none;
 }
 
 .starred-view__container {

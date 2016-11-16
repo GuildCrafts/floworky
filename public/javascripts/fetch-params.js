@@ -1,6 +1,6 @@
 const fetchParams = method => ({
   method,
-  header: {
+  headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   },
