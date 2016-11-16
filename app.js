@@ -11,6 +11,7 @@ const models = require( './models/index' )
 const passport = require( './auth/passport' )
 const protectRoute = require( './auth/protectRoute' )
 const checkToken = require( './auth/checkToken' )
+const weeklyReview = require( './src/mail/email_scheduler' )
 
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
@@ -55,6 +56,9 @@ app.use( (req, res, next) => {
   err.status = 404
   next(err)
 })
+
+// email scheduler
+weeklyReview.job()
 
 // error handlers
 
