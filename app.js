@@ -14,6 +14,7 @@ const checkToken = require( './auth/checkToken' )
 
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
+const summary = require( './routes/accounts/weekly_summary' )
 const items = require( './routes/items' )
 const api = require( './routes/api/manifest').v1
 
@@ -45,7 +46,7 @@ app.use( passport.session() )
 app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
-
+app.use( '/summary', summary )
 app.use( '/api/v1/accounts', api.accounts )
 app.use( '/api/v1/items', checkToken, api.items )
 
