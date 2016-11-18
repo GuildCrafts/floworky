@@ -12,8 +12,10 @@ const createAuditEntries = ( Item, Audit, user_id ) => result => {
       const data = auditEntry( result.id, user_id, key, result._previousDataValues[ key ], result[ key ] )
       memo.push( Audit.create( data ))
     }
+
     return memo
   }, [] )
+  
   return Promise.all( auditEntries ).then( _ => result )
 }
 
