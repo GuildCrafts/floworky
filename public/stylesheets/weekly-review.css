@@ -10,7 +10,7 @@
   margin-left: -200px;
   margin-top: -200px;
   z-index: 101;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba( 0, 0, 0, 0.2 ), 0 6px 20px 0 rgba( 0, 0, 0, 0.19 );
   outline: .5px #888 solid;
   overflow-y: auto;
 }
@@ -28,7 +28,7 @@
   display: flex;
   padding-left: 15px;
   padding-right: 15px;
-  background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(rgb(196, 196, 196)), to(rgb(237, 237, 237)));
+  background: -webkit-gradient(l inear, 0% 100%, 0% 0%, from( rgb( 196, 196, 196 ) ), to(rgb( 237, 237, 237 )));
   background-color: #EEE;
   text-align: center;
   justify-content: center;

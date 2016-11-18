@@ -3,7 +3,7 @@ openModalButton = event => {
   fetch( '/summary', fetchParams( 'GET' ) )
     .then( result => result.json() )
     .then( populateWeeklyData )
-  $( '.weekly-summary-modal' ).show()
+    .then( _ => $( '.weekly-summary-modal' ).show())
 }
 
 closeModalButton = event => {

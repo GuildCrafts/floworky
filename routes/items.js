@@ -56,7 +56,7 @@ router.post( '/:id', ( request, response ) => {
       const oldItem = item
       item.update( Item.filterParameters( request.body ) )
       return oldItem
-      })
+    })
     .then( createAuditEntries( Item, Audit, user_id ) )
     .then( result => response.json({ success: true, id }))
     .catch( error =>
