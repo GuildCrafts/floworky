@@ -1,5 +1,6 @@
 const numberOfTasksCreated = ( Item, $gte, user_id ) =>
-  Item.findAndCountAll({ where: { createdAt: { $gte }, user_id } }).then( ({ count }) => count )
+  Item.findAndCountAll({ where: { createdAt: { $gte }, user_id } })
+    .then( ({ count }) => count )
 
 const numberOfTasksCompleted = ( sequelize, user_id, since ) => {
   return sequelize.query(
@@ -14,8 +15,9 @@ const numberOfTasksEdited = ( sequelize, user_id, since ) => {
     { type: sequelize.QueryTypes.SELECT }
   ).then( ([ result ]) => parseInt( result.count ))
 }
-const totalNumberOfTasks = ( Item, user_id ) => Item.findAndCountAll({ where: { user_id }
-  }).then( ({ count }) => count )
+const totalNumberOfTasks = ( Item, user_id ) =>
+  Item.findAndCountAll({ where: { user_id } })
+    .then( ({ count }) => count )
 
 module.exports = {
   numberOfTasksCreated,
