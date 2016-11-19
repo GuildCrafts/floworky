@@ -18,7 +18,7 @@ router.get( '/', ( request, response ) => {
 })
 
 router.get( '/starred', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
   const { user, query } = request
 
   buildStarredItemArray( Item, user.id )
@@ -26,7 +26,7 @@ router.get( '/starred', ( request, response ) => {
 })
 
 router.get( '/:item_id', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { user, query } = request
   const itemId = parseInt( request.params.item_id )
