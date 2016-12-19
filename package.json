@@ -10,8 +10,8 @@
     "start": "nf start",
     "start:dev": "DEBUG=floworky:* nf start --procfile Procfile.dev",
     "lint": "eslint --color *.js; exit 0;",
-    "test:watch": "mocha -w",
-    "test": "istanbul cover -x *_[sS]pec.js _mocha  -- -R spec",
+    "test:watch": "mocha -w --recursive",
+    "test": "mocha --recursive",
     "migrate": "sequelize db:migrate",
     "migrate:undo": "sequelize db:migrate:undo",
     "migrate:undo:all": "sequelize db:migrate:undo:all"
