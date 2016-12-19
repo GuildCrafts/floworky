@@ -24,7 +24,6 @@ describe( 'API items routes', () => {
     })
 
     it( 'returns json with items and tree', done => {
-
       const callback = router.get.firstCall.args[ 1 ]
 
       const response = {

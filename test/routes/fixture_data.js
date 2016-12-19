@@ -21,40 +21,6 @@ const ITEMS_FIXTURE_DATA = [
   },
 ]
 
-// const RESPOND_WITH_ITEMS_DATA = {
-//   user: { id: 6, email: 'monicaestellaw@gmail.com' },
-//   items:
-//    [ Instance {
-//        dataValues: [Object],
-//        _previousDataValues: [Object],
-//        _changed: {},
-//        '$modelOptions': [Object],
-//        '$options': [Object],
-//        hasPrimaryKeys: true,
-//        __eagerlyLoadedAssociations: [],
-//        isNewRecord: false },
-//      Instance {
-//        dataValues: [Object],
-//        _previousDataValues: [Object],
-//        _changed: {},
-//        '$modelOptions': [Object],
-//        '$options': [Object],
-//        hasPrimaryKeys: true,
-//        __eagerlyLoadedAssociations: [],
-//        isNewRecord: false } ],
-//   breadcrumbs: [ { id: 10, title: 'Home' }, { id: 11, title: 'walk the dog' } ],
-//   tree: [],
-//   root:
-//    ItemNode {
-//      id: 11,
-//      parent_id: 10,
-//      title: 'walk the dog',
-//      description: '',
-//      completed: false,
-//      starred: false,
-//      is_root: true,
-//      children: [] } }
-
 const REQUEST_DATA = {
   app: {
     get: data => ({ Item: {
