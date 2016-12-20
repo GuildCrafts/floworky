@@ -1,7 +1,7 @@
 mixin textEntry( entry, depth )
-  |#{`${" ".repeat( depth * 2 )}- ${entry.completed ? '[COMPLETED] ' : ''}${entry.title}\n`}
+  | !{`${" ".repeat( depth * 2 )}- ${entry.completed ? '[COMPLETED] ' : ''}${entry.title}\n`}
   if( entry.description )
-    |#{`${" ".repeat( depth * 2 + 2 )}"${entry.description}"`}
+    | !{`${" ".repeat( depth * 2 + 2 )}"${entry.description}"`}
 
 mixin displayText( nodes, depth )
   each entry in nodes
