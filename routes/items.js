@@ -9,7 +9,6 @@ const buildStarredItemArray = require( './items/build_starred_item_array' )
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
-
   const { user, query } = request
 
   buildFilteredItemTree( Item, user, query )
