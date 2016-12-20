@@ -10,8 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     is_root: DataTypes.BOOLEAN,
     starred: DataTypes.BOOLEAN,
     parent_id: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER,
-    is_deleted: DataTypes.BOOLEAN
+    user_id: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
