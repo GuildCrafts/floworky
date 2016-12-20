@@ -1,6 +1,6 @@
 $(document).ready( () => {
   const modal = document.querySelector( '.modal' )
-  const openModal = document.querySelector( '.dropdown__item--export-link' )
+  const openModal = document.querySelector( '.export-link' )
   const closeModal = document.querySelector( '.preview-window--footer__close-link' )
   const buttonPlainText = document.getElementById( 'plain-text-preview' )
   const buttonFormattedText = document.getElementById( 'formatted-text-preview' )
