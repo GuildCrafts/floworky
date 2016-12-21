@@ -154,6 +154,7 @@
 
 .dropdown__item--link:hover {
   background-color:#444;
+  cursor: pointer;
 }
 
 .dropdown__item--export-link:hover {

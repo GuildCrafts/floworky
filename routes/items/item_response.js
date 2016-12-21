@@ -1,6 +1,6 @@
 const { pruneTree } = require( './tree_creation' )
 
-const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'is_root', 'parent_id', 'id' ]
+const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'starred', 'is_root', 'parent_id', 'id' ]
 
 const createRootItem = Item => user => {
   return Item.create({
@@ -16,30 +16,29 @@ const allItemsQuery = user_id => (
   { order: [['createdAt', 'ASC']], where: { user_id }, FETCH_ATTRIBUTES }
 )
 
-const filteredItemsQuery = (Item, query, user_id) => ({ items, tree }) => {
-  const where = Object.assign( {}, whereSearch( query ), whereCompleted( query), { user_id } )
+const filterClause = ( query, user_id ) =>
+  ({
+    where: Object.assign(
+      {},
+      whereSearch( query ),
+      whereCompleted( query ),
+      whereStarred( query ),
+      { user_id }
+    )
+  })
 
-  if( Object.keys( where ).length === 1 ) {
-    return { items, tree }
-  } else {
-    return Item.findAll({ where, attributes: [ 'id' ] })
-      .then( pruneTree( items, tree ))
-  }
+const filteredItems = ( Item, filter, attributes ) =>
+  Item.findAll( Object.assign( {}, filter, { attributes }) )
+
+const filteredItemsQuery = ( Item, query, user_id ) => ({ items, tree }) => {
+  const filter = filterClause( query, user_id )
+  return filteredItems( Item, filter, [ 'id' ] ).then( pruneTree( items, tree ))
 }
-
-const selectedItemsQuery = item_id => (
-  { order: [['createdAt', 'ASC']], where: {
-    $or: [
-      { id: item_id },
-      { parent_id: item_id }
-    ]
-  }, FETCH_ATTRIBUTES }
-)
 
 const generateBreadcrumbs = ({ items, tree }) => {
   const ids = tree.findPathTo( tree.findRootId(), [ tree.findRootId() ] )
 
-  const map = items.reduce( (memo, item) => {
+  const map = items.reduce( ( memo, item ) => {
     memo[ item.id ] = { id: item.id, title: item.title }
 
     return memo
@@ -70,7 +69,27 @@ const whereCompleted = query => {
   return {}
 }
 
+const whereStarred = query => {
+  if( query.starred ) {
+    return { starred: true }
+  }
+
+  return {}
+}
+
 const respondWithItems = ( user, callback ) => ({ items, tree, breadcrumbs }) =>
   callback({ user, items, breadcrumbs, tree: tree.children(), root: tree.root })
 
-module.exports = { allItemsQuery, filteredItemsQuery, respondWithItems, generateBreadcrumbs, createRootItem }
+const respondWithStarred = ( user, callback ) => data =>
+  callback({ user })
+
+module.exports = {
+  allItemsQuery,
+  filteredItemsQuery,
+  respondWithItems,
+  generateBreadcrumbs,
+  createRootItem,
+  filteredItems,
+  filterClause,
+  respondWithStarred
+}

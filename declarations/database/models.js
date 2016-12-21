@@ -3,6 +3,7 @@ declare type Item = {
   title: string;
   description: string;
   completed: boolean;
+  starred: boolean;
   parent_id: number;
   user_id: number;
 };

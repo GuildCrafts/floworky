@@ -5,6 +5,7 @@ const logger = require( 'morgan' )
 const cookieParser = require( 'cookie-parser' )
 const bodyParser = require( 'body-parser' )
 const session = require( 'express-session' )
+const store = require( 'connect-pg-simple' )
 
 const models = require( './models/index' )
 const passport = require( './auth/passport' )
@@ -13,6 +14,7 @@ const checkToken = require( './auth/checkToken' )
 
 const routes = require( './routes/index' )
 const accounts = require( './routes/accounts' )
+const summary = require( './routes/accounts/weekly_summary' )
 const items = require( './routes/items' )
 const api = require( './routes/api/manifest').v1
 
@@ -33,8 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use( session({
   secret: 'ineedtofigureoutwhattheseoptionsare',
+  store: new (store( session ))(),
   cookie: {},
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }))
 app.use( passport.initialize() )
@@ -43,7 +46,7 @@ app.use( passport.session() )
 app.use( '/', routes )
 app.use( '/accounts', accounts )
 app.use( '/items', protectRoute, items )
-
+app.use( '/summary', summary )
 app.use( '/api/v1/accounts', api.accounts )
 app.use( '/api/v1/items', checkToken, api.items )
 

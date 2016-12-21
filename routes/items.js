@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { respondWithItems, generateBreadcrumbs } = require( './items/item_response' )
+const { respondWithItems, generateBreadcrumbs, respondWithStarred } = require( './items/item_response' )
+const createAuditEntries = require( './items/audits' )
 const { buildSubTree } = require( './items/tree_creation' )
 const buildFilteredItemTree = require( './items/build_filtered_item_tree' )
+const buildStarredItemArray = require( './items/build_starred_item_array' )
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
@@ -14,6 +16,7 @@ router.get( '/', ( request, response ) => {
     .then( generateBreadcrumbs )
     .then( respondWithItems( user, data => response.render( 'items/index', data )))
 })
+
 
 router.get( '/download/:type', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
@@ -26,8 +29,17 @@ router.get( '/download/:type', ( request, response ) => {
     .then( respondWithItems( user, data => response.render( `items/${request.params.type}`, data )))
 })
 
+router.get( '/starred', ( request, response ) => {
+  const { Item } = request.app.get( 'models' )
+  const { user, query } = request
+
+  buildStarredItemArray( Item, user.id )
+    .then( data => response.json( { data } ) )
+
+})
+
 router.get( '/:item_id', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item } = request.app.get( 'models' )
 
   const { user, query } = request
   const itemId = parseInt( request.params.item_id )
@@ -48,11 +60,17 @@ router.post( '/', ( request, response ) => {
 })
 
 router.post( '/:id', ( request, response ) => {
-  const Item = request.app.get( 'models' ).Item
+  const { Item, Audit } = request.app.get( 'models' )
   const { id } = request.params
-  const where = { id, user_id: request.user.id }
+  const user_id = parseInt( request.user.id )
 
-  Item.update( Item.filterParameters( request.body ), { where })
+  Item.findOne({ where: { id, user_id } })
+    .then( item => {
+      const oldItem = item
+      item.update( Item.filterParameters( request.body ) )
+      return oldItem
+    })
+    .then( createAuditEntries( Item, Audit, user_id ) )
     .then( result => response.json({ success: true, id }))
     .catch( error =>
       response.json({ success: false, id, message: error.message })

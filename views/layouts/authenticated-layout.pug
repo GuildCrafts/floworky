@@ -13,6 +13,7 @@ html
     link(rel='stylesheet', href='/stylesheets/navbar.css')
     link(rel='stylesheet', href='/stylesheets/authenticated.css')
     link(rel='stylesheet', href='/stylesheets/exportmodal.css')
+    link(rel='stylesheet', href='/stylesheets/weekly-review.css')
 
   body
     nav.navbar
@@ -23,7 +24,7 @@ html
       form.navbar__form.navbar--left(method='get', action='/items')
         .form.form--inline
           input.form__control.navbar__searchbox(type='text', name='search', placeholder='Search')
-      .navbar__star.btn.btn--star
+      .navbar__star.btn.btn--star#star-toggle
         | &#x2605;
       .navbar__btn-group.btn--inline(data-toggle='buttons')
         form.navbar--form.navbar--right(method='get', action='/items')
@@ -39,13 +40,21 @@ html
               li.dropdown__item
                 a.dropdown__item--export-link Export All
               li.dropdown__item
+                a.dropdown__item--link
+                  .dropdown__item--label#weekly-summary Weekly Summary
+              li.dropdown__item
                 a.dropdown__item--link(href='/accounts/logout')
                   .dropdown__item--label Log Out
               li.dropdown__item.dropdown__item--header= user.email
 
     .container
       block content
+        
+    include ../accounts/weekly-report.pug
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='/javascripts/fetch-params.js')
     script(src='/javascripts/items.js')
     script(src='/javascripts/client.js')
+    script(src='/javascripts/starred.js')
+    script(src='/javascripts/weekly-review.js')
