@@ -30,7 +30,7 @@ router.get( '/download/:type', ( request, response ) => {
 
   const { user, query } = request
 
-  response.set('Content-Type', 'text/plain')
+  response.set( 'Content-Type', 'text/plain' )
   buildFilteredItemTree( Item, user, query )
     .then( generateBreadcrumbs )
     .then( respondWithItems( user, data => response.render( `items/${request.params.type}`, data )))
