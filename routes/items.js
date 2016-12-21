@@ -17,12 +17,25 @@ router.get( '/', ( request, response ) => {
     .then( respondWithItems( user, data => response.render( 'items/index', data )))
 })
 
+
+router.get( '/download/:type', ( request, response ) => {
+  const { Item } = request.app.get( 'models' )
+
+  const { user, query } = request
+
+  response.set('Content-Type', 'text/plain')
+  buildFilteredItemTree( Item, user, query )
+    .then( generateBreadcrumbs )
+    .then( respondWithItems( user, data => response.render( `items/${request.params.type}`, data )))
+})
+
 router.get( '/starred', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
   const { user, query } = request
 
   buildStarredItemArray( Item, user.id )
     .then( data => response.json( { data } ) )
+
 })
 
 router.get( '/:item_id', ( request, response ) => {
@@ -63,5 +76,6 @@ router.post( '/:id', ( request, response ) => {
       response.json({ success: false, id, message: error.message })
     )
 })
+
 
 module.exports = router

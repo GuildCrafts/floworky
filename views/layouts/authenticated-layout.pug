@@ -12,6 +12,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/navbar.css')
     link(rel='stylesheet', href='/stylesheets/authenticated.css')
+    link(rel='stylesheet', href='/stylesheets/exportmodal.css')
     link(rel='stylesheet', href='/stylesheets/weekly-review.css')
 
   body
@@ -37,6 +38,8 @@ html
               | &blacktriangledown;
             ul.dropdown__menu.dropdown--hidden
               li.dropdown__item
+                a.dropdown__item--export-link Export All
+              li.dropdown__item
                 a.dropdown__item--link
                   .dropdown__item--label#weekly-summary Weekly Summary
               li.dropdown__item
@@ -52,5 +55,6 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='/javascripts/fetch-params.js')
     script(src='/javascripts/items.js')
+    script(src='/javascripts/client.js')
     script(src='/javascripts/starred.js')
     script(src='/javascripts/weekly-review.js')
