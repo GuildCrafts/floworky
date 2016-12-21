@@ -1,8 +1,9 @@
 .item__menu {
   display: none;
   position: absolute;
-  transform: translateX(-45%);
-  margin-top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 14px;
   background-color: #e8e8e8;
   padding: 10px 5px;
   width: 80px;

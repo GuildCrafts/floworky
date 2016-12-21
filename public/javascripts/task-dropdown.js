@@ -1,7 +1,11 @@
 const taskMenuTriggers = document.querySelectorAll('.item__toggle')
 
 taskMenuTriggers.forEach( trigger => {
-  trigger.addEventListener('mouseenter', event => console.log( 'I AM SO TRIGGERED RIGHT NOW!' ))
-  trigger.addEventListener('mouseout', event => console.log( 'NEVERMIND. I AM CHILLIN' ))
+  trigger.addEventListener('mouseenter', event => {
+    event.target.children[0].style.display = 'block'
+  })
+  trigger.addEventListener('mouseleave', event => {
+    event.target.children[0].style.display = 'none'
+  })
 })
 
