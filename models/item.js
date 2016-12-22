@@ -1,6 +1,6 @@
 'use strict';
 
-const VALID_PARAMETERS = [ 'completed', 'title', 'description', 'starred' ]
+const VALID_PARAMETERS = [ 'completed', 'title', 'description', 'starred', 'is_deleted' ]
 
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define('Item', {
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     is_root: DataTypes.BOOLEAN,
     starred: DataTypes.BOOLEAN,
     parent_id: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER, 
+    user_id: DataTypes.INTEGER,
     is_deleted: DataTypes.BOOLEAN
   }, {
     classMethods: {

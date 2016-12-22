@@ -9,7 +9,6 @@ const buildStarredItemArray = require( './items/build_starred_item_array' )
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
-
   const { user, query } = request
 
   buildFilteredItemTree( Item, user, query )
@@ -63,5 +62,24 @@ router.post( '/:id', ( request, response ) => {
       response.json({ success: false, id, message: error.message })
     )
 })
+
+router.post( '/delete/:id', ( request, response ) => {
+  const { Item, Audit } = request.app.get( 'models' )
+  const { id } = request.params
+  const user_id = parseInt( request.user.id )
+
+  Item.findOne({ where: { id, user_id } })
+    .then( item => {
+      const softDeletedItem = item
+      softDeletedItem.update( Item.filterParameters( { is_deleted: true } ) )
+      return softDeletedItem
+    })
+    .then( createAuditEntries( Item, Audit, user_id ) )
+    .then( result => response.json({ success: true, id }))
+    .catch( error =>
+      response.json({ success: false, id, message: error.message })
+    )
+})
+
 
 module.exports = router
