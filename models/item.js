@@ -1,6 +1,6 @@
 'use strict';
 
-const VALID_PARAMETERS = [ 'completed', 'title', 'description', 'starred', 'is_deleted' ]
+const VALID_PARAMETERS = [ 'completed', 'title', 'description', 'starred' ]
 
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define('Item', {
