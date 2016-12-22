@@ -18,6 +18,8 @@ const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'item__title', id, 'span' ) )
+  console.log('element', elementToHide);
+
 
   if( event.keyCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
@@ -128,6 +130,20 @@ const completedClicked = event => {
       )
     }
 
+  const deleteItem = (event) => {
+    const elementToHide = $( event.target )
+    const id = elementToHide.data( 'id' )
+    const elementToShow = $( selector( 'item__title', id, 'span' ) )
+
+      let updatedTitle = elementToHide[0].value
+      fetch( `/items/delete/${id}`, params( { title: updatedTitle } ) )
+        .then( result => result.json() )
+        .then ( checkJsonForSuccessField )
+        .then( json => {
+          // toggle( elementToShow, elementToHide )
+          $( elementToShow[0] ).html(updatedTitle)
+      })
+  }
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
   $( '.item__title > span' ).click( clickToUpdate( 'item__title' ))
@@ -136,6 +152,7 @@ $(document).ready( () => {
   $( '.item__toggle' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
   $( '.star' ).click( starredToggle )
+  $( '.deleted').click( deleteItem )
   getFilterStatus()
   getCheckedStatus()
 })
