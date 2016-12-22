@@ -130,18 +130,18 @@ const completedClicked = event => {
       )
     }
 
-  const deleteItem = (event) => {
-    const elementToHide = $( event.target )
-    const id = elementToHide.data( 'id' )
-    const elementToShow = $( selector( 'item__title', id, 'span' ) )
+  const deleteItem = ( event ) => {
+    const elementToDelete = $( event.target ).parent().children()
+    const id = elementToDelete.data( 'id' )
+    const elementToHide = $( `.item__toggle[data-id='${id}']` )
 
-      let updatedTitle = elementToHide[0].value
-      fetch( `/items/delete/${id}`, params( { title: updatedTitle } ) )
+      let deletedTitle = elementToDelete[0].value
+      fetch( `/items/delete/${id}`, params( { title: deletedTitle } ) )
         .then( result => result.json() )
         .then ( checkJsonForSuccessField )
         .then( json => {
-          // toggle( elementToShow, elementToHide )
-          $( elementToShow[0] ).html(updatedTitle)
+          $( elementToDelete[0] ).addClass( 'item--hidden' )
+          $( elementToHide[0] ).addClass( 'item--hidden' )
       })
   }
 $(document).ready( () => {
