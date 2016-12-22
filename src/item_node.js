@@ -1,6 +1,6 @@
 class ItemNode {
   constructor( item ) {
-    const { id, parent_id, title, description, completed, starred, is_root } = item
+    const { id, parent_id, title, description, completed, starred, is_root, is_deleted } = item
 
     this.id = id
     this.parent_id = parent_id
@@ -9,7 +9,7 @@ class ItemNode {
     this.completed = completed
     this.starred = starred
     this.is_root = is_root
-
+    this.is_deleted = is_deleted
     this.children = []
   }
 

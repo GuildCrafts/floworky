@@ -1,6 +1,6 @@
 const { pruneTree } = require( './tree_creation' )
 
-const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'starred', 'is_root', 'parent_id', 'id' ]
+const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'starred', 'is_root', 'parent_id', 'id', 'is_deleted' ]
 
 const createRootItem = Item => user => {
   return Item.create({
@@ -8,7 +8,8 @@ const createRootItem = Item => user => {
     parent_id: 0,
     title: 'Home',
     description: 'Welcome to Floworky',
-    user_id: user.id
+    user_id: user.id,
+    is_deleted: false
   }).then( result => user )
 }
 
