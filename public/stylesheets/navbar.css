@@ -148,17 +148,14 @@
   text-decoration: none;
   color: #fff;
   width: 100%;
-  padding: 6px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: block;
 }
 
 .dropdown__item--link:hover {
   background-color:#444;
   cursor: pointer;
-}
-
-.dropdown__item--label {
-  margin-left: 10px;
 }
 
 .dropdown__toggle--open {

@@ -1,0 +1,26 @@
+modal
+  .preview-window
+    .preview-window--header
+      h3.preview-window--header__item Export List
+
+    .preview-window--body
+      #preview-text.item-page.html__tree.show
+        +display( tree, 0 )
+      #preview-text-text.item-page.text__tree.hidden
+        pre
+          +displayText( tree, 0 )
+    .preview-window--body__item
+      form
+        label Formatted
+        input#formatted-text-preview.preview-window--body__item( type='radio' checked name="selected-preview")
+        label Plain Text
+        input#plain-text-preview.preview-window--body__item( type='radio'  name="selected-preview")
+
+    .preview-window--footer
+      p.preview-window--footer__item Press ⌘ + C to copy your list. You can paste it anywhere.
+      .plain-text-download.show
+        a.preview-window--footer__download-link(href='/items/download/plain_text' rel='external' download='floworky-export.txt') (Or click to download)
+      .html-text-download.hidden
+        a.preview-window--footer__download-link(href='/items/download/html' rel='external' download='floworky-export.html') (Or click to download)
+    .preview-window--footer__separator
+      button.preview-window--footer__close-link Close
