@@ -12,9 +12,10 @@ const createRootItem = Item => user => {
     is_deleted: false
   }).then( result => user )
 }
+const filterStatus = user_id => ( { user_id, is_deleted: false } )
 
 const allItemsQuery = user_id => (
-  { order: [['createdAt', 'ASC']], where: { user_id }, FETCH_ATTRIBUTES }
+  { order: [['createdAt', 'ASC']], where: filterStatus( user_id ), FETCH_ATTRIBUTES }
 )
 
 const filterClause = ( query, user_id ) =>
@@ -24,7 +25,7 @@ const filterClause = ( query, user_id ) =>
       whereSearch( query ),
       whereCompleted( query ),
       whereStarred( query ),
-      { user_id }
+      filterStatus( user_id )
     )
   })
 
