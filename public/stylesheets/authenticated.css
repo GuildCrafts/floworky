@@ -69,6 +69,7 @@
 }
 
 .item__toggle {
+  position: relative;
   display: inline;
   font-size: 14px;
   padding: 0 6px;

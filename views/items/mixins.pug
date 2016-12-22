@@ -14,7 +14,9 @@ mixin display( nodes, depth )
       .item__heading(data-id=entry.id, data-completed=entry.completed)
         .item__toggle(aria-hidden='true', data-id=entry.id, data-completed=entry.completed)
           |&#9679;
-        .item__title(data-id=entry.id, data-completed=entry.completed)
+          .item__menu
+            include item-menu.pug
+      .item__title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
           span(data-id=entry.id)=entry.title
           input.item__edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
       .item__description(data-id=entry.id)
