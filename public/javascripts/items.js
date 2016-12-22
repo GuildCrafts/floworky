@@ -50,12 +50,9 @@ const descriptionEdited = event => {
 
 const completedClicked = event => {
   const element = $( event.target )
-  const id = element.context.parentNode.parentNode.parentNode
+  const id = element.parent().data().id
   const completed = ! element.data( 'completed' )
 
-  console.log( id )  
-
-  /*
   fetch( `/items/${id}`, params({ completed: completed } ) )
     .then( result => result.json() )
     .then( checkJsonForSuccessField )
@@ -67,7 +64,7 @@ const completedClicked = event => {
         } else {
           parent.removeClass( 'item__title--completed' )
         }
-    }) */
+    }) 
 }
 
   const getFilterStatus = () => {
