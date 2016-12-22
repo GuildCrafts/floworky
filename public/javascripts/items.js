@@ -50,7 +50,7 @@ const descriptionEdited = event => {
 
 const completedClicked = event => {
   const element = $( event.target )
-  const id = element.parent().data().id
+  const id = element.parent().data( 'id' )
   const completed = ! element.data( 'completed' )
 
   fetch( `/items/${id}`, params({ completed: completed } ) )
