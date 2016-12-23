@@ -17,7 +17,7 @@ mixin display( nodes, depth )
           .item__menu
             include item-menu.pug
       .item__title(data-id=entry.id, data-completed=entry.completed, class={completed: entry.completed})
-          span(data-id=entry.id)=entry.title
+          span.title__data(data-id=entry.id)=entry.title
           input.item__edit-title.item--hidden(data-id=entry.id, type='text', name='edit-title', value=entry.title)
       .item__description(data-id=entry.id)
           span(data-id=entry.id)=entry.description

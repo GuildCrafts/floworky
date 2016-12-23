@@ -74,22 +74,19 @@ router.post( '/:id', ( request, response ) => {
     )
 })
 
-router.post( '/delete/:id', ( request, response ) => {
+router.delete( '/:id', ( request, response ) => {
   const { Item, Audit } = request.app.get( 'models' )
-  const { id } = request.params
+  const id = parseInt( request.params.id )
   const user_id = parseInt( request.user.id )
 
   Item.findOne({ where: { id, user_id } })
     .then( item => {
-      const softDeletedItem = item
-      softDeletedItem.update( Item.filterParameters( { is_deleted: true } ) )
-      return softDeletedItem
+      item.update({ is_deleted: true })
+
+      return item
     })
     .then( createAuditEntries( Item, Audit, user_id ) )
-    .then( result => response.json({ success: true, id }))
-    .catch( error =>
-      response.json({ success: false, id, message: error.message })
-    )
+    .then( result => response.status( 200 ).send({}) )
 })
 
 module.exports = router
