@@ -138,6 +138,7 @@ const completedClicked = event => {
     fetch( `/items/${id}`, fetchParams( 'DELETE' ))
       .then( result => $( elementToHide[0] ).addClass( 'item--hidden' ))
   }
+  
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
   $( '.item__title > span' ).click( clickToUpdate( 'item__title' ))
