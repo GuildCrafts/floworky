@@ -5,7 +5,7 @@
  */
 
 const app = require('../app')
-const debug = require('debug')('workflowy:server')
+const debug = require('debug')('floworky:server')
 const http = require('http')
 
 /**
