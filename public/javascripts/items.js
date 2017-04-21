@@ -18,6 +18,8 @@ const titleEdited = event => {
   const elementToHide = $( event.target )
   const id = elementToHide.data( 'id' )
   const elementToShow = $( selector( 'item__title', id, 'span' ) )
+  console.log('element', elementToHide);
+
 
   if( event.keyCode === RETURN_KEY ) {
     let updatedTitle = elementToHide[0].value
@@ -50,7 +52,7 @@ const descriptionEdited = event => {
 
 const completedClicked = event => {
   const element = $( event.target )
-  const id = element.data( 'id' )
+  const id = element.parent().data( 'id' )
   const completed = ! element.data( 'completed' )
 
   fetch( `/items/${id}`, params({ completed: completed } ) )
@@ -128,14 +130,24 @@ const completedClicked = event => {
       )
     }
 
+  const deleteItem = event => {
+    const elementToHide = $( event.target ).closest( '.item' )
+    const id = elementToHide.data( 'id' )
+    const elementToDelete = $( `.title__data[data-id='${id}']` )
+
+    fetch( `/items/${id}`, fetchParams( 'DELETE' ))
+      .then( result => $( elementToHide[0] ).addClass( 'item--hidden' ))
+  }
+  
 $(document).ready( () => {
   $( '.item__edit-title' ).keypress( titleEdited )
   $( '.item__title > span' ).click( clickToUpdate( 'item__title' ))
   $( '.item__edit-description' ).keypress( descriptionEdited )
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
-  $( '.item__toggle' ).click( completedClicked )
+  $( '.item__menu > ul > li:first-child' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
   $( '.star' ).click( starredToggle )
+  $( '.delete' ).click( deleteItem )
   getFilterStatus()
   getCheckedStatus()
 })

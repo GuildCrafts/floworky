@@ -1,6 +1,6 @@
 const { pruneTree } = require( './tree_creation' )
 
-const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'starred', 'is_root', 'parent_id', 'id' ]
+const FETCH_ATTRIBUTES = [ 'title', 'description', 'completed', 'starred', 'is_root', 'parent_id', 'id', 'is_deleted' ]
 
 const createRootItem = Item => user => {
   return Item.create({
@@ -8,12 +8,14 @@ const createRootItem = Item => user => {
     parent_id: 0,
     title: 'Home',
     description: 'Welcome to Floworky',
-    user_id: user.id
+    user_id: user.id,
+    is_deleted: false
   }).then( result => user )
 }
+const filterStatus = user_id => ( { user_id, is_deleted: false } )
 
 const allItemsQuery = user_id => (
-  { order: [['createdAt', 'ASC']], where: { user_id }, FETCH_ATTRIBUTES }
+  { order: [['createdAt', 'ASC']], where: filterStatus( user_id ), FETCH_ATTRIBUTES }
 )
 
 const filterClause = ( query, user_id ) =>
@@ -23,7 +25,7 @@ const filterClause = ( query, user_id ) =>
       whereSearch( query ),
       whereCompleted( query ),
       whereStarred( query ),
-      { user_id }
+      filterStatus( user_id )
     )
   })
 

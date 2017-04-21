@@ -9,7 +9,6 @@ const buildStarredItemArray = require( './items/build_starred_item_array' )
 
 router.get( '/', ( request, response ) => {
   const { Item } = request.app.get( 'models' )
-
   const { user, query } = request
 
   buildFilteredItemTree( Item, user, query )
@@ -75,5 +74,19 @@ router.post( '/:id', ( request, response ) => {
     )
 })
 
+router.delete( '/:id', ( request, response ) => {
+  const { Item, Audit } = request.app.get( 'models' )
+  const id = parseInt( request.params.id )
+  const user_id = parseInt( request.user.id )
+
+  Item.findOne({ where: { id, user_id } })
+    .then( item => {
+      item.update({ is_deleted: true })
+
+      return item
+    })
+    .then( createAuditEntries( Item, Audit, user_id ) )
+    .then( result => response.status( 200 ).send({}) )
+})
 
 module.exports = router

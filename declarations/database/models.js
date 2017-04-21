@@ -6,6 +6,7 @@ declare type Item = {
   starred: boolean;
   parent_id: number;
   user_id: number;
+  is_deleted: boolean;
 };
 
 declare type User = {
