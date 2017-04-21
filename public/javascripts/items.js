@@ -50,7 +50,7 @@ const descriptionEdited = event => {
 
 const completedClicked = event => {
   const element = $( event.target )
-  const id = element.data( 'id' )
+  const id = element.parent().data( 'id' )
   const completed = ! element.data( 'completed' )
 
   fetch( `/items/${id}`, params({ completed: completed } ) )
@@ -64,9 +64,8 @@ const completedClicked = event => {
         } else {
           parent.removeClass( 'item__title--completed' )
         }
-      }
-    )
-  }
+    }) 
+}
 
   const getFilterStatus = () => {
     const pageURL= decodeURIComponent(window.location.search)
@@ -133,7 +132,7 @@ $(document).ready( () => {
   $( '.item__title > span' ).click( clickToUpdate( 'item__title' ))
   $( '.item__edit-description' ).keypress( descriptionEdited )
   $( '.item__description > span' ).click( clickToUpdate( 'item__description' ))
-  $( '.item__toggle' ).click( completedClicked )
+  $( '.item__menu ul li:first-child' ).click( completedClicked )
   $( '.dropdown__toggle' ).click( dropdownToggle )
   $( '.star' ).click( starredToggle )
   getFilterStatus()
